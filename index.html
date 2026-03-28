@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cleer Money — Know Your Wants from Your Needs</title>
+  <meta name="description" content="Cleer Money helps Australians understand where their money actually goes. Swipe to categorise, connect your bank, and finally get clarity on your spending." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #16a34a;
+      --green-light: #dcfce7;
+      --green-dark: #14532d;
+      --green-mid: #22c55e;
+      --cream: #fafaf7;
+      --charcoal: #111110;
+      --muted: #6b7280;
+      --border: rgba(0,0,0,0.08);
+      --card: #ffffff;
+      --red: #ef4444;
+      --amber: #f59e0b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(250,250,247,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      animation: fadeDown 0.6s ease both;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      background: var(--green);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Instrument Serif', serif;
+      font-size: 20px;
+      color: white;
+      letter-spacing: -1px;
+    }
+
+    .logo-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--charcoal);
+      letter-spacing: -0.3px;
+    }
+
+    .logo-text span { font-weight: 300; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--charcoal); }
+
+    .nav-cta {
+      background: var(--charcoal);
+      color: white !important;
+      padding: 10px 22px;
+      border-radius: 100px;
+      font-weight: 600 !important;
+      font-size: 14px !important;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--green) !important;
+      color: white !important;
+      transform: translateY(-1px);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(22,163,74,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(22,163,74,0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--green-light);
+      color: var(--green);
+      border: 1px solid rgba(22,163,74,0.25);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 32px;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .hero h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(48px, 7vw, 88px);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      color: var(--charcoal);
+      max-width: 900px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--green);
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 20px);
+      color: var(--muted);
+      max-width: 520px;
+      font-weight: 400;
+      line-height: 1.7;
+      margin-bottom: 48px;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeUp 0.7s 0.4s ease both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--charcoal);
+      color: white;
+      padding: 16px 32px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: var(--green);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(22,163,74,0.3);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--charcoal);
+      padding: 16px 24px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 1px solid var(--border);
+      background: white;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--green);
+      color: var(--green);
+      transform: translateY(-1px);
+    }
+
+    .store-badge {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ── PHONE MOCKUP ── */
+    .hero-phone {
+      position: relative;
+      margin-top: 72px;
+      animation: fadeUp 0.8s 0.5s ease both;
+    }
+
+    .phone-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .phone-shell {
+      width: 280px;
+      background: var(--charcoal);
+      border-radius: 44px;
+      padding: 12px;
+      box-shadow:
+        0 60px 120px rgba(0,0,0,0.25),
+        0 0 0 1px rgba(255,255,255,0.08) inset;
+    }
+
+    .phone-screen {
+      background: #f5f5f0;
+      border-radius: 34px;
+      overflow: hidden;
+      aspect-ratio: 9/19.5;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .phone-status {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 20px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
+    .phone-header {
+      padding: 0 20px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .phone-logo {
+      width: 24px;
+      height: 24px;
+      background: var(--green);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: white;
+      font-family: 'Instrument Serif', serif;
+    }
+
+    .phone-title { font-size: 13px; font-weight: 700; }
+    .phone-title span { font-weight: 300; }
+
+    .phone-card {
+      margin: 0 16px;
+      background: white;
+      border-radius: 24px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      flex: 1;
+    }
+
+    .phone-merchant-icon {
+      width: 64px;
+      height: 64px;
+      background: #f3f4f6;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    .phone-merchant { font-size: 16px; font-weight: 700; color: var(--charcoal); }
+    .phone-date { font-size: 10px; font-weight: 600; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+    .phone-amount { font-size: 40px; font-weight: 800; color: var(--charcoal); letter-spacing: -2px; }
+
+    .phone-hint {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .phone-actions {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+      padding: 0 4px;
+      margin-top: auto;
+    }
+
+    .phone-want {
+      flex: 1;
+      background: #fee2e2;
+      color: #ef4444;
+      border: none;
+      border-radius: 18px;
+      padding: 14px;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+    }
+
+    .phone-need {
+      flex: 1;
+      background: var(--green);
+      color: white;
+      border: none;
+      border-radius: 18px;
+      padding: 14px;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+    }
+
+    .phone-float {
+      position: absolute;
+      background: white;
+      border-radius: 16px;
+      padding: 10px 14px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .float-streak {
+      top: 20%;
+      right: -110px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--charcoal);
+    }
+
+    .float-saved {
+      bottom: 28%;
+      left: -120px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--green);
+    }
+
+    .float-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    /* ── LOGOS / TRUST ── */
+    .trust {
+      padding: 32px 48px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .trust-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .trust-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .trust-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.45;
+      filter: grayscale(1);
+      transition: opacity 0.2s, filter 0.2s;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+
+    .trust-logo:hover { opacity: 0.7; filter: grayscale(0); }
+
+    .trust-logo svg { width: 20px; height: 20px; }
+
+    /* ── HOW IT WORKS ── */
+    .section {
+      padding: 100px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(36px, 4vw, 56px);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--green);
+    }
+
+    .section-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.7;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 64px;
+    }
+
+    .step {
+      background: white;
+      border-radius: 24px;
+      padding: 32px;
+      border: 1px solid var(--border);
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .step:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.08);
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: var(--green-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--green);
+      margin-bottom: 20px;
+    }
+
+    .step h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+
+    .step p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .step-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    /* ── FEATURES ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 64px;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 24px;
+      padding: 36px;
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.08);
+    }
+
+    .feature-card.wide {
+      grid-column: span 2;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .feature-card.green {
+      background: var(--green);
+      color: white;
+    }
+
+    .feature-card.green .feature-sub { color: rgba(255,255,255,0.7); }
+
+    .feature-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      background: var(--green-light);
+    }
+
+    .feature-card.green .feature-icon-wrap {
+      background: rgba(255,255,255,0.15);
+    }
+
+    .feature-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+
+    .feature-sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .feature-visual {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .mini-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      height: 80px;
+    }
+
+    .chart-bar {
+      flex: 1;
+      border-radius: 6px 6px 0 0;
+      transition: height 0.3s;
+    }
+
+    /* ── SOCIAL PROOF ── */
+    .reviews {
+      background: white;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 48px;
+    }
+
+    .reviews-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .review-card {
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 28px;
+      border: 1px solid var(--border);
+    }
+
+    .review-stars {
+      color: var(--amber);
+      font-size: 14px;
+      margin-bottom: 14px;
+      letter-spacing: 2px;
+    }
+
+    .review-text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--charcoal);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .reviewer-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .reviewer-name { font-size: 13px; font-weight: 700; }
+    .reviewer-handle { font-size: 12px; color: var(--muted); }
+
+    /* ── PRICING ── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 64px;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .price-card {
+      background: white;
+      border-radius: 28px;
+      padding: 40px;
+      border: 1px solid var(--border);
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .price-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 56px rgba(0,0,0,0.1);
+    }
+
+    .price-card.featured {
+      background: var(--charcoal);
+      border-color: transparent;
+      color: white;
+    }
+
+    .price-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--green);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 100px;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .plan-name {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .price-card.featured .plan-name { color: rgba(255,255,255,0.5); }
+
+    .price-amount {
+      font-family: 'Instrument Serif', serif;
+      font-size: 52px;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .price-period {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .price-card.featured .price-period { color: rgba(255,255,255,0.5); }
+
+    .price-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .price-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    .price-features .check {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--green-light);
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+
+    .price-card.featured .price-features .check {
+      background: rgba(22,163,74,0.2);
+      color: var(--green-mid);
+    }
+
+    .price-card.featured .price-features .check.muted-check {
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.3);
+    }
+
+    .price-card.featured .price-features li { color: rgba(255,255,255,0.85); }
+
+    .btn-plan {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 14px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .btn-plan-outline {
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--charcoal);
+    }
+
+    .btn-plan-outline:hover {
+      border-color: var(--charcoal);
+      background: var(--charcoal);
+      color: white;
+    }
+
+    .btn-plan-green {
+      background: var(--green);
+      color: white;
+    }
+
+    .btn-plan-green:hover {
+      background: #15803d;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(22,163,74,0.4);
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 80px 48px;
+      text-align: center;
+    }
+
+    .cta-inner {
+      background: var(--charcoal);
+      border-radius: 32px;
+      padding: 80px 48px;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-inner::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(22,163,74,0.3) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-inner::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -40px;
+      width: 260px; height: 260px;
+      background: radial-gradient(circle, rgba(22,163,74,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-inner h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(36px, 5vw, 60px);
+      color: white;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .cta-inner h2 em {
+      font-style: italic;
+      color: var(--green-mid);
+    }
+
+    .cta-inner p {
+      color: rgba(255,255,255,0.6);
+      font-size: 17px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .btn-cta-primary {
+      background: var(--green);
+      color: white;
+      padding: 16px 36px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .btn-cta-primary:hover {
+      background: var(--green-mid);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(34,197,94,0.4);
+    }
+
+    .btn-cta-ghost {
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 16px 24px;
+      transition: color 0.2s;
+    }
+
+    .btn-cta-ghost:hover { color: white; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--charcoal); }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.85); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .phone-wrap { animation: float 4s ease-in-out infinite; }
+
+    .float-streak { animation: fadeUp 0.7s 0.9s ease both; }
+    .float-saved { animation: fadeUp 0.7s 1.1s ease both; }
+
+    /* scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .section { padding: 64px 24px; }
+      .steps { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .feature-card.wide { flex-direction: column; grid-column: span 1; }
+      .review-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+      .trust { padding: 32px 24px; }
+      .trust-logos { gap: 24px; }
+      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+      .cta-inner { padding: 48px 24px; border-radius: 24px; }
+      .cta-section { padding: 48px 24px; }
+      .reviews { padding: 64px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="logo-mark">C</div>
+      <span class="logo-text">Cleer<span>Money</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#" class="nav-cta">Download</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+
+    <div class="hero-badge">Now available on iOS</div>
+
+    <h1>Finally know your<br><em>wants</em> from your needs</h1>
+
+    <p class="hero-sub">
+      Cleer Money connects to your Australian bank account and turns every transaction into a simple swipe — Want or Need. No budgets. No spreadsheets. Just clarity.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#" class="btn-primary">
+        <svg class="store-badge" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download on iOS
+      </a>
+      <a href="#how" class="btn-secondary">See how it works →</a>
+    </div>
+
+    <div class="hero-phone">
+      <div class="phone-wrap">
+        <div class="phone-shell">
+          <div class="phone-screen">
+            <div class="phone-status">
+              <span>9:41</span>
+              <span>●●●</span>
+            </div>
+            <div class="phone-header">
+              <div class="phone-logo">C</div>
+              <span class="phone-title">Cleer<span>Money</span></span>
+            </div>
+            <div style="padding: 0 16px; flex: 1; display: flex; flex-direction: column;">
+              <div class="phone-card">
+                <div class="phone-merchant-icon">🛒</div>
+                <span class="phone-merchant">Woolworths</span>
+                <span class="phone-date">Today</span>
+                <span class="phone-amount">-$94.50</span>
+                <span class="phone-hint">Need or Want?</span>
+                <div class="phone-actions">
+                  <button class="phone-want">Want</button>
+                  <button class="phone-need">Need</button>
+                </div>
+              </div>
+            </div>
+            <div style="height: 16px;"></div>
+          </div>
+        </div>
+
+        <div class="phone-float float-streak">
+          <div class="float-dot" style="background:#f59e0b;"></div>
+          🔥 4 week streak
+        </div>
+
+        <div class="phone-float float-saved">
+          <div class="float-dot" style="background:#16a34a;"></div>
+          $340 saved this month
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust">
+    <p class="trust-label">Built for Australians — using open banking</p>
+    <div class="trust-logos">
+      <span class="trust-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        Open Banking CDR
+      </span>
+      <span class="trust-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        256-bit Encryption
+      </span>
+      <span class="trust-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+        ACCC Compliant
+      </span>
+      <span class="trust-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Read-only Access
+      </span>
+      <span class="trust-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        iOS App Store
+      </span>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how">
+    <div class="reveal">
+      <p class="section-label">How it works</p>
+      <h2 class="section-title">Three steps to<br><em>financial clarity</em></h2>
+      <p class="section-sub">No complex setup. No manual entry. Just connect, swipe, and understand your spending like never before.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-icon">🏦</div>
+        <div class="step-number">1</div>
+        <h3>Connect your bank</h3>
+        <p>Link your Australian bank account securely through Open Banking (CDR). Cleer Money is read-only — we can never move your money.</p>
+      </div>
+      <div class="step reveal" style="transition-delay:0.1s">
+        <div class="step-icon">👆</div>
+        <div class="step-number">2</div>
+        <h3>Swipe to categorise</h3>
+        <p>Transactions appear as cards. Swipe right for Need, left for Want. It takes seconds — and builds a picture of your spending habits over time.</p>
+      </div>
+      <div class="step reveal" style="transition-delay:0.2s">
+        <div class="step-icon">📊</div>
+        <div class="step-number">3</div>
+        <h3>Get clear insights</h3>
+        <p>See exactly where your money goes — by category, by week, by pattern. Set targets and track whether you're on pace to meet them.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section" id="features" style="padding-top: 0;">
+    <div class="reveal">
+      <p class="section-label">Features</p>
+      <h2 class="section-title">Everything you need.<br><em>Nothing you don't.</em></h2>
+    </div>
+
+    <div class="features-grid" style="margin-top: 48px;">
+      <div class="feature-card reveal">
+        <div class="feature-icon-wrap">🔗</div>
+        <h3 class="feature-title">Open Banking</h3>
+        <p class="feature-sub">Connect major Australian banks securely via CDR. Transactions sync automatically — no CSV exports, no manual entry.</p>
+      </div>
+
+      <div class="feature-card reveal" style="transition-delay:0.1s">
+        <div class="feature-icon-wrap">🎯</div>
+        <h3 class="feature-title">Spending Targets</h3>
+        <p class="feature-sub">Set monthly limits per category. See a daily burn rate and end-of-month projection so you can course-correct before it's too late.</p>
+      </div>
+
+      <div class="feature-card green reveal wide" style="transition-delay:0.2s">
+        <div style="flex: 1;">
+          <div class="feature-icon-wrap" style="background:rgba(255,255,255,0.15)">📈</div>
+          <h3 class="feature-title" style="color:white">Insights that actually mean something</h3>
+          <p class="feature-sub">Weekly breakdowns, your busiest spending day, most frequent merchants, want pace per day, and your longest no-discretionary-spend streak. Data that changes behaviour.</p>
+        </div>
+        <div class="feature-visual">
+          <div style="background:rgba(255,255,255,0.08); border-radius:16px; padding:20px;">
+            <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:1px;margin-bottom:12px;">WEEKLY BREAKDOWN</div>
+            <div class="mini-chart">
+              <div class="chart-bar" style="height:30%;background:rgba(255,255,255,0.2);border-radius:6px 6px 0 0;"></div>
+              <div class="chart-bar" style="height:55%;background:rgba(255,255,255,0.3);border-radius:6px 6px 0 0;"></div>
+              <div class="chart-bar" style="height:40%;background:rgba(255,255,255,0.2);border-radius:6px 6px 0 0;"></div>
+              <div class="chart-bar" style="height:80%;background:#22c55e;border-radius:6px 6px 0 0;"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:8px;">
+              <span style="font-size:10px;color:rgba(255,255,255,0.4)">W1</span>
+              <span style="font-size:10px;color:rgba(255,255,255,0.4)">W2</span>
+              <span style="font-size:10px;color:rgba(255,255,255,0.4)">W3</span>
+              <span style="font-size:10px;color:rgba(255,255,255,0.4)">W4</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-card reveal" style="transition-delay:0.3s">
+        <div class="feature-icon-wrap">🔥</div>
+        <h3 class="feature-title">Streak Tracking</h3>
+        <p class="feature-sub">Build a weekly habit. Your streak grows every week you review transactions. Milestones, personal bests, and shareable cards keep you motivated.</p>
+      </div>
+
+      <div class="feature-card reveal" style="transition-delay:0.4s">
+        <div class="feature-icon-wrap">↩️</div>
+        <h3 class="feature-title">Undo & Smart Rules</h3>
+        <p class="feature-sub">Accidentally swiped wrong? Undo your last decision instantly. Set smart rules to auto-categorise recurring merchants like Netflix or Woolworths.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <div class="reviews">
+    <div class="reviews-inner">
+      <div class="reveal" style="text-align:center;">
+        <p class="section-label">Early feedback</p>
+        <h2 class="section-title" style="font-size: clamp(32px,4vw,48px);">People are getting <em>cleer</em></h2>
+      </div>
+
+      <div class="review-grid">
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"I had no idea how much I was spending on takeaway until Cleer showed me it was $400 a month. Seeing it as a Want really hit different."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar" style="background:#16a34a;">S</div>
+            <div>
+              <div class="reviewer-name">Sarah M.</div>
+              <div class="reviewer-handle">Sydney, NSW</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal" style="transition-delay:0.1s">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The swipe mechanic makes it feel like a game. I actually look forward to reviewing my transactions now. Never thought I'd say that about budgeting."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar" style="background:#3b82f6;">J</div>
+            <div>
+              <div class="reviewer-name">James K.</div>
+              <div class="reviewer-handle">Melbourne, VIC</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal" style="transition-delay:0.2s">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Finally an app that doesn't require a finance degree. Connect your bank, swipe through your transactions, done. My partner uses it too now."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar" style="background:#f59e0b;">A</div>
+            <div>
+              <div class="reviewer-name">Anika R.</div>
+              <div class="reviewer-handle">Brisbane, QLD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <section class="section" id="pricing" style="text-align:center;">
+    <div class="reveal">
+      <p class="section-label">Pricing</p>
+      <h2 class="section-title">Simple, transparent<br><em>pricing</em></h2>
+      <p class="section-sub" style="margin:0 auto;">Start free. Upgrade when you're ready for the full picture.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <p class="plan-name">Cleer Lite</p>
+        <div class="price-amount">Free</div>
+        <p class="price-period">forever</p>
+        <ul class="price-features">
+          <li><span class="check">✓</span> CSV import</li>
+          <li><span class="check">✓</span> Swipe to categorise</li>
+          <li><span class="check">✓</span> 30-day history</li>
+          <li><span class="check">✓</span> Streak tracking</li>
+          <li><span class="check" style="background:#f3f4f6;color:#9ca3af;">—</span> <span style="color:#9ca3af;">Bank connection</span></li>
+          <li><span class="check" style="background:#f3f4f6;color:#9ca3af;">—</span> <span style="color:#9ca3af;">Spending targets</span></li>
+          <li><span class="check" style="background:#f3f4f6;color:#9ca3af;">—</span> <span style="color:#9ca3af;">Full insights</span></li>
+        </ul>
+        <a href="#" class="btn-plan btn-plan-outline">Get started free</a>
+      </div>
+
+      <div class="price-card featured reveal" style="transition-delay:0.1s">
+        <span class="price-badge">Most popular</span>
+        <p class="plan-name">Cleer Pro</p>
+        <div class="price-amount" style="color:white;">$9.99</div>
+        <p class="price-period">per month · or $99.99/year</p>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Everything in Lite</li>
+          <li><span class="check">✓</span> Bank connection (CDR)</li>
+          <li><span class="check">✓</span> Unlimited history</li>
+          <li><span class="check">✓</span> Spending targets</li>
+          <li><span class="check">✓</span> Full insights & patterns</li>
+          <li><span class="check">✓</span> Smart Rules</li>
+          <li><span class="check">✓</span> Up to 2 banks</li>
+        </ul>
+        <a href="#" class="btn-plan btn-plan-green">Start free trial</a>
+      </div>
+    </div>
+
+    <p class="reveal" style="margin-top:24px;font-size:13px;color:var(--muted);">
+      Add a 3rd bank connection for $2.99/month · Cancel anytime · No lock-in contracts
+    </p>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner reveal">
+      <h2>Your spending is trying<br>to tell you something.<br><em>Are you listening?</em></h2>
+      <p>Join Australians building healthier money habits — one swipe at a time.</p>
+      <div class="cta-actions">
+        <a href="#" class="btn-cta-primary">Download on iOS — Free</a>
+        <a href="#" class="btn-cta-ghost">Learn more →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#" class="footer-logo">
+      <div class="logo-mark">C</div>
+      <span class="logo-text">Cleer<span>Money</span></span>
+    </a>
+
+    <ul class="footer-links">
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms of Use</a></li>
+      <li><a href="#">Support</a></li>
+      <li><a href="mailto:hello@cleermoney.com.au">Contact</a></li>
+    </ul>
+
+    <p class="footer-copy">© 2025 Cleer Money. ABN registered. Made in Australia 🇦🇺</p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Nav shrink on scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 40) {
+        nav.style.padding = '12px 48px';
+      } else {
+        nav.style.padding = '20px 48px';
+      }
+    });
+  </script>
+</body>
+</html>
