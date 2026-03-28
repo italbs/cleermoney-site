@@ -60,15 +60,17 @@
     .logo-mark {
       width: 36px;
       height: 36px;
-      background: var(--green);
       border-radius: 10px;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Instrument Serif', serif;
-      font-size: 20px;
-      color: white;
-      letter-spacing: -1px;
+    }
+
+    .logo-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .logo-text {
@@ -1025,7 +1027,7 @@
   <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo">
-      <div class="logo-mark">C</div>
+      <div class="logo-mark"><img src="icon.png" alt="Cleer Money" /></div>
       <span class="logo-text">Cleer<span>Money</span></span>
     </a>
     <ul class="nav-links">
@@ -1065,7 +1067,7 @@
               <span>●●●</span>
             </div>
             <div class="phone-header">
-              <div class="phone-logo">C</div>
+              <div class="phone-logo"><img src="icon.png" alt="C" style="width:100%;height:100%;object-fit:cover;border-radius:5px;" /></div>
               <span class="phone-title">Cleer<span>Money</span></span>
             </div>
             <div style="padding: 0 16px; flex: 1; display: flex; flex-direction: column;">
@@ -1325,7 +1327,7 @@
   <!-- FOOTER -->
   <footer>
     <a href="#" class="footer-logo">
-      <div class="logo-mark">C</div>
+      <div class="logo-mark"><img src="icon.png" alt="Cleer Money" /></div>
       <span class="logo-text">Cleer<span>Money</span></span>
     </a>
 
@@ -1333,13 +1335,13 @@
       <li><a href="#">Privacy Policy</a></li>
       <li><a href="#">Terms of Use</a></li>
       <li><a href="#">Support</a></li>
-      <li><a href="mailto:hello@cleermoney.com.au">Contact</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#fd9598919192bd9e9198988f9092939884d39e9290d39c88">Contact</a></li>
     </ul>
 
     <p class="footer-copy">© 2025 Cleer Money. ABN registered. Made in Australia 🇦🇺</p>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
@@ -1362,5 +1364,6 @@
       }
     });
   </script>
+
 </body>
 </html>
