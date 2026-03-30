@@ -5,6 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cleer Money — Know Your Wants from Your Needs</title>
   <meta name="description" content="Cleer Money helps Australians understand where their money actually goes. Swipe to categorise, connect your bank, and finally get clarity on your spending." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Cleer Money — Know Your Wants from Your Needs" />
+  <meta property="og:description" content="Connect your Australian bank account, swipe transactions as Want or Need, and finally get clarity on your spending." />
+  <meta property="og:image" content="https://cleermoney.com.au/og-image.png" />
+  <meta property="og:url" content="https://cleermoney.com.au" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cleer Money — Know Your Wants from Your Needs" />
+  <meta name="twitter:description" content="Connect your Australian bank account, swipe transactions as Want or Need, and finally get clarity on your spending." />
+  <meta name="twitter:image" content="https://cleermoney.com.au/og-image.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="apple-touch-icon" href="icon.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet" />
@@ -113,6 +129,68 @@
       background: var(--green) !important;
       color: white !important;
       transform: translateY(-1px);
+    }
+
+    /* ── MOBILE NAV ── */
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--charcoal);
+      border-radius: 2px;
+      position: absolute;
+      left: 7px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-hamburger span:nth-child(1) { top: 10px; }
+    .nav-hamburger span:nth-child(2) { top: 17px; }
+    .nav-hamburger span:nth-child(3) { top: 24px; }
+
+    .nav-hamburger.active span:nth-child(1) { top: 17px; transform: rotate(45deg); }
+    .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.active span:nth-child(3) { top: 17px; transform: rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 99;
+      background: rgba(250,250,247,0.98);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      text-decoration: none;
+      color: var(--charcoal);
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover { color: var(--green); }
+
+    .mobile-menu .btn-primary {
+      margin-top: 16px;
+      font-size: 16px;
     }
 
     /* ── HERO ── */
@@ -301,6 +379,7 @@
       font-size: 12px;
       color: white;
       font-family: 'Instrument Serif', serif;
+      overflow: hidden;
     }
 
     .phone-title { font-size: 13px; font-weight: 700; }
@@ -317,6 +396,7 @@
       gap: 12px;
       box-shadow: 0 4px 24px rgba(0,0,0,0.06);
       flex: 1;
+      min-height: 0;
     }
 
     .phone-merchant-icon {
@@ -328,16 +408,18 @@
       align-items: center;
       justify-content: center;
       font-size: 28px;
+      flex-shrink: 0;
     }
 
-    .phone-merchant { font-size: 16px; font-weight: 700; color: var(--charcoal); }
-    .phone-date { font-size: 10px; font-weight: 600; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
-    .phone-amount { font-size: 40px; font-weight: 800; color: var(--charcoal); letter-spacing: -2px; }
+    .phone-merchant { font-size: 16px; font-weight: 700; color: var(--charcoal); flex-shrink: 0; }
+    .phone-date { font-size: 10px; font-weight: 600; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; flex-shrink: 0; }
+    .phone-amount { font-size: 40px; font-weight: 800; color: var(--charcoal); letter-spacing: -2px; flex-shrink: 0; }
 
     .phone-hint {
       font-size: 12px;
       font-weight: 500;
       color: var(--muted);
+      flex-shrink: 0;
     }
 
     .phone-actions {
@@ -346,6 +428,7 @@
       width: 100%;
       padding: 0 4px;
       margin-top: auto;
+      flex-shrink: 0;
     }
 
     .phone-want {
@@ -1007,6 +1090,7 @@
     @media (max-width: 900px) {
       nav { padding: 16px 24px; }
       .nav-links { display: none; }
+      .nav-hamburger { display: block; }
       .section { padding: 64px 24px; }
       .steps { grid-template-columns: 1fr; }
       .features-grid { grid-template-columns: 1fr; }
@@ -1019,6 +1103,22 @@
       .cta-inner { padding: 48px 24px; border-radius: 24px; }
       .cta-section { padding: 48px 24px; }
       .reviews { padding: 64px 24px; }
+
+      /* Phone mockup mobile fixes */
+      .hero-phone { margin-top: 48px; }
+      .phone-shell { width: 240px; }
+      .phone-amount { font-size: 32px; }
+      .phone-merchant-icon { width: 48px; height: 48px; font-size: 22px; }
+      .phone-card { padding: 16px 14px; gap: 8px; }
+      .phone-actions { gap: 8px; }
+      .phone-want, .phone-need { padding: 12px; font-size: 12px; }
+
+      .phone-float { display: none; }
+    }
+
+    @media (max-width: 400px) {
+      .phone-shell { width: 220px; }
+      .phone-amount { font-size: 28px; }
     }
   </style>
 </head>
@@ -1034,15 +1134,29 @@
       <li><a href="#how">How it works</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#" class="nav-cta">Download</a></li>
+      <li><a href="#" class="nav-cta">Coming Soon</a></li>
     </ul>
+    <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#how" onclick="toggleMenu()">How it works</a>
+    <a href="#features" onclick="toggleMenu()">Features</a>
+    <a href="#pricing" onclick="toggleMenu()">Pricing</a>
+    <a href="#" class="btn-primary" onclick="toggleMenu()">
+      <svg class="store-badge" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Coming Soon on iOS
+    </a>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
 
-    <div class="hero-badge">Now available on iOS</div>
+    <div class="hero-badge">Coming soon to iOS</div>
 
     <h1>Finally know your<br><em>wants</em> from your needs</h1>
 
@@ -1053,7 +1167,7 @@
     <div class="hero-actions">
       <a href="#" class="btn-primary">
         <svg class="store-badge" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        Download on iOS
+        Coming Soon on iOS
       </a>
       <a href="#how" class="btn-secondary">See how it works →</a>
     </div>
@@ -1070,7 +1184,7 @@
               <div class="phone-logo"><img src="icon.png" alt="C" style="width:100%;height:100%;object-fit:cover;border-radius:5px;" /></div>
               <span class="phone-title">Cleer<span>Money</span></span>
             </div>
-            <div style="padding: 0 16px; flex: 1; display: flex; flex-direction: column;">
+            <div style="padding: 0 16px; flex: 1; display: flex; flex-direction: column; min-height: 0;">
               <div class="phone-card">
                 <div class="phone-merchant-icon">🛒</div>
                 <span class="phone-merchant">Woolworths</span>
@@ -1114,7 +1228,7 @@
       </span>
       <span class="trust-logo">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
-        ACCC Compliant
+        CDR Compliant
       </span>
       <span class="trust-logo">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -1220,8 +1334,8 @@
   <div class="reviews">
     <div class="reviews-inner">
       <div class="reveal" style="text-align:center;">
-        <p class="section-label">Early feedback</p>
-        <h2 class="section-title" style="font-size: clamp(32px,4vw,48px);">People are getting <em>cleer</em></h2>
+        <p class="section-label">Early adopters</p>
+        <h2 class="section-title" style="font-size: clamp(32px,4vw,48px);">What our early users <em>had to say</em></h2>
       </div>
 
       <div class="review-grid">
@@ -1318,8 +1432,8 @@
       <h2>Your spending is trying<br>to tell you something.<br><em>Are you listening?</em></h2>
       <p>Join Australians building healthier money habits — one swipe at a time.</p>
       <div class="cta-actions">
-        <a href="#" class="btn-cta-primary">Download on iOS — Free</a>
-        <a href="#" class="btn-cta-ghost">Learn more →</a>
+        <a href="#" class="btn-cta-primary">Coming Soon on iOS — Free</a>
+        <a href="#how" class="btn-cta-ghost">Learn more →</a>
       </div>
     </div>
   </section>
@@ -1335,13 +1449,22 @@
       <li><a href="#">Privacy Policy</a></li>
       <li><a href="#">Terms of Use</a></li>
       <li><a href="#">Support</a></li>
-      <li><a href="/cdn-cgi/l/email-protection#fd9598919192bd9e9198988f9092939884d39e9290d39c88">Contact</a></li>
+      <li><a href="mailto:hello@cleermoney.com.au">Contact</a></li>
     </ul>
 
-    <p class="footer-copy">© 2025 Cleer Money. ABN registered. Made in Australia 🇦🇺</p>
+    <p class="footer-copy">© 2026 Cleer Money. ABN registered. Made in Australia 🇦🇺</p>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
+    // Mobile menu toggle
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const burger = document.querySelector('.nav-hamburger');
+      menu.classList.toggle('open');
+      burger.classList.toggle('active');
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    }
+
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
@@ -1358,9 +1481,9 @@
     window.addEventListener('scroll', () => {
       const nav = document.querySelector('nav');
       if (window.scrollY > 40) {
-        nav.style.padding = '12px 48px';
+        nav.style.padding = window.innerWidth > 900 ? '12px 48px' : '12px 24px';
       } else {
-        nav.style.padding = '20px 48px';
+        nav.style.padding = window.innerWidth > 900 ? '20px 48px' : '16px 24px';
       }
     });
   </script>
