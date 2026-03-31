@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms &amp; Conditions — Cleer Money</title>
+  <meta name="description" content="Cleer Money Terms and Conditions. The rules governing your use of the Cleer Money app." />
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="apple-touch-icon" href="icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #16a34a;
+      --green-light: #dcfce7;
+      --green-dark: #14532d;
+      --green-mid: #22c55e;
+      --cream: #fafaf7;
+      --charcoal: #111110;
+      --muted: #6b7280;
+      --border: rgba(0,0,0,0.08);
+      --card: #ffffff;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(250,250,247,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-mark { width: 36px; height: 36px; border-radius: 10px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .logo-mark img { width: 100%; height: 100%; object-fit: cover; }
+    .logo-text { font-size: 18px; font-weight: 600; color: var(--charcoal); letter-spacing: -0.3px; }
+    .logo-text span { font-weight: 300; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--charcoal); }
+    .nav-cta { background: var(--charcoal); color: white !important; padding: 10px 22px; border-radius: 100px; font-weight: 600 !important; font-size: 14px !important; transition: background 0.2s, transform 0.2s !important; }
+    .nav-cta:hover { background: var(--green) !important; transform: translateY(-1px); }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; width: 36px; height: 36px; position: relative; flex-shrink: 0; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--charcoal); border-radius: 2px; position: absolute; left: 7px; transition: all 0.3s ease; }
+    .nav-hamburger span:nth-child(1) { top: 10px; }
+    .nav-hamburger span:nth-child(2) { top: 17px; }
+    .nav-hamburger span:nth-child(3) { top: 24px; }
+    .nav-hamburger.active span:nth-child(1) { top: 17px; transform: rotate(45deg); }
+    .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.active span:nth-child(3) { top: 17px; transform: rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: rgba(250,250,247,0.98); backdrop-filter: blur(20px); flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { text-decoration: none; color: var(--charcoal); font-size: 24px; font-weight: 600; letter-spacing: -0.5px; transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--green); }
+
+    /* PAGE HERO */
+    .page-hero { padding: 140px 48px 64px; max-width: 860px; margin: 0 auto; }
+    .section-label { font-size: 12px; font-weight: 700; color: var(--green); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+    .page-hero h1 { font-family: 'Instrument Serif', serif; font-size: clamp(40px, 6vw, 72px); line-height: 1.05; letter-spacing: -2px; color: var(--charcoal); margin-bottom: 16px; }
+    .page-hero h1 em { font-style: italic; color: var(--green); }
+    .page-meta { font-size: 14px; color: var(--muted); }
+
+    /* CONTENT */
+    .content { max-width: 860px; margin: 0 auto; padding: 0 48px 100px; display: flex; flex-direction: column; gap: 20px; }
+
+    /* CARDS */
+    .card { background: var(--card); border-radius: 24px; padding: 36px; border: 1px solid var(--border); transition: transform 0.2s, box-shadow 0.2s; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 20px 48px rgba(0,0,0,0.06); }
+    .card-label { display: inline-flex; align-items: center; background: var(--green-light); color: var(--green); border-radius: 100px; padding: 4px 12px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
+    .card h2 { font-family: 'Instrument Serif', serif; font-size: clamp(22px, 3vw, 28px); letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 16px; color: var(--charcoal); }
+    .card h2 em { font-style: italic; color: var(--green); }
+    .card h3 { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin: 24px 0 10px; }
+    .card p { font-size: 15px; color: #374151; line-height: 1.75; margin-bottom: 12px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ul { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+    .card li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: #374151; line-height: 1.65; }
+    .li-dot { width: 20px; height: 20px; border-radius: 50%; background: var(--green-light); flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; }
+    .li-dot svg { width: 12px; height: 12px; }
+    .card a { color: var(--green); text-decoration: none; font-weight: 500; border-bottom: 1px solid rgba(22,163,74,0.3); transition: border-color 0.2s; }
+    .card a:hover { border-color: var(--green); }
+    strong { font-weight: 600; }
+
+    /* CALLOUT */
+    .callout { background: var(--green-light); border-radius: 14px; padding: 16px 20px; margin: 16px 0; display: flex; gap: 12px; align-items: flex-start; }
+    .callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .callout p { margin: 0; font-size: 14px; color: var(--green-dark); font-weight: 500; line-height: 1.6; }
+
+    /* CONTACT CARD */
+    .contact-card { background: var(--charcoal); border-radius: 24px; padding: 36px; color: white; position: relative; overflow: hidden; }
+    .contact-card::before { content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(22,163,74,0.3) 0%, transparent 70%); pointer-events: none; }
+    .contact-card .section-label { color: var(--green-mid); }
+    .contact-card h2 { font-family: 'Instrument Serif', serif; font-size: clamp(24px, 3vw, 32px); letter-spacing: -0.5px; margin-bottom: 20px; color: white; position: relative; }
+    .contact-card h2 em { font-style: italic; color: var(--green-mid); }
+    .contact-links { display: flex; flex-direction: column; gap: 10px; position: relative; }
+    .contact-link { display: inline-flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.7); text-decoration: none; font-size: 15px; transition: color 0.2s; border-bottom: none !important; }
+    .contact-link:hover { color: white; }
+    .contact-link svg { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.5; }
+    .contact-detail { font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 20px; line-height: 1.7; position: relative; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .footer-links { display: flex; gap: 32px; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--charcoal); }
+    .footer-copy { font-size: 12px; color: var(--muted); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: block; }
+      .page-hero { padding: 120px 24px 48px; }
+      .content { padding: 0 24px 80px; }
+      .card { padding: 24px 20px; }
+      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="https://cleermoney.com.au" class="nav-logo">
+      <div class="logo-mark"><img src="icon.png" alt="Cleer Money" /></div>
+      <span class="logo-text">Cleer<span>Money</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="https://cleermoney.com.au#how">How it works</a></li>
+      <li><a href="https://cleermoney.com.au#features">Features</a></li>
+      <li><a href="https://cleermoney.com.au#pricing">Pricing</a></li>
+      <li><a href="https://cleermoney.com.au/privacy">Privacy Policy</a></li>
+      <li><a href="https://cleermoney.com.au" class="nav-cta">Coming Soon</a></li>
+    </ul>
+    <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="https://cleermoney.com.au#how" onclick="toggleMenu()">How it works</a>
+    <a href="https://cleermoney.com.au#features" onclick="toggleMenu()">Features</a>
+    <a href="https://cleermoney.com.au#pricing" onclick="toggleMenu()">Pricing</a>
+    <a href="https://cleermoney.com.au/privacy" onclick="toggleMenu()">Privacy Policy</a>
+  </div>
+
+  <div class="page-hero">
+    <p class="section-label">Legal</p>
+    <h1>Terms &amp; <em>Conditions</em></h1>
+    <p class="page-meta">Effective 1 April 2025 &nbsp;·&nbsp; Last updated 1 April 2025</p>
+  </div>
+
+  <div class="content">
+
+    <div class="card reveal">
+      <div class="card-label">Overview</div>
+      <h2>About <em>these terms</em></h2>
+      <p>These Terms and Conditions ("Terms") govern your use of the Cleer Money mobile application ("the App"), operated by Isaac Talbot, a sole trader trading as Cleer Money ("we", "us", "our").</p>
+      <p>By downloading, installing, or using the App, you agree to be bound by these Terms. If you do not agree, do not use the App.</p>
+      <p>These Terms are governed by the laws of Queensland, Australia. Nothing in these Terms limits or excludes rights you may have under the <em>Australian Consumer Law</em> (Schedule 2 of the <em>Competition and Consumer Act 2010</em> (Cth)) or other applicable Australian law.</p>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-label">Eligibility</div>
+      <h2>Who can <em>use Cleer Money</em></h2>
+      <p>To use Cleer Money, you must:</p>
+      <ul>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Be 18 years of age or older</span></li>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Be an Australian resident (the App is currently available in Australia only)</span></li>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Have the legal capacity to enter into a binding agreement</span></li>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Not be prohibited from using the App under any applicable law</span></li>
+      </ul>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-label">The App</div>
+      <h2>What Cleer Money <em>is and isn't</em></h2>
+      <p>Cleer Money is a personal finance tool that helps you understand and categorise your spending. The App lets you connect your Australian bank accounts via Open Banking (CDR), view and categorise transactions as "Want" or "Need", and track spending patterns and budget targets.</p>
+      <div class="callout">
+        <span class="callout-icon">⚠️</span>
+        <p><strong>Cleer Money is a financial management tool, not a financial advice service.</strong> Nothing in the App constitutes financial, investment, legal, or tax advice. We are not a licensed financial adviser under the <em>Corporations Act 2001</em> (Cth). Seek independent professional advice before making financial decisions.</p>
+      </div>
+      <p>While we take reasonable steps to ensure data is accurate, transaction data is retrieved from third-party banking infrastructure. We do not warrant that all data displayed is complete, accurate, or current. Do not rely solely on Cleer Money for financial record-keeping.</p>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-label">Account</div>
+      <h2>Account <em>registration</em></h2>
+      <p>You must create an account to use the App. You agree to:</p>
+      <ul>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Provide accurate and complete information when registering</span></li>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Keep your login credentials confidential</span></li>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Notify us immediately at <a href="mailto:support@cleermoney.com.au">support@cleermoney.com.au</a> if you suspect unauthorised access</span></li>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Take responsibility for all activity that occurs under your account</span></li>
+      </ul>
+      <p>We reserve the right to suspend or terminate accounts that provide false information or breach these Terms.</p>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-label">Open Banking</div>
+      <h2>Bank connections <em>&amp; CDR</em></h2>
+      <p>The App connects to your bank accounts using Australia's Consumer Data Right (CDR) framework. By initiating a bank connection, you:</p>
+      <ul>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Authorise Cleer Money and our CDR partner (Fiskil Pty Ltd) to retrieve your banking data in accordance with your consent</span></li>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Acknowledge you can withdraw consent at any time within the App or via your bank's CDR dashboard</span></li>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Understand that Cleer Money does not store your internet banking login credentials</span></li>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Accept that transaction data may be subject to delay and may not reflect real-time balances</span></li>
+      </ul>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-label">Subscriptions</div>
+      <h2>Subscriptions <em>&amp; payments</em></h2>
+      <h3>Cleer Pro</h3>
+      <p>Access to premium features ("Cleer Pro") requires a paid subscription. Current pricing is displayed in the App and the App Store at the time of purchase.</p>
+      <h3>Billing</h3>
+      <p>All subscriptions are processed by Apple Inc. through the App Store. By subscribing, you also agree to Apple's Terms of Service. We do not collect or store your payment card details.</p>
+      <h3>Free trial</h3>
+      <p>Where a free trial is offered, you will not be charged until the trial period ends. Cancel at any time before the trial ends to avoid being charged.</p>
+      <h3>Auto-renewal &amp; cancellation</h3>
+      <p>Subscriptions automatically renew at the end of each billing period unless cancelled at least 24 hours before the renewal date. Manage or cancel via your Apple ID account settings.</p>
+      <h3>Refunds</h3>
+      <p>Subscription refunds are handled by Apple in accordance with their refund policy. We do not have control over or direct access to refund decisions made by Apple.</p>
+      <h3>Price changes</h3>
+      <p>We may change subscription pricing with reasonable notice. Continued use after a price change constitutes acceptance of the new price.</p>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-label">Rules</div>
+      <h2>Acceptable <em>use</em></h2>
+      <p>You agree not to use the App to:</p>
+      <ul>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Violate any applicable law or regulation</span></li>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Provide false, misleading, or fraudulent information</span></li>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Attempt to gain unauthorised access to any system, network, or data</span></li>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Reverse engineer, decompile, or disassemble any part of the App</span></li>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Use automated tools, bots, or scrapers to access the App</span></li>
+      </ul>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-label">Ownership</div>
+      <h2>Intellectual <em>property</em></h2>
+      <p>The App, including all content, design, software, logos, and trademarks, is owned by or licensed to us. Nothing in these Terms grants you any right to use our intellectual property except as expressly permitted. You may not copy, reproduce, distribute, or create derivative works from any part of the App without our prior written consent.</p>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-label">Liability</div>
+      <h2>Disclaimers <em>&amp; liability</em></h2>
+      <h3>Disclaimer of warranties</h3>
+      <p>To the extent permitted by law, the App is provided on an "as is" and "as available" basis, without warranties of any kind. Nothing in this clause limits any guarantee that cannot be excluded under the Australian Consumer Law.</p>
+      <h3>Limitation of liability</h3>
+      <p>To the maximum extent permitted by law, we will not be liable for any indirect, incidental, special, or consequential damages arising from your use of the App. Our total liability for any claim will not exceed the amount you paid for your subscription in the 12 months preceding the claim.</p>
+      <div class="callout">
+        <span class="callout-icon">🇦🇺</span>
+        <p>Where the Australian Consumer Law applies and cannot be excluded, our liability is limited to resupply of the services or payment of the cost of resupply, at our option.</p>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-label">Ending use</div>
+      <h2>Termination <em>&amp; changes</em></h2>
+      <h3>By you</h3>
+      <p>You may stop using the App at any time and delete your account through the App settings. Cancelling your subscription does not automatically delete your account.</p>
+      <h3>By us</h3>
+      <p>We may suspend or terminate your access if you breach these Terms, we are required to do so by law, or we discontinue the App. Where possible, we will provide reasonable notice of any discontinuation.</p>
+      <h3>Changes to these terms</h3>
+      <p>We may modify these Terms at any time. We will notify you of material changes via the App or email. The current version will always be at <a href="https://cleermoney.com.au/terms">cleermoney.com.au/terms</a>. Continued use after changes constitutes acceptance.</p>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-label">Apple</div>
+      <h2>App Store <em>requirements</em></h2>
+      <p>As required by Apple Inc.:</p>
+      <ul>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>These Terms are between you and Cleer Money only — not Apple.</span></li>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Apple has no obligation to provide maintenance or support for the App.</span></li>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Apple is not responsible for product liability, consumer protection, or intellectual property claims relating to the App.</span></li>
+        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Apple and its subsidiaries are third-party beneficiaries of these Terms and may enforce them against you.</span></li>
+      </ul>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-label">Jurisdiction</div>
+      <h2>Governing <em>law</em></h2>
+      <p>These Terms are governed by the laws of Queensland, Australia. Any disputes will be subject to the exclusive jurisdiction of the courts of Queensland, unless otherwise required by applicable Australian consumer protection law.</p>
+    </div>
+
+    <div class="contact-card reveal">
+      <p class="section-label">Get in touch</p>
+      <h2>Questions or <em>support?</em></h2>
+      <div class="contact-links">
+        <a href="mailto:support@cleermoney.com.au" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          support@cleermoney.com.au
+        </a>
+        <a href="mailto:privacy@cleermoney.com.au" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          privacy@cleermoney.com.au
+        </a>
+        <a href="https://cleermoney.com.au" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          cleermoney.com.au
+        </a>
+      </div>
+      <p class="contact-detail">Isaac Talbot · Sole Trader, trading as Cleer Money · ABN 99 498 576 599 · Queensland, Australia</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <a href="https://cleermoney.com.au" class="footer-logo">
+      <div class="logo-mark"><img src="icon.png" alt="Cleer Money" /></div>
+      <span class="logo-text">Cleer<span>Money</span></span>
+    </a>
+    <ul class="footer-links">
+      <li><a href="https://cleermoney.com.au/privacy">Privacy Policy</a></li>
+      <li><a href="https://cleermoney.com.au/terms">Terms of Use</a></li>
+      <li><a href="mailto:hello@cleermoney.com.au">Contact</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 Cleer Money. ABN 99 498 576 599. Made in Australia 🇦🇺</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const burger = document.querySelector('.nav-hamburger');
+      menu.classList.toggle('open');
+      burger.classList.toggle('active');
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    }
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 50);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      nav.style.padding = window.scrollY > 40
+        ? (window.innerWidth > 900 ? '12px 48px' : '12px 24px')
+        : (window.innerWidth > 900 ? '20px 48px' : '16px 24px');
+    });
+  </script>
+</body>
+</html>
