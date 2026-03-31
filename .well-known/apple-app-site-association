@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["4NQQ2PR423.com.cleermoney.app"],
+        "paths": ["/join/*", "/join"]
+      }
+    ]
+  }
+}
