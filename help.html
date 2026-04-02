@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Help — Cleer Money</title>
+  <meta name="description" content="Get help with Cleer Money. Find answers to common questions about connecting your bank, swiping transactions, and managing your subscription." />
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="apple-touch-icon" href="icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #16a34a;
+      --green-light: #dcfce7;
+      --green-mid: #22c55e;
+      --cream: #fafaf7;
+      --charcoal: #111110;
+      --muted: #6b7280;
+      --border: rgba(0,0,0,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(250,250,247,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .logo-mark img { width: 100%; height: 100%; object-fit: cover; }
+
+    .logo-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--charcoal);
+      letter-spacing: -0.3px;
+    }
+
+    .logo-text span { font-weight: 300; }
+
+    .nav-back {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--charcoal); }
+
+    /* ── HERO ── */
+    .help-hero {
+      padding: 140px 24px 64px;
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .help-hero h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .help-hero h1 em {
+      font-style: italic;
+      color: var(--green);
+    }
+
+    .help-hero p {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── FAQ ── */
+    .faq-section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px 100px;
+    }
+
+    .faq-category {
+      margin-bottom: 48px;
+    }
+
+    .faq-category-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 0;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--charcoal);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: color 0.2s;
+    }
+
+    .faq-question:hover { color: var(--green); }
+
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--green-light);
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+      transition: transform 0.3s ease, background 0.2s;
+      line-height: 1;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--green);
+      color: white;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+    }
+
+    .faq-answer-inner {
+      padding: 0 0 24px;
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .faq-answer-inner a {
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .faq-answer-inner a:hover { text-decoration: underline; }
+
+    /* ── CONTACT ── */
+    .contact-card {
+      max-width: 720px;
+      margin: 0 auto 100px;
+      padding: 0 24px;
+    }
+
+    .contact-inner {
+      background: var(--charcoal);
+      border-radius: 24px;
+      padding: 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-inner::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(22,163,74,0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .contact-inner h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 32px;
+      color: white;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .contact-inner h2 em {
+      font-style: italic;
+      color: var(--green-mid);
+    }
+
+    .contact-inner p {
+      color: rgba(255,255,255,0.5);
+      font-size: 15px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s;
+      position: relative;
+    }
+
+    .contact-btn:hover {
+      background: var(--green-mid);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(34,197,94,0.4);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--charcoal); }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .help-hero { padding: 120px 24px 48px; }
+      .contact-inner { padding: 32px 24px; }
+      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="logo-mark"><img src="icon.png" alt="Cleer Money" /></div>
+      <span class="logo-text">Cleer<span>Money</span></span>
+    </a>
+    <a href="index.html" class="nav-back">← Back to home</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="help-hero">
+    <h1>How can we <em>help?</em></h1>
+    <p>Find answers to common questions about Cleer Money below. If you can't find what you're looking for, get in touch.</p>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+
+    <!-- Getting Started -->
+    <div class="faq-category">
+      <p class="faq-category-title">Getting started</p>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What is Cleer Money?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Cleer Money is a personal finance app for Australians. It connects to your bank account through Open Banking (CDR) and lets you categorise every transaction as a Want or a Need with a simple swipe. Over time, you build a clear picture of where your money actually goes — without budgets or spreadsheets.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Is Cleer Money available on Android?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Not yet — Cleer Money is currently iOS only. Android is something we'd love to explore in the future depending on demand.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Is the app available outside Australia?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Cleer Money is built specifically for Australians using the Consumer Data Right (CDR) framework. The bank connection feature only works with Australian banks. The free tier's CSV import can be used from anywhere, but the full experience is designed for Australian users.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bank Connection -->
+    <div class="faq-category">
+      <p class="faq-category-title">Bank connection &amp; security</p>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How does the bank connection work?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Cleer Money uses Australia's Consumer Data Right (CDR) — the same open banking framework regulated by the ACCC. When you connect your bank, you're authorising read-only access to your transaction data. We can never move, transfer, or modify your money in any way.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Which banks are supported?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            We support major Australian banks that participate in the CDR framework, including the Big Four (CommBank, ANZ, Westpac, NAB) and many others. The full list of available banks is shown when you connect within the app.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Is my data safe?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Yes. All data is encrypted in transit and at rest using industry-standard 256-bit encryption. Cleer Money only has read-only access to your transactions — we can never initiate payments or transfers. You can disconnect your bank and delete your data at any time from within the app. For full details, see our <a href="#">Privacy Policy</a>.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Can I disconnect my bank?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Absolutely. You can disconnect any bank connection at any time from the app's settings. Once disconnected, no new transaction data will be fetched. You can also choose to delete all previously imported transaction data.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Using the App -->
+    <div class="faq-category">
+      <p class="faq-category-title">Using the app</p>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What does swiping a transaction do?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Each transaction appears as a card. You categorise it as a "Want" (discretionary spending like dining out, entertainment, or impulse buys) or a "Need" (essential spending like rent, groceries, or bills). Over time, this builds a personalised breakdown of your spending habits.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What if I swipe the wrong way?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            No worries — just tap the undo button to reverse your last swipe. You can also go back and re-categorise any transaction from your history at any time.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What are Smart Rules?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Smart Rules let you set an automatic categorisation for a specific merchant. For example, you can tell Cleer Money that Woolworths is always a "Need" — and future transactions from that merchant will be auto-categorised, saving you time.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What are Spending Targets?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Spending Targets let you set a monthly dollar limit for your Wants. Cleer Money tracks your daily pace and projects whether you'll stay under your target by the end of the month, so you can adjust your spending before it's too late. This is a Pro feature.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subscription -->
+    <div class="faq-category">
+      <p class="faq-category-title">Subscription &amp; billing</p>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What's included in the free plan?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Cleer Lite (free) includes CSV import, swipe-to-categorise, 30 days of history, and streak tracking. It's a great way to try the core experience before upgrading.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How much does Cleer Pro cost?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Cleer Pro is $6.99/month or $69.99/year (saving ~17% annually). It includes everything in the free plan plus bank connections via CDR, unlimited history, spending targets, full insights, Smart Rules, and support for up to 2 bank connections. A 3rd bank can be added for $2.99/month.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How do I cancel my subscription?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Subscriptions are managed through the Apple App Store. To cancel, open your iPhone's Settings → tap your name → Subscriptions → Cleer Money → Cancel. There are no lock-in contracts — you can cancel at any time and your Pro features will remain active until the end of your current billing period.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Can I get a refund?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Since subscriptions are processed through Apple, refund requests need to go through Apple's support. You can request a refund at <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Account & Data -->
+    <div class="faq-category">
+      <p class="faq-category-title">Account &amp; data</p>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How do I delete my account?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            You can delete your account from within the app's settings. This will permanently remove all your data, including transaction history, categorisations, and bank connections. Make sure to cancel any active subscriptions through the App Store first.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Can I export my data?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Data export functionality is on our roadmap. For now, the Insights screen gives you a comprehensive overview of your spending patterns over time.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CONTACT CARD -->
+  <div class="contact-card">
+    <div class="contact-inner">
+      <h2>Still need <em>help?</em></h2>
+      <p>We're a small team and we read every message. Drop us a line and we'll get back to you as soon as we can.</p>
+      <a href="mailto:hello@cleermoney.com.au" class="contact-btn">
+        Email us →
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="index.html" class="footer-logo">
+      <div class="logo-mark"><img src="icon.png" alt="Cleer Money" /></div>
+      <span class="logo-text">Cleer<span>Money</span></span>
+    </a>
+
+    <ul class="footer-links">
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms of Use</a></li>
+      <li><a href="help.html">Help</a></li>
+      <li><a href="mailto:hello@cleermoney.com.au">Contact</a></li>
+    </ul>
+
+    <p class="footer-copy">© 2026 Cleer Money. ABN registered. Made in Australia 🇦🇺</p>
+  </footer>
+
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const wasOpen = item.classList.contains('open');
+
+        // Close all items in the same category
+        item.closest('.faq-category').querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+
+        // Toggle clicked item
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+
+    // Nav shrink on scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 40) {
+        nav.style.padding = window.innerWidth > 900 ? '12px 48px' : '12px 24px';
+      } else {
+        nav.style.padding = window.innerWidth > 900 ? '20px 48px' : '16px 24px';
+      }
+    });
+  </script>
+
+</body>
+</html>
