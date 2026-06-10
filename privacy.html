@@ -1,375 +1,272 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy — Cleer Money</title>
-  <meta name="description" content="Cleer Money's Privacy Policy. How we collect, use and protect your personal and financial data." />
+  <title>Privacy Policy | Cleer Money</title>
+  <meta name="description" content="Cleer Money's Privacy Policy. How we collect, use, store and protect your personal and financial data under the Privacy Act 1988 (Cth)." />
+  <link rel="canonical" href="https://cleermoney.com.au/privacy" />
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="apple-touch-icon" href="icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --green: #16a34a;
-      --green-light: #dcfce7;
-      --green-dark: #14532d;
-      --green-mid: #22c55e;
-      --cream: #fafaf7;
-      --charcoal: #111110;
-      --muted: #6b7280;
-      --border: rgba(0,0,0,0.08);
-      --card: #ffffff;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--charcoal);
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 48px;
-      background: rgba(250,250,247,0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .logo-mark { width: 36px; height: 36px; border-radius: 10px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .logo-mark img { width: 100%; height: 100%; object-fit: cover; }
-    .logo-text { font-size: 18px; font-weight: 600; color: var(--charcoal); letter-spacing: -0.3px; }
-    .logo-text span { font-weight: 300; }
-    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
-    .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--charcoal); }
-    .nav-cta { background: var(--charcoal); color: white !important; padding: 10px 22px; border-radius: 100px; font-weight: 600 !important; font-size: 14px !important; transition: background 0.2s, transform 0.2s !important; }
-    .nav-cta:hover { background: var(--green) !important; transform: translateY(-1px); }
-    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; width: 36px; height: 36px; position: relative; flex-shrink: 0; }
-    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--charcoal); border-radius: 2px; position: absolute; left: 7px; transition: all 0.3s ease; }
-    .nav-hamburger span:nth-child(1) { top: 10px; }
-    .nav-hamburger span:nth-child(2) { top: 17px; }
-    .nav-hamburger span:nth-child(3) { top: 24px; }
-    .nav-hamburger.active span:nth-child(1) { top: 17px; transform: rotate(45deg); }
-    .nav-hamburger.active span:nth-child(2) { opacity: 0; }
-    .nav-hamburger.active span:nth-child(3) { top: 17px; transform: rotate(-45deg); }
-    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: rgba(250,250,247,0.98); backdrop-filter: blur(20px); flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a { text-decoration: none; color: var(--charcoal); font-size: 24px; font-weight: 600; letter-spacing: -0.5px; transition: color 0.2s; }
-    .mobile-menu a:hover { color: var(--green); }
-
-    /* PAGE HERO */
-    .page-hero { padding: 140px 48px 64px; max-width: 860px; margin: 0 auto; }
-    .section-label { font-size: 12px; font-weight: 700; color: var(--green); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
-    .page-hero h1 { font-family: 'Instrument Serif', serif; font-size: clamp(40px, 6vw, 72px); line-height: 1.05; letter-spacing: -2px; color: var(--charcoal); margin-bottom: 16px; }
-    .page-hero h1 em { font-style: italic; color: var(--green); }
-    .page-meta { font-size: 14px; color: var(--muted); }
-
-    /* CONTENT */
-    .content { max-width: 860px; margin: 0 auto; padding: 0 48px 100px; display: flex; flex-direction: column; gap: 20px; }
-
-    /* CARDS */
-    .card { background: var(--card); border-radius: 24px; padding: 36px; border: 1px solid var(--border); transition: transform 0.2s, box-shadow 0.2s; }
-    .card:hover { transform: translateY(-2px); box-shadow: 0 20px 48px rgba(0,0,0,0.06); }
-    .card-label { display: inline-flex; align-items: center; background: var(--green-light); color: var(--green); border-radius: 100px; padding: 4px 12px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
-    .card h2 { font-family: 'Instrument Serif', serif; font-size: clamp(22px, 3vw, 28px); letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 16px; color: var(--charcoal); }
-    .card h2 em { font-style: italic; color: var(--green); }
-    .card h3 { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin: 24px 0 10px; }
-    .card p { font-size: 15px; color: #374151; line-height: 1.75; margin-bottom: 12px; }
-    .card p:last-child { margin-bottom: 0; }
-    .card ul { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
-    .card li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: #374151; line-height: 1.65; }
-    .li-dot { width: 20px; height: 20px; border-radius: 50%; background: var(--green-light); flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; }
-    .li-dot svg { width: 12px; height: 12px; }
-    .card a { color: var(--green); text-decoration: none; font-weight: 500; border-bottom: 1px solid rgba(22,163,74,0.3); transition: border-color 0.2s; }
-    .card a:hover { border-color: var(--green); }
-    strong { font-weight: 600; }
-
-    /* CALLOUT */
-    .callout { background: var(--green-light); border-radius: 14px; padding: 16px 20px; margin: 16px 0; display: flex; gap: 12px; align-items: flex-start; }
-    .callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-    .callout p { margin: 0; font-size: 14px; color: var(--green-dark); font-weight: 500; line-height: 1.6; }
-
-    /* TABLE */
-    .table-wrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
-    table { width: 100%; border-collapse: collapse; font-size: 14px; }
-    th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); padding: 12px 16px; background: var(--cream); border-bottom: 1px solid var(--border); }
-    td { padding: 14px 16px; border-bottom: 1px solid var(--border); vertical-align: top; color: #374151; line-height: 1.6; }
-    tr:last-child td { border-bottom: none; }
-    td:first-child { font-weight: 600; color: var(--charcoal); white-space: nowrap; }
-
-    /* CONTACT CARD */
-    .contact-card { background: var(--charcoal); border-radius: 24px; padding: 36px; color: white; position: relative; overflow: hidden; }
-    .contact-card::before { content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(22,163,74,0.3) 0%, transparent 70%); pointer-events: none; }
-    .contact-card .section-label { color: var(--green-mid); }
-    .contact-card h2 { font-family: 'Instrument Serif', serif; font-size: clamp(24px, 3vw, 32px); letter-spacing: -0.5px; margin-bottom: 20px; color: white; position: relative; }
-    .contact-card h2 em { font-style: italic; color: var(--green-mid); }
-    .contact-links { display: flex; flex-direction: column; gap: 10px; position: relative; }
-    .contact-link { display: inline-flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.7); text-decoration: none; font-size: 15px; transition: color 0.2s; border-bottom: none !important; }
-    .contact-link:hover { color: white; }
-    .contact-link svg { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.5; }
-    .contact-detail { font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 20px; line-height: 1.7; position: relative; }
-
-    /* FOOTER */
-    footer { border-top: 1px solid var(--border); padding: 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
-    .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .footer-links { display: flex; gap: 32px; list-style: none; flex-wrap: wrap; }
-    .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--charcoal); }
-    .footer-copy { font-size: 12px; color: var(--muted); }
-
-    /* REVEAL */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      nav { padding: 16px 24px; }
-      .nav-links { display: none; }
-      .nav-hamburger { display: block; }
-      .page-hero { padding: 120px 24px 48px; }
-      .content { padding: 0 24px 80px; }
-      .card { padding: 24px 20px; }
-      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
 
-  <nav>
-    <a href="https://cleermoney.com.au" class="nav-logo">
-      <div class="logo-mark"><img src="icon.png" alt="Cleer Money" /></div>
-      <span class="logo-text">Cleer<span>Money</span></span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="https://cleermoney.com.au#how">How it works</a></li>
-      <li><a href="https://cleermoney.com.au#features">Features</a></li>
-      <li><a href="https://cleermoney.com.au#pricing">Pricing</a></li>
-      <li><a href="https://cleermoney.com.au/terms">Terms &amp; Conditions</a></li>
-      <li><a href="https://cleermoney.com.au" class="nav-cta">Coming Soon</a></li>
-    </ul>
-    <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+  <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="brand">
+        <span class="brand__mark"><img src="icon.png" alt="" width="34" height="34" /></span>
+        <span class="brand__name">Cleer<span>Money</span></span>
+      </a>
+      <nav aria-label="Main">
+        <ul class="nav__links">
+          <li><a href="index.html#how">How it works</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="help.html">Support</a></li>
+          <li><a href="index.html#pricing" class="nav__cta">Get the app</a></li>
+        </ul>
+      </nav>
+      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="https://cleermoney.com.au#how" onclick="toggleMenu()">How it works</a>
-    <a href="https://cleermoney.com.au#features" onclick="toggleMenu()">Features</a>
-    <a href="https://cleermoney.com.au#pricing" onclick="toggleMenu()">Pricing</a>
-    <a href="https://cleermoney.com.au/terms" onclick="toggleMenu()">Terms &amp; Conditions</a>
+    <a href="index.html#how">How it works</a>
+    <a href="index.html#features">Features</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="cdr.html">CDR Policy</a>
   </div>
 
-  <div class="page-hero">
-    <p class="section-label">Legal</p>
-    <h1>Privacy <em>Policy</em></h1>
-    <p class="page-meta">Effective 1 April 2025 &nbsp;·&nbsp; Last updated 1 April 2025</p>
-  </div>
+  <main id="main">
 
-  <div class="content">
-
-    <div class="card reveal">
-      <div class="card-label">Overview</div>
-      <h2>How we handle your <em>information</em></h2>
-      <p>This Privacy Policy explains how Cleer Money ("we", "us", "our") collects, uses, stores, and discloses your personal information when you use the Cleer Money mobile application.</p>
-      <p>We are committed to protecting your privacy and complying with the <em>Privacy Act 1988</em> (Cth), the Australian Privacy Principles (APPs), and the Consumer Data Right (CDR) framework under the <em>Competition and Consumer Act 2010</em> (Cth). By using the App, you agree to the collection and use of your information in accordance with this Policy.</p>
+    <div class="legal-hero">
+      <p class="kicker">Legal</p>
+      <h1>Privacy Policy</h1>
+      <p class="meta">Effective 1 April 2025 &nbsp;·&nbsp; Last updated June 2026</p>
     </div>
 
-    <div class="card reveal">
-      <div class="card-label">About us</div>
-      <h2>Who <em>we are</em></h2>
-      <p><strong>Isaac Talbot</strong><br />Sole Trader, trading as Cleer Money<br />ABN: 99 498 576 599<br />Queensland, Australia</p>
-      <div class="callout">
-        <span class="callout-icon">ℹ️</span>
-        <p>We are not a bank, financial institution, or licensed financial adviser.</p>
+    <div class="legal-body">
+
+      <div class="card reveal">
+        <span class="card__tag">Overview</span>
+        <h2>How we handle your information</h2>
+        <p>This Privacy Policy explains how Cleer Money ("we", "us", "our") collects, uses, stores, and discloses your personal information when you use the Cleer Money mobile application (the "App").</p>
+        <p>We are committed to protecting your privacy and complying with the <em>Privacy Act 1988</em> (Cth), the Australian Privacy Principles (APPs), and the Consumer Data Right (CDR) framework under the <em>Competition and Consumer Act 2010</em> (Cth). By using the App, you agree to the collection and use of your information in accordance with this Policy.</p>
+        <div class="callout">
+          <span aria-hidden="true">📄</span>
+          <p>We maintain a separate <a href="cdr.html">CDR Policy</a> describing in detail how we handle banking data received under the Consumer Data Right, including consent, deletion and complaint pathways.</p>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <span class="card__tag">About us</span>
+        <h2>Who we are</h2>
+        <p><strong>Isaac Talbot</strong><br />Sole Trader, trading as Cleer Money<br />ABN: 99 498 576 599<br />Queensland, Australia</p>
+        <div class="callout">
+          <span aria-hidden="true">ℹ️</span>
+          <p>We are not a bank, financial institution, or licensed financial adviser.</p>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <span class="card__tag">Data collection</span>
+        <h2>Information we collect</h2>
+
+        <h3>Information you provide directly</h3>
+        <ul>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span><strong>Account information:</strong> Your name and email address when you create an account.</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span><strong>Subscription information:</strong> Billing and subscription status (processed by Apple; we do not store payment card details).</span></li>
+        </ul>
+
+        <h3>Banking and financial data (via Open Banking / CDR)</h3>
+        <p>With your explicit consent, we connect to your bank accounts via Australia's Consumer Data Right framework through our CDR-accredited partner, <strong>Fiskil Pty Ltd</strong>. Through this connection we may access:</p>
+        <ul>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span>Your bank account names, identifiers and balances</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span>Transaction history (up to 6 months of historical data)</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span>Transaction descriptions, amounts, dates, and merchant information</span></li>
+        </ul>
+        <p>We access only the data necessary to provide the App's core functionality. We do not access or store your internet banking login credentials. For full details, see our <a href="cdr.html">CDR Policy</a>.</p>
+
+        <h3>App usage &amp; technical data</h3>
+        <ul>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span>Transaction categorisation choices ("Want" / "Need" swipes) and preferences</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span><strong>App usage analytics</strong> (screens visited and feature events) <strong>linked to your account, used only to improve the App</strong></span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span><strong>Crash and error reports</strong> via Sentry, including device model, OS version and error context (for diagnosing and fixing faults)</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span><strong>Push notification token</strong>, if you enable notifications (used by Expo to deliver notifications to your device)</span></li>
+        </ul>
+      </div>
+
+      <div class="card reveal">
+        <span class="card__tag">Data use</span>
+        <h2>How we use your information</h2>
+        <ul>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span>Provide, operate, and maintain the App and its features</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span>Connect to your bank accounts and retrieve transaction data with your consent</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span>Enable you to categorise and analyse your personal spending</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span>Send you relevant notifications about your finances (with your permission)</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span>Process and manage your subscription via Apple's in-app purchase system</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span>Diagnose crashes, respond to support requests, improve the App, and comply with legal obligations</span></li>
+        </ul>
+        <div class="callout">
+          <span aria-hidden="true">🔒</span>
+          <p>We do <strong>not</strong> sell your data, and we do <strong>not</strong> use your financial data for advertising or profiling. App usage analytics are linked to your account, used only to improve the App, and are never shared with advertisers.</p>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <span class="card__tag">Open Banking</span>
+        <h2>Consumer Data Right: your rights</h2>
+        <p>Cleer Money accesses your banking data under Australia's Consumer Data Right framework, as a representative of our CDR-accredited partner Fiskil Pty Ltd. In relation to CDR data:</p>
+        <ul>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span><strong>You control your consent.</strong> Withdraw at any time through the App, Fiskil's consent dashboard, or your bank's CDR dashboard, with no penalty.</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span><strong>Data minimisation.</strong> We only request the data necessary to operate the App.</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span><strong>Data deletion.</strong> CDR data is deleted within 7 days of consent withdrawal or account deletion, except where law requires otherwise.</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span><strong>No on-selling.</strong> Your CDR data is never sold, shared with advertisers, or used for marketing or profiling.</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span><strong>Accredited partner.</strong> Banking data is retrieved via Fiskil Pty Ltd. See <a href="https://fiskil.com" target="_blank" rel="noopener">fiskil.com</a> for their privacy policy.</span></li>
+        </ul>
+        <p>Our standalone <a href="cdr.html">CDR Policy</a> sets this out in full, including how to complain to the OAIC or AFCA.</p>
+      </div>
+
+      <div class="card reveal">
+        <span class="card__tag">Third parties</span>
+        <h2>Who we share data with</h2>
+        <p>We do not sell your personal information. We share your data only with the service providers needed to run the App, and only to the extent required:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Party</th><th>Purpose &amp; data involved</th></tr></thead>
+            <tbody>
+              <tr><td>Fiskil Pty Ltd</td><td>CDR-accredited data intermediary for bank connections (account and transaction data, with your consent)</td></tr>
+              <tr><td>Supabase Inc.</td><td>Cloud database and authentication infrastructure (account, transaction and categorisation data)</td></tr>
+              <tr><td>Apple Inc.</td><td>In-app subscription processing via the App Store</td></tr>
+              <tr><td>RevenueCat Inc.</td><td>Subscription status management</td></tr>
+              <tr><td>Sentry (Functional Software, Inc.)</td><td>Crash and error reporting: device model, OS version and error context, used to diagnose and fix faults</td></tr>
+              <tr><td>Expo (650 Industries, Inc.)</td><td>Push notification delivery: your push notification token, if you enable notifications</td></tr>
+              <tr><td>Legal authorities</td><td>Where required by law, court order, or regulatory obligation</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <span class="card__tag">Security</span>
+        <h2>Data storage &amp; security</h2>
+        <p>Your data is stored on Supabase infrastructure (hosted in Australia where available, otherwise in AWS data centres). Our security measures include:</p>
+        <ul>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span>Encryption of data in transit (TLS/HTTPS)</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span>Encryption of sensitive credentials at rest (Supabase Vault)</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span>Row-level security controls on all database tables</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span>Access controls limited to authorised systems</span></li>
+        </ul>
+        <p>No method of electronic storage or transmission is 100% secure. While we take reasonable steps to protect your data, we cannot guarantee absolute security.</p>
+      </div>
+
+      <div class="card reveal">
+        <span class="card__tag">Retention</span>
+        <h2>How long we keep your data</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Data type</th><th>Retention period</th></tr></thead>
+            <tbody>
+              <tr><td>Account information</td><td>Until account deletion, then deleted within 30 days</td></tr>
+              <tr><td>Transaction data</td><td>Until account deletion, then deleted within 7 days</td></tr>
+              <tr><td>CDR data</td><td>Until consent withdrawal or account deletion, then deleted within 7 days</td></tr>
+              <tr><td>Analytics &amp; crash data</td><td>Retained only as long as needed to improve the App and diagnose faults</td></tr>
+              <tr><td>Subscription records</td><td>As required by Apple / RevenueCat and applicable tax law</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <span class="card__tag">Your rights</span>
+        <h2>Access, correction &amp; deletion</h2>
+        <p>Under the Australian Privacy Principles, you have the right to:</p>
+        <ul>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span><strong>Access</strong> the personal information we hold about you</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span><strong>Correct</strong> inaccurate or out-of-date personal information</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span><strong>Delete</strong> your account and associated data at any time (in-app: Profile → Delete Account)</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span><strong>Withdraw CDR consent</strong> at any time without affecting your ability to continue using the App</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span><span><strong>Complain</strong> if you believe we have mishandled your information</span></li>
+        </ul>
+        <p>Contact us at <a href="mailto:support@cleermoney.com.au">support@cleermoney.com.au</a> to exercise any of these rights. We will respond within 30 days. If unsatisfied, you may contact the <strong>Office of the Australian Information Commissioner</strong> at <a href="https://www.oaic.gov.au" target="_blank" rel="noopener">oaic.gov.au</a> or 1300 363 992.</p>
+      </div>
+
+      <div class="card reveal">
+        <span class="card__tag">Other</span>
+        <h2>Children's privacy &amp; changes</h2>
+        <h3>Children's privacy</h3>
+        <p>The App is not directed at individuals under 18. We do not knowingly collect personal information from minors. If you believe a minor has provided us with personal information, contact us and we will delete it.</p>
+        <h3>Changes to this policy</h3>
+        <p>We may update this Privacy Policy from time to time. We will update the "Last updated" date above and notify you of material changes via the App or email. Continued use of the App after changes constitutes acceptance of the updated Policy.</p>
+      </div>
+
+      <div class="contact-card reveal">
+        <p class="kicker">Get in touch</p>
+        <h2>Privacy questions?</h2>
+        <p style="margin-bottom:6px;"><a href="mailto:support@cleermoney.com.au">✉&nbsp; support@cleermoney.com.au</a></p>
+        <p><a href="https://cleermoney.com.au">🌐&nbsp; cleermoney.com.au</a></p>
+        <p class="fine">Isaac Talbot · Sole Trader, trading as Cleer Money · ABN 99 498 576 599 · Queensland, Australia</p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div>
+          <a href="index.html" class="brand">
+            <span class="brand__mark"><img src="icon.png" alt="" width="34" height="34" /></span>
+            <span class="brand__name">Cleer<span>Money</span></span>
+          </a>
+          <p class="footer__blurb">Personal finance made simple, not stressful. Built in Queensland for Australians, on the Consumer Data Right.</p>
+        </div>
+        <div class="footer__cols">
+          <div class="footer__col">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="index.html#how">How it works</a></li>
+              <li><a href="index.html#features">Features</a></li>
+              <li><a href="index.html#pricing">Pricing</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms of Service</a></li>
+              <li><a href="cdr.html">CDR Policy</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="help.html">Help &amp; FAQ</a></li>
+              <li><a href="mailto:support@cleermoney.com.au">support@cleermoney.com.au</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span data-year>2026</span> Cleer Money · Isaac Talbot, sole trader trading as Cleer Money · ABN 99 498 576 599</span>
+        <span>Made in Australia 🇦🇺</span>
       </div>
     </div>
-
-    <div class="card reveal">
-      <div class="card-label">Data collection</div>
-      <h2>Information <em>we collect</em></h2>
-      <h3>Information you provide directly</h3>
-      <ul>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><strong>Account information:</strong> Your name and email address when you create an account.</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><strong>Subscription information:</strong> Billing and subscription status (processed by Apple — we do not store payment card details).</span></li>
-      </ul>
-      <h3>Banking and financial data (via Open Banking / CDR)</h3>
-      <p>With your explicit consent, we connect to your bank accounts via Australia's Consumer Data Right framework through our accredited data recipient partner, <strong>Fiskil</strong>. Through this connection we may access:</p>
-      <ul>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Your bank account names and identifiers</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Transaction history (up to 6 months of historical data)</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Transaction descriptions, amounts, dates, and merchant information</span></li>
-      </ul>
-      <p>We access only the data necessary to provide the App's core functionality. We do not access or store your internet banking login credentials.</p>
-      <h3>App usage &amp; technical data</h3>
-      <ul>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Transaction categorisation choices ("Want" / "Need" swipes) and preferences</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Device type and operating system version (for troubleshooting)</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Anonymised analytics data to help us understand and improve the App</span></li>
-      </ul>
-    </div>
-
-    <div class="card reveal">
-      <div class="card-label">Data use</div>
-      <h2>How we use your <em>information</em></h2>
-      <ul>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Provide, operate, and maintain the App and its features</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Connect to your bank accounts and retrieve transaction data with your consent</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Enable you to categorise and analyse your personal spending</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Send you relevant notifications about your finances (with your permission)</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Process and manage your subscription via Apple's in-app purchase system</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Respond to support requests, improve the App, and comply with legal obligations</span></li>
-      </ul>
-      <div class="callout">
-        <span class="callout-icon">🔒</span>
-        <p>We do <strong>not</strong> use your financial data for advertising, profiling, or on-selling purposes.</p>
-      </div>
-    </div>
-
-    <div class="card reveal">
-      <div class="card-label">Open Banking</div>
-      <h2>Consumer Data Right — <em>your rights</em></h2>
-      <p>Cleer Money accesses your banking data under Australia's Consumer Data Right framework. In relation to CDR data:</p>
-      <ul>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><strong>You control your consent.</strong> Withdraw at any time through the App or your bank's CDR dashboard — no penalty.</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><strong>Data minimisation.</strong> We only request the data necessary to operate the App.</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><strong>Data retention.</strong> CDR data is deleted within 7 days of account deletion, except where law requires otherwise.</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><strong>No on-selling.</strong> Your CDR data is never sold, shared with advertisers, or used for secondary purposes.</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><strong>Accredited data recipient.</strong> Banking data is retrieved via Fiskil Pty Ltd. See <a href="https://fiskil.com.au" target="_blank" rel="noopener">fiskil.com.au</a> for their privacy policy.</span></li>
-      </ul>
-    </div>
-
-    <div class="card reveal">
-      <div class="card-label">Third parties</div>
-      <h2>Who we <em>share data with</em></h2>
-      <p>We do not sell your personal information. We share your data only with:</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Party</th><th>Purpose</th></tr></thead>
-          <tbody>
-            <tr><td>Fiskil Pty Ltd</td><td>CDR-accredited data intermediary for bank connection</td></tr>
-            <tr><td>Supabase Inc.</td><td>Cloud database and authentication infrastructure</td></tr>
-            <tr><td>Apple Inc.</td><td>In-app subscription processing via App Store</td></tr>
-            <tr><td>RevenueCat Inc.</td><td>Subscription status management</td></tr>
-            <tr><td>Legal authorities</td><td>Where required by law, court order, or regulatory obligation</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="card reveal">
-      <div class="card-label">Security</div>
-      <h2>Data storage <em>&amp; security</em></h2>
-      <p>Your data is stored on Supabase infrastructure (hosted in Australia where available, otherwise in AWS data centres). Our security measures include:</p>
-      <ul>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Encryption of data in transit (TLS/HTTPS)</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Encryption of sensitive credentials at rest (Supabase Vault)</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Row-level security controls on all database tables</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Access controls limited to authorised systems</span></li>
-      </ul>
-      <p>No method of electronic storage or transmission is 100% secure. While we take reasonable steps to protect your data, we cannot guarantee absolute security.</p>
-    </div>
-
-    <div class="card reveal">
-      <div class="card-label">Retention</div>
-      <h2>How long we <em>keep your data</em></h2>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Data type</th><th>Retention period</th></tr></thead>
-          <tbody>
-            <tr><td>Account information</td><td>Until account deletion, then deleted within 30 days</td></tr>
-            <tr><td>Transaction data</td><td>Until account deletion, then deleted within 7 days</td></tr>
-            <tr><td>CDR data</td><td>Until consent withdrawal or account deletion, then deleted within 7 days</td></tr>
-            <tr><td>Subscription records</td><td>As required by Apple / RevenueCat and applicable tax law</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="card reveal">
-      <div class="card-label">Your rights</div>
-      <h2>Access, correction <em>&amp; deletion</em></h2>
-      <p>Under the Australian Privacy Principles, you have the right to:</p>
-      <ul>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><strong>Access</strong> the personal information we hold about you</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><strong>Correct</strong> inaccurate or out-of-date personal information</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><strong>Delete</strong> your account and associated data at any time</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><strong>Withdraw CDR consent</strong> at any time without affecting your ability to continue using the App</span></li>
-        <li><span class="li-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><strong>Complain</strong> if you believe we have mishandled your information</span></li>
-      </ul>
-      <p>Contact us at <a href="mailto:support@cleermoney.com.au">support@cleermoney.com.au</a> to exercise any of these rights. We will respond within 30 days. If unsatisfied, you may contact the <strong>Office of the Australian Information Commissioner</strong> at <a href="https://www.oaic.gov.au" target="_blank" rel="noopener">oaic.gov.au</a> or 1300 363 992.</p>
-    </div>
-
-    <div class="card reveal">
-      <div class="card-label">Other</div>
-      <h2>Children's privacy <em>&amp; changes</em></h2>
-      <h3>Children's privacy</h3>
-      <p>The App is not directed at individuals under 18. We do not knowingly collect personal information from minors. If you believe a minor has provided us with personal information, contact us and we will delete it.</p>
-      <h3>Changes to this policy</h3>
-      <p>We may update this Privacy Policy from time to time. We will update the "Last Updated" date above and notify you of material changes via the App or email. Continued use of the App after changes constitutes acceptance of the updated Policy.</p>
-    </div>
-
-    <div class="contact-card reveal">
-      <p class="section-label">Get in touch</p>
-      <h2>Privacy <em>questions?</em></h2>
-      <div class="contact-links">
-        <a href="mailto:support@cleermoney.com.au" class="contact-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-          support@cleermoney.com.au
-        </a>
-        <a href="https://cleermoney.com.au" class="contact-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          cleermoney.com.au
-        </a>
-      </div>
-      <p class="contact-detail">Isaac Talbot · Sole Trader, trading as Cleer Money · ABN 99 498 576 599 · Queensland, Australia</p>
-    </div>
-
-  </div>
-
-  <footer>
-    <a href="https://cleermoney.com.au" class="footer-logo">
-      <div class="logo-mark"><img src="icon.png" alt="Cleer Money" /></div>
-      <span class="logo-text">Cleer<span>Money</span></span>
-    </a>
-    <ul class="footer-links">
-      <li><a href="https://cleermoney.com.au/privacy">Privacy Policy</a></li>
-      <li><a href="https://cleermoney.com.au/terms">Terms of Use</a></li>
-      <li><a href="mailto:hello@cleermoney.com.au">Contact</a></li>
-    </ul>
-    <p class="footer-copy">© 2025 Cleer Money. ABN 99 498 576 599. Made in Australia 🇦🇺</p>
   </footer>
 
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('mobileMenu');
-      const burger = document.querySelector('.nav-hamburger');
-      menu.classList.toggle('open');
-      burger.classList.toggle('active');
-      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-    }
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 50);
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-    reveals.forEach(el => observer.observe(el));
-    window.addEventListener('scroll', () => {
-      const nav = document.querySelector('nav');
-      nav.style.padding = window.scrollY > 40
-        ? (window.innerWidth > 900 ? '12px 48px' : '12px 24px')
-        : (window.innerWidth > 900 ? '20px 48px' : '16px 24px');
-    });
-  </script>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
