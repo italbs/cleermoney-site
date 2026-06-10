@@ -1,1492 +1,425 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cleer Money — Know Your Wants from Your Needs</title>
-  <meta name="description" content="Cleer Money helps Australians understand where their money actually goes. Swipe to categorise, connect your bank, and finally get clarity on your spending." />
+  <title>Cleer Money: Know Your Wants from Your Needs</title>
+  <meta name="description" content="Cleer Money connects to your Australian bank via open banking (CDR), then turns every transaction into a simple swipe: Want or Need. No budgets, no spreadsheets. Just clarity." />
+  <link rel="canonical" href="https://cleermoney.com.au/" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Cleer Money — Know Your Wants from Your Needs" />
+  <meta property="og:title" content="Cleer Money: Know Your Wants from Your Needs" />
   <meta property="og:description" content="Connect your Australian bank account, swipe transactions as Want or Need, and finally get clarity on your spending." />
-  <meta property="og:image" content="https://cleermoney.com.au/og-image.png" />
+  <meta property="og:image" content="https://cleermoney.com.au/icon.png" />
   <meta property="og:url" content="https://cleermoney.com.au" />
   <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Cleer Money — Know Your Wants from Your Needs" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Cleer Money: Know Your Wants from Your Needs" />
   <meta name="twitter:description" content="Connect your Australian bank account, swipe transactions as Want or Need, and finally get clarity on your spending." />
-  <meta name="twitter:image" content="https://cleermoney.com.au/og-image.png" />
+  <meta name="twitter:image" content="https://cleermoney.com.au/icon.png" />
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="apple-touch-icon" href="icon.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --green: #16a34a;
-      --green-light: #dcfce7;
-      --green-dark: #14532d;
-      --green-mid: #22c55e;
-      --cream: #fafaf7;
-      --charcoal: #111110;
-      --muted: #6b7280;
-      --border: rgba(0,0,0,0.08);
-      --card: #ffffff;
-      --red: #ef4444;
-      --amber: #f59e0b;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--charcoal);
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 48px;
-      background: rgba(250,250,247,0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      animation: fadeDown 0.6s ease both;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .logo-mark {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .logo-mark img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .logo-text {
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--charcoal);
-      letter-spacing: -0.3px;
-    }
-
-    .logo-text span { font-weight: 300; }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--charcoal); }
-
-    .nav-cta {
-      background: var(--charcoal);
-      color: white !important;
-      padding: 10px 22px;
-      border-radius: 100px;
-      font-weight: 600 !important;
-      font-size: 14px !important;
-      transition: background 0.2s, transform 0.2s !important;
-    }
-
-    .nav-cta:hover {
-      background: var(--green) !important;
-      color: white !important;
-      transform: translateY(-1px);
-    }
-
-    /* ── MOBILE NAV ── */
-    .nav-hamburger {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      width: 36px;
-      height: 36px;
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .nav-hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--charcoal);
-      border-radius: 2px;
-      position: absolute;
-      left: 7px;
-      transition: all 0.3s ease;
-    }
-
-    .nav-hamburger span:nth-child(1) { top: 10px; }
-    .nav-hamburger span:nth-child(2) { top: 17px; }
-    .nav-hamburger span:nth-child(3) { top: 24px; }
-
-    .nav-hamburger.active span:nth-child(1) { top: 17px; transform: rotate(45deg); }
-    .nav-hamburger.active span:nth-child(2) { opacity: 0; }
-    .nav-hamburger.active span:nth-child(3) { top: 17px; transform: rotate(-45deg); }
-
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: 99;
-      background: rgba(250,250,247,0.98);
-      backdrop-filter: blur(20px);
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 32px;
-    }
-
-    .mobile-menu.open { display: flex; }
-
-    .mobile-menu a {
-      text-decoration: none;
-      color: var(--charcoal);
-      font-size: 24px;
-      font-weight: 600;
-      letter-spacing: -0.5px;
-      transition: color 0.2s;
-    }
-
-    .mobile-menu a:hover { color: var(--green); }
-
-    .mobile-menu .btn-primary {
-      margin-top: 16px;
-      font-size: 16px;
-    }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 120px 24px 80px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(22,163,74,0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(22,163,74,0.06) 0%, transparent 50%);
-      pointer-events: none;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--green-light);
-      color: var(--green);
-      border: 1px solid rgba(22,163,74,0.25);
-      border-radius: 100px;
-      padding: 6px 16px;
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 32px;
-      animation: fadeUp 0.7s 0.1s ease both;
-    }
-
-    .hero-badge::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--green);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    .hero h1 {
-      font-family: 'Instrument Serif', serif;
-      font-size: clamp(48px, 7vw, 88px);
-      line-height: 1.05;
-      letter-spacing: -2px;
-      color: var(--charcoal);
-      max-width: 900px;
-      margin-bottom: 24px;
-      animation: fadeUp 0.7s 0.2s ease both;
-    }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--green);
-    }
-
-    .hero-sub {
-      font-size: clamp(16px, 2vw, 20px);
-      color: var(--muted);
-      max-width: 520px;
-      font-weight: 400;
-      line-height: 1.7;
-      margin-bottom: 48px;
-      animation: fadeUp 0.7s 0.3s ease both;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: center;
-      animation: fadeUp 0.7s 0.4s ease both;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--charcoal);
-      color: white;
-      padding: 16px 32px;
-      border-radius: 100px;
-      font-size: 15px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.25s;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-primary:hover {
-      background: var(--green);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(22,163,74,0.3);
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--charcoal);
-      padding: 16px 24px;
-      border-radius: 100px;
-      font-size: 15px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.2s;
-      border: 1px solid var(--border);
-      background: white;
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--green);
-      color: var(--green);
-      transform: translateY(-1px);
-    }
-
-    .store-badge {
-      width: 20px;
-      height: 20px;
-    }
-
-    /* ── PHONE MOCKUP ── */
-    .hero-phone {
-      position: relative;
-      margin-top: 72px;
-      animation: fadeUp 0.8s 0.5s ease both;
-    }
-
-    .phone-wrap {
-      position: relative;
-      display: inline-block;
-    }
-
-    .phone-shell {
-      width: 280px;
-      background: var(--charcoal);
-      border-radius: 44px;
-      padding: 12px;
-      box-shadow:
-        0 60px 120px rgba(0,0,0,0.25),
-        0 0 0 1px rgba(255,255,255,0.08) inset;
-    }
-
-    .phone-screen {
-      background: #f5f5f0;
-      border-radius: 34px;
-      overflow: hidden;
-      aspect-ratio: 9/19.5;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .phone-status {
-      display: flex;
-      justify-content: space-between;
-      padding: 14px 20px 8px;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--charcoal);
-    }
-
-    .phone-header {
-      padding: 0 20px 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .phone-logo {
-      width: 24px;
-      height: 24px;
-      background: var(--green);
-      border-radius: 7px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      color: white;
-      font-family: 'Instrument Serif', serif;
-      overflow: hidden;
-    }
-
-    .phone-title { font-size: 13px; font-weight: 700; }
-    .phone-title span { font-weight: 300; }
-
-    .phone-card {
-      margin: 0 16px;
-      background: white;
-      border-radius: 24px;
-      padding: 24px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-      flex: 1;
-      min-height: 0;
-    }
-
-    .phone-merchant-icon {
-      width: 64px;
-      height: 64px;
-      background: #f3f4f6;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      flex-shrink: 0;
-    }
-
-    .phone-merchant { font-size: 16px; font-weight: 700; color: var(--charcoal); flex-shrink: 0; }
-    .phone-date { font-size: 10px; font-weight: 600; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; flex-shrink: 0; }
-    .phone-amount { font-size: 40px; font-weight: 800; color: var(--charcoal); letter-spacing: -2px; flex-shrink: 0; }
-
-    .phone-hint {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--muted);
-      flex-shrink: 0;
-    }
-
-    .phone-actions {
-      display: flex;
-      gap: 12px;
-      width: 100%;
-      padding: 0 4px;
-      margin-top: auto;
-      flex-shrink: 0;
-    }
-
-    .phone-want {
-      flex: 1;
-      background: #fee2e2;
-      color: #ef4444;
-      border: none;
-      border-radius: 18px;
-      padding: 14px;
-      font-size: 13px;
-      font-weight: 700;
-      font-family: 'DM Sans', sans-serif;
-      cursor: pointer;
-    }
-
-    .phone-need {
-      flex: 1;
-      background: var(--green);
-      color: white;
-      border: none;
-      border-radius: 18px;
-      padding: 14px;
-      font-size: 13px;
-      font-weight: 700;
-      font-family: 'DM Sans', sans-serif;
-      cursor: pointer;
-    }
-
-    .phone-float {
-      position: absolute;
-      background: white;
-      border-radius: 16px;
-      padding: 10px 14px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-      font-size: 12px;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .float-streak {
-      top: 20%;
-      right: -110px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--charcoal);
-    }
-
-    .float-saved {
-      bottom: 28%;
-      left: -120px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--green);
-    }
-
-    .float-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-    }
-
-    /* ── LOGOS / TRUST ── */
-    .trust {
-      padding: 32px 48px;
-      text-align: center;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .trust-label {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--muted);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-
-    .trust-logos {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 48px;
-      flex-wrap: wrap;
-    }
-
-    .trust-logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      opacity: 0.45;
-      filter: grayscale(1);
-      transition: opacity 0.2s, filter 0.2s;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--charcoal);
-      text-decoration: none;
-    }
-
-    .trust-logo:hover { opacity: 0.7; filter: grayscale(0); }
-
-    .trust-logo svg { width: 20px; height: 20px; }
-
-    /* ── HOW IT WORKS ── */
-    .section {
-      padding: 100px 48px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--green);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .section-title {
-      font-family: 'Instrument Serif', serif;
-      font-size: clamp(36px, 4vw, 56px);
-      line-height: 1.1;
-      letter-spacing: -1.5px;
-      color: var(--charcoal);
-      margin-bottom: 16px;
-    }
-
-    .section-title em {
-      font-style: italic;
-      color: var(--green);
-    }
-
-    .section-sub {
-      font-size: 17px;
-      color: var(--muted);
-      max-width: 480px;
-      line-height: 1.7;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 64px;
-    }
-
-    .step {
-      background: white;
-      border-radius: 24px;
-      padding: 32px;
-      border: 1px solid var(--border);
-      position: relative;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .step:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 48px rgba(0,0,0,0.08);
-    }
-
-    .step-number {
-      width: 40px;
-      height: 40px;
-      background: var(--green-light);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      font-weight: 800;
-      color: var(--green);
-      margin-bottom: 20px;
-    }
-
-    .step h3 {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      letter-spacing: -0.3px;
-    }
-
-    .step p {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .step-icon {
-      font-size: 32px;
-      margin-bottom: 16px;
-    }
-
-    /* ── FEATURES ── */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 64px;
-    }
-
-    .feature-card {
-      background: white;
-      border-radius: 24px;
-      padding: 36px;
-      border: 1px solid var(--border);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 48px rgba(0,0,0,0.08);
-    }
-
-    .feature-card.wide {
-      grid-column: span 2;
-      display: flex;
-      align-items: center;
-      gap: 48px;
-    }
-
-    .feature-card.green {
-      background: var(--green);
-      color: white;
-    }
-
-    .feature-card.green .feature-sub { color: rgba(255,255,255,0.7); }
-
-    .feature-icon-wrap {
-      width: 52px;
-      height: 52px;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      margin-bottom: 20px;
-      background: var(--green-light);
-    }
-
-    .feature-card.green .feature-icon-wrap {
-      background: rgba(255,255,255,0.15);
-    }
-
-    .feature-title {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      letter-spacing: -0.3px;
-    }
-
-    .feature-sub {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .feature-visual {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .mini-chart {
-      display: flex;
-      align-items: flex-end;
-      gap: 8px;
-      height: 80px;
-    }
-
-    .chart-bar {
-      flex: 1;
-      border-radius: 6px 6px 0 0;
-      transition: height 0.3s;
-    }
-
-    /* ── SOCIAL PROOF ── */
-    .reviews {
-      background: white;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 80px 48px;
-    }
-
-    .reviews-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .review-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 48px;
-    }
-
-    .review-card {
-      background: var(--cream);
-      border-radius: 20px;
-      padding: 28px;
-      border: 1px solid var(--border);
-    }
-
-    .review-stars {
-      color: var(--amber);
-      font-size: 14px;
-      margin-bottom: 14px;
-      letter-spacing: 2px;
-    }
-
-    .review-text {
-      font-size: 15px;
-      line-height: 1.7;
-      color: var(--charcoal);
-      margin-bottom: 20px;
-      font-style: italic;
-    }
-
-    .reviewer {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .reviewer-avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 700;
-      color: white;
-    }
-
-    .reviewer-name { font-size: 13px; font-weight: 700; }
-    .reviewer-handle { font-size: 12px; color: var(--muted); }
-
-    /* ── PRICING ── */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 64px;
-      max-width: 760px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .price-card {
-      background: white;
-      border-radius: 28px;
-      padding: 40px;
-      border: 1px solid var(--border);
-      position: relative;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .price-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 24px 56px rgba(0,0,0,0.1);
-    }
-
-    .price-card.featured {
-      background: var(--charcoal);
-      border-color: transparent;
-      color: white;
-    }
-
-    .price-badge {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--green);
-      color: white;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 14px;
-      border-radius: 100px;
-      letter-spacing: 0.5px;
-      white-space: nowrap;
-    }
-
-    .plan-name {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .price-card.featured .plan-name { color: rgba(255,255,255,0.5); }
-
-    .price-amount {
-      font-family: 'Instrument Serif', serif;
-      font-size: 52px;
-      letter-spacing: -2px;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .price-period {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 28px;
-    }
-
-    .price-card.featured .price-period { color: rgba(255,255,255,0.5); }
-
-    .price-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 32px;
-    }
-
-    .price-features li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-    }
-
-    .price-features .check {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: var(--green-light);
-      color: var(--green);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      flex-shrink: 0;
-    }
-
-    .price-card.featured .price-features .check {
-      background: rgba(22,163,74,0.2);
-      color: var(--green-mid);
-    }
-
-    .price-card.featured .price-features .check.muted-check {
-      background: rgba(255,255,255,0.08);
-      color: rgba(255,255,255,0.3);
-    }
-
-    .price-card.featured .price-features li { color: rgba(255,255,255,0.85); }
-
-    .btn-plan {
-      display: block;
-      width: 100%;
-      text-align: center;
-      padding: 14px;
-      border-radius: 100px;
-      font-size: 15px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s;
-      cursor: pointer;
-      border: none;
-      font-family: 'DM Sans', sans-serif;
-    }
-
-    .btn-plan-outline {
-      background: transparent;
-      border: 1.5px solid var(--border);
-      color: var(--charcoal);
-    }
-
-    .btn-plan-outline:hover {
-      border-color: var(--charcoal);
-      background: var(--charcoal);
-      color: white;
-    }
-
-    .btn-plan-green {
-      background: var(--green);
-      color: white;
-    }
-
-    .btn-plan-green:hover {
-      background: #15803d;
-      transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(22,163,74,0.4);
-    }
-
-    /* ── CTA ── */
-    .cta-section {
-      padding: 80px 48px;
-      text-align: center;
-    }
-
-    .cta-inner {
-      background: var(--charcoal);
-      border-radius: 32px;
-      padding: 80px 48px;
-      max-width: 900px;
-      margin: 0 auto;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-inner::before {
-      content: '';
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(22,163,74,0.3) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .cta-inner::after {
-      content: '';
-      position: absolute;
-      bottom: -80px; left: -40px;
-      width: 260px; height: 260px;
-      background: radial-gradient(circle, rgba(22,163,74,0.15) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .cta-inner h2 {
-      font-family: 'Instrument Serif', serif;
-      font-size: clamp(36px, 5vw, 60px);
-      color: white;
-      letter-spacing: -1.5px;
-      line-height: 1.1;
-      margin-bottom: 20px;
-      position: relative;
-    }
-
-    .cta-inner h2 em {
-      font-style: italic;
-      color: var(--green-mid);
-    }
-
-    .cta-inner p {
-      color: rgba(255,255,255,0.6);
-      font-size: 17px;
-      margin-bottom: 40px;
-      position: relative;
-    }
-
-    .cta-actions {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      position: relative;
-    }
-
-    .btn-cta-primary {
-      background: var(--green);
-      color: white;
-      padding: 16px 36px;
-      border-radius: 100px;
-      font-size: 15px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.25s;
-    }
-
-    .btn-cta-primary:hover {
-      background: var(--green-mid);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(34,197,94,0.4);
-    }
-
-    .btn-cta-ghost {
-      color: rgba(255,255,255,0.6);
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      padding: 16px 24px;
-      transition: color 0.2s;
-    }
-
-    .btn-cta-ghost:hover { color: white; }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 24px;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      font-size: 13px;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--charcoal); }
-
-    .footer-copy {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(0.85); }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    .phone-wrap { animation: float 4s ease-in-out infinite; }
-
-    .float-streak { animation: fadeUp 0.7s 0.9s ease both; }
-    .float-saved { animation: fadeUp 0.7s 1.1s ease both; }
-
-    /* scroll reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav { padding: 16px 24px; }
-      .nav-links { display: none; }
-      .nav-hamburger { display: block; }
-      .section { padding: 64px 24px; }
-      .steps { grid-template-columns: 1fr; }
-      .features-grid { grid-template-columns: 1fr; }
-      .feature-card.wide { flex-direction: column; grid-column: span 1; }
-      .review-grid { grid-template-columns: 1fr; }
-      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
-      .trust { padding: 32px 24px; }
-      .trust-logos { gap: 24px; }
-      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
-      .cta-inner { padding: 48px 24px; border-radius: 24px; }
-      .cta-section { padding: 48px 24px; }
-      .reviews { padding: 64px 24px; }
-
-      /* Phone mockup mobile fixes */
-      .hero-phone { margin-top: 48px; }
-      .phone-shell { width: 240px; }
-      .phone-amount { font-size: 32px; }
-      .phone-merchant-icon { width: 48px; height: 48px; font-size: 22px; }
-      .phone-card { padding: 16px 14px; gap: 8px; }
-      .phone-actions { gap: 8px; }
-      .phone-want, .phone-need { padding: 12px; font-size: 12px; }
-
-      .phone-float { display: none; }
-    }
-
-    @media (max-width: 400px) {
-      .phone-shell { width: 220px; }
-      .phone-amount { font-size: 28px; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Cleer Money",
+    "operatingSystem": "iOS",
+    "applicationCategory": "FinanceApplication",
+    "description": "Australian personal finance app. Connect your bank via open banking (CDR), categorise spending, and swipe transactions as Want or Need.",
+    "offers": [
+      { "@type": "Offer", "price": "0", "priceCurrency": "AUD", "name": "Cleer Lite" },
+      { "@type": "Offer", "price": "6.99", "priceCurrency": "AUD", "name": "Cleer Pro (monthly)" },
+      { "@type": "Offer", "price": "69.99", "priceCurrency": "AUD", "name": "Cleer Pro (annual)" }
+    ],
+    "url": "https://cleermoney.com.au"
+  }
+  </script>
 </head>
 <body>
 
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-logo">
-      <div class="logo-mark"><img src="icon.png" alt="Cleer Money" /></div>
-      <span class="logo-text">Cleer<span>Money</span></span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#how">How it works</a></li>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#" class="nav-cta">Coming Soon</a></li>
-    </ul>
-    <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+  <header class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="brand">
+        <span class="brand__mark"><img src="icon.png" alt="" width="34" height="34" /></span>
+        <span class="brand__name">Cleer<span>Money</span></span>
+      </a>
+      <nav aria-label="Main">
+        <ul class="nav__links">
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="help.html">Support</a></li>
+          <!-- Replace href with the App Store URL once the listing is live -->
+          <li><a href="#pricing" class="nav__cta">Get the app</a></li>
+        </ul>
+      </nav>
+      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#how" onclick="toggleMenu()">How it works</a>
-    <a href="#features" onclick="toggleMenu()">Features</a>
-    <a href="#pricing" onclick="toggleMenu()">Pricing</a>
-    <a href="#" class="btn-primary" onclick="toggleMenu()">
-      <svg class="store-badge" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-      Coming Soon on iOS
-    </a>
+    <a href="#how">How it works</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="help.html">Support</a>
+    <a href="#pricing" class="btn btn--primary">Get the app</a>
   </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg"></div>
+  <main id="main">
 
-    <div class="hero-badge">Coming soon to iOS</div>
+    <!-- HERO -->
+    <section class="hero">
+      <p class="hero__badge">Built for Australians · Open Banking (CDR)</p>
 
-    <h1>Finally know your<br><em>wants</em> from your needs</h1>
+      <h1>Finally know your <span class="accent">wants</span><br />from your needs</h1>
 
-    <p class="hero-sub">
-      Cleer Money connects to your Australian bank account and turns every transaction into a simple swipe — Want or Need. No budgets. No spreadsheets. Just clarity.
-    </p>
+      <p class="hero__sub">
+        Cleer Money connects to your Australian bank account and turns every transaction
+        into a simple swipe: Want or Need. No budgets. No spreadsheets. Just clarity.
+      </p>
 
-    <div class="hero-actions">
-      <a href="#" class="btn-primary">
-        <svg class="store-badge" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        Coming Soon on iOS
-      </a>
-      <a href="#how" class="btn-secondary">See how it works →</a>
-    </div>
+      <div class="hero__actions">
+        <!-- Replace href with the App Store URL once the listing is live -->
+        <a href="#pricing" class="btn btn--primary">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Download on the App Store
+        </a>
+        <a href="#how" class="btn btn--ghost">See how it works →</a>
+      </div>
+      <p class="hero__finePrint">Free to start · Pro from $6.99/month with a 7-day free trial</p>
 
-    <div class="hero-phone">
-      <div class="phone-wrap">
-        <div class="phone-shell">
-          <div class="phone-screen">
-            <div class="phone-status">
-              <span>9:41</span>
-              <span>●●●</span>
-            </div>
-            <div class="phone-header">
-              <div class="phone-logo"><img src="icon.png" alt="C" style="width:100%;height:100%;object-fit:cover;border-radius:5px;" /></div>
-              <span class="phone-title">Cleer<span>Money</span></span>
-            </div>
-            <div style="padding: 0 16px; flex: 1; display: flex; flex-direction: column; min-height: 0;">
-              <div class="phone-card">
-                <div class="phone-merchant-icon">🛒</div>
-                <span class="phone-merchant">Woolworths</span>
-                <span class="phone-date">Today</span>
-                <span class="phone-amount">-$94.50</span>
-                <span class="phone-hint">Need or Want?</span>
-                <div class="phone-actions">
-                  <button class="phone-want">Want</button>
-                  <button class="phone-need">Need</button>
+      <!-- ANIMATED PHONE: connect → categorise → swipe → understand -->
+      <div class="hero__phone">
+        <div class="phone-wrap">
+          <div class="phone" aria-hidden="true">
+            <div class="phone__notch"></div>
+            <div class="phone__screen">
+              <div class="phone__status"><span>9:41</span><span>●●●</span></div>
+              <div class="phone__header">
+                <span class="phone__logo"><img src="icon.png" alt="" /></span>
+                <span class="phone__app-name">Cleer<span>Money</span></span>
+              </div>
+
+              <div class="phone__stage">
+
+                <!-- Scene 1 · Connect your bank -->
+                <div class="scene scene--connect">
+                  <p class="scene__title">Connect your bank</p>
+                  <p class="scene__sub">Secure, read-only access via CDR</p>
+                  <div class="bank-row bank-row--1"><span class="bank-row__dot" style="background:#ffd34d;"></span>CommBank<span class="bank-row__cta">Link</span></div>
+                  <div class="bank-row bank-row--2"><span class="bank-row__dot" style="background:#5ba8ff;"></span>ANZ<span class="bank-row__cta">Link</span></div>
+                  <div class="bank-row bank-row--3"><span class="bank-row__dot" style="background:#e25c5c;"></span>Westpac<span class="bank-row__cta">Link</span></div>
+                  <div class="connect-progress"><span></span></div>
+                  <div class="connect-done">✓&nbsp; Bank connected securely</div>
                 </div>
+
+                <!-- Scene 2 · Auto-categorised transactions -->
+                <div class="scene scene--txns">
+                  <p class="scene__title">This week</p>
+                  <p class="scene__sub">Synced &amp; categorised automatically</p>
+                  <div class="txn txn--1">
+                    <span class="txn__icon">🛒</span>
+                    <span class="txn__meta"><span class="txn__name">Woolworths</span><br /><span class="txn__cat">GROCERIES</span></span>
+                    <span class="txn__amount">−$94.50</span>
+                  </div>
+                  <div class="txn txn--2">
+                    <span class="txn__icon">🎬</span>
+                    <span class="txn__meta"><span class="txn__name">Netflix</span><br /><span class="txn__cat">STREAMING</span></span>
+                    <span class="txn__amount">−$15.99</span>
+                  </div>
+                  <div class="txn txn--3">
+                    <span class="txn__icon">☕</span>
+                    <span class="txn__meta"><span class="txn__name">Campos Coffee</span><br /><span class="txn__cat">CAFÉS</span></span>
+                    <span class="txn__amount">−$6.20</span>
+                  </div>
+                  <div class="txn txn--4">
+                    <span class="txn__icon">⛽</span>
+                    <span class="txn__meta"><span class="txn__name">BP Fuel</span><br /><span class="txn__cat">TRANSPORT</span></span>
+                    <span class="txn__amount">−$72.10</span>
+                  </div>
+                </div>
+
+                <!-- Scene 3 · Want / Need swipe -->
+                <div class="scene scene--swipe">
+                  <p class="scene__title">Need or Want?</p>
+                  <p class="scene__sub">Swipe right for Need, left for Want</p>
+                  <div class="swipe-stack">
+                    <div class="swipe-card swipe-card--back">
+                      <span class="stamp stamp--want">WANT</span>
+                      <span class="swipe-card__icon">🎬</span>
+                      <span class="swipe-card__merchant">Netflix</span>
+                      <span class="swipe-card__date">Yesterday</span>
+                      <span class="swipe-card__amount">−$15.99</span>
+                      <span class="swipe-card__hint">Need or Want?</span>
+                    </div>
+                    <div class="swipe-card swipe-card--front">
+                      <span class="stamp stamp--need">NEED</span>
+                      <span class="swipe-card__icon">🛒</span>
+                      <span class="swipe-card__merchant">Woolworths</span>
+                      <span class="swipe-card__date">Today</span>
+                      <span class="swipe-card__amount">−$94.50</span>
+                      <span class="swipe-card__hint">Need or Want?</span>
+                    </div>
+                  </div>
+                  <div class="swipe-chips">
+                    <span class="swipe-chip swipe-chip--want">← Want</span>
+                    <span class="swipe-chip swipe-chip--need">Need →</span>
+                  </div>
+                </div>
+
+                <!-- Scene 4 · Insights -->
+                <div class="scene scene--insights">
+                  <p class="scene__title">Insights</p>
+                  <p class="scene__sub">June at a glance</p>
+                  <div class="split-bar"><span class="split-bar__need"></span><span class="split-bar__want"></span></div>
+                  <div class="split-legend"><span class="needs">Needs 64%</span><span class="wants">Wants 36%</span></div>
+                  <div class="insight-card">
+                    <p class="insight-card__label">Weekly breakdown</p>
+                    <div class="bars"><span></span><span></span><span></span><span></span></div>
+                    <div class="bars-labels"><span>W1</span><span>W2</span><span>W3</span><span>W4</span></div>
+                  </div>
+                  <div class="insight-stat">↓&nbsp; Wants down 18% vs last month</div>
+                </div>
+
+              </div>
+
+              <div class="phone__tabbar">
+                <span class="phone__tab is-active">Swipe</span>
+                <span class="phone__tab">History</span>
+                <span class="phone__tab">Targets</span>
+                <span class="phone__tab">Insights</span>
+                <span class="phone__tab">Profile</span>
               </div>
             </div>
-            <div style="height: 16px;"></div>
           </div>
-        </div>
 
-        <div class="phone-float float-streak">
-          <div class="float-dot" style="background:#f59e0b;"></div>
-          🔥 4 week streak
-        </div>
-
-        <div class="phone-float float-saved">
-          <div class="float-dot" style="background:#16a34a;"></div>
-          $340 saved this month
+          <div class="float-chip float-chip--streak" aria-hidden="true"><i>🔥</i> 4-week streak</div>
+          <div class="float-chip float-chip--saved" aria-hidden="true"><i>↓</i> Wants down 18%</div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- TRUST BAR -->
-  <div class="trust">
-    <p class="trust-label">Built for Australians — using open banking</p>
-    <div class="trust-logos">
-      <span class="trust-logo">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-        Open Banking CDR
-      </span>
-      <span class="trust-logo">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        256-bit Encryption
-      </span>
-      <span class="trust-logo">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
-        CDR Compliant
-      </span>
-      <span class="trust-logo">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        Read-only Access
-      </span>
-      <span class="trust-logo">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-        iOS App Store
-      </span>
-    </div>
-  </div>
-
-  <!-- HOW IT WORKS -->
-  <section class="section" id="how">
-    <div class="reveal">
-      <p class="section-label">How it works</p>
-      <h2 class="section-title">Three steps to<br><em>financial clarity</em></h2>
-      <p class="section-sub">No complex setup. No manual entry. Just connect, swipe, and understand your spending like never before.</p>
-    </div>
-
-    <div class="steps">
-      <div class="step reveal">
-        <div class="step-icon">🏦</div>
-        <div class="step-number">1</div>
-        <h3>Connect your bank</h3>
-        <p>Link your Australian bank account securely through Open Banking (CDR). Cleer Money is read-only — we can never move your money.</p>
+    <!-- TRUST BAR -->
+    <section class="trust" aria-label="Trust and security">
+      <p class="trust__label">Private by design, built on Australia's Consumer Data Right</p>
+      <div class="trust__items">
+        <span class="trust__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          Open Banking via Fiskil (CDR-accredited)
+        </span>
+        <span class="trust__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Privacy Act compliant
+        </span>
+        <span class="trust__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Read-only access: we can never move money
+        </span>
+        <span class="trust__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+          We never sell your data
+        </span>
+        <span class="trust__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4-6.2-4.6-6.2 4.6 2.4-7.4L2 9.4h7.6z"/></svg>
+          Made in Australia
+        </span>
       </div>
-      <div class="step reveal" style="transition-delay:0.1s">
-        <div class="step-icon">👆</div>
-        <div class="step-number">2</div>
-        <h3>Swipe to categorise</h3>
-        <p>Transactions appear as cards. Swipe right for Need, left for Want. It takes seconds — and builds a picture of your spending habits over time.</p>
-      </div>
-      <div class="step reveal" style="transition-delay:0.2s">
-        <div class="step-icon">📊</div>
-        <div class="step-number">3</div>
-        <h3>Get clear insights</h3>
-        <p>See exactly where your money goes — by category, by week, by pattern. Set targets and track whether you're on pace to meet them.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FEATURES -->
-  <section class="section" id="features" style="padding-top: 0;">
-    <div class="reveal">
-      <p class="section-label">Features</p>
-      <h2 class="section-title">Everything you need.<br><em>Nothing you don't.</em></h2>
-    </div>
-
-    <div class="features-grid" style="margin-top: 48px;">
-      <div class="feature-card reveal">
-        <div class="feature-icon-wrap">🔗</div>
-        <h3 class="feature-title">Open Banking</h3>
-        <p class="feature-sub">Connect major Australian banks securely via CDR. Transactions sync automatically — no CSV exports, no manual entry.</p>
+    <!-- HOW IT WORKS -->
+    <section class="section" id="how">
+      <div class="reveal">
+        <p class="kicker">How it works</p>
+        <h2>Four steps to financial clarity</h2>
+        <p class="section__sub">No complex setup. No manual entry. Connect once, then a few swipes a week keeps your whole money picture clear.</p>
       </div>
 
-      <div class="feature-card reveal" style="transition-delay:0.1s">
-        <div class="feature-icon-wrap">🎯</div>
-        <h3 class="feature-title">Spending Targets</h3>
-        <p class="feature-sub">Set monthly limits per category. See a daily burn rate and end-of-month projection so you can course-correct before it's too late.</p>
-      </div>
-
-      <div class="feature-card green reveal wide" style="transition-delay:0.2s">
-        <div style="flex: 1;">
-          <div class="feature-icon-wrap" style="background:rgba(255,255,255,0.15)">📈</div>
-          <h3 class="feature-title" style="color:white">Insights that actually mean something</h3>
-          <p class="feature-sub">Weekly breakdowns, your busiest spending day, most frequent merchants, want pace per day, and your longest no-discretionary-spend streak. Data that changes behaviour.</p>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step__num">1</div>
+          <h3>Connect</h3>
+          <p>Link your Australian bank securely through Open Banking (CDR) via Fiskil. Access is read-only, so Cleer Money can never move your money.</p>
         </div>
-        <div class="feature-visual">
-          <div style="background:rgba(255,255,255,0.08); border-radius:16px; padding:20px;">
-            <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:1px;margin-bottom:12px;">WEEKLY BREAKDOWN</div>
-            <div class="mini-chart">
-              <div class="chart-bar" style="height:30%;background:rgba(255,255,255,0.2);border-radius:6px 6px 0 0;"></div>
-              <div class="chart-bar" style="height:55%;background:rgba(255,255,255,0.3);border-radius:6px 6px 0 0;"></div>
-              <div class="chart-bar" style="height:40%;background:rgba(255,255,255,0.2);border-radius:6px 6px 0 0;"></div>
-              <div class="chart-bar" style="height:80%;background:#22c55e;border-radius:6px 6px 0 0;"></div>
-            </div>
-            <div style="display:flex;justify-content:space-between;margin-top:8px;">
-              <span style="font-size:10px;color:rgba(255,255,255,0.4)">W1</span>
-              <span style="font-size:10px;color:rgba(255,255,255,0.4)">W2</span>
-              <span style="font-size:10px;color:rgba(255,255,255,0.4)">W3</span>
-              <span style="font-size:10px;color:rgba(255,255,255,0.4)">W4</span>
-            </div>
+        <div class="step reveal" style="transition-delay:0.08s">
+          <div class="step__num">2</div>
+          <h3>Categorise</h3>
+          <p>Transactions sync and sort themselves into categories automatically: groceries, transport, streaming and more. No CSVs, no data entry.</p>
+        </div>
+        <div class="step reveal" style="transition-delay:0.16s">
+          <div class="step__num">3</div>
+          <h3>Swipe</h3>
+          <p>Each transaction becomes a card. Swipe right for Need, left for Want. It takes seconds and slowly rewires how you see your spending.</p>
+        </div>
+        <div class="step reveal" style="transition-delay:0.24s">
+          <div class="step__num">4</div>
+          <h3>Understand</h3>
+          <p>Insights show your Want/Need split, weekly patterns, top merchants and month-end forecast: the numbers that actually change behaviour.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section section--tight" id="features">
+      <div class="reveal">
+        <p class="kicker">Features</p>
+        <h2>Everything you need. Nothing you don't.</h2>
+      </div>
+
+      <div class="features">
+        <div class="feature reveal">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
           </div>
+          <h3>Open banking connection</h3>
+          <p>Connect major Australian banks through the Consumer Data Right, the open banking framework regulated by the ACCC. Transactions sync automatically, and you can withdraw consent at any time.</p>
         </div>
-      </div>
 
-      <div class="feature-card reveal" style="transition-delay:0.3s">
-        <div class="feature-icon-wrap">🔥</div>
-        <h3 class="feature-title">Streak Tracking</h3>
-        <p class="feature-sub">Build a weekly habit. Your streak grows every week you review transactions. Milestones, personal bests, and shareable cards keep you motivated.</p>
-      </div>
-
-      <div class="feature-card reveal" style="transition-delay:0.4s">
-        <div class="feature-icon-wrap">↩️</div>
-        <h3 class="feature-title">Undo & Smart Rules</h3>
-        <p class="feature-sub">Accidentally swiped wrong? Undo your last decision instantly. Set smart rules to auto-categorise recurring merchants like Netflix or Woolworths.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOCIAL PROOF -->
-  <div class="reviews">
-    <div class="reviews-inner">
-      <div class="reveal" style="text-align:center;">
-        <p class="section-label">Early adopters</p>
-        <h2 class="section-title" style="font-size: clamp(32px,4vw,48px);">What our early users <em>had to say</em></h2>
-      </div>
-
-      <div class="review-grid">
-        <div class="review-card reveal">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"I had no idea how much I was spending on linen until Cleer showed me it was $80 a month. Seeing it as a Want really hit different."</p>
-          <div class="reviewer">
-            <div class="reviewer-avatar" style="background:#16a34a;">F</div>
-            <div>
-              <div class="reviewer-name">Finn C.</div>
-              <div class="reviewer-handle">Sydney, NSW</div>
-            </div>
+        <div class="feature reveal" style="transition-delay:0.08s">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
           </div>
+          <h3>The Want/Need swipe</h3>
+          <p>The five-second habit at the heart of Cleer Money. Reviewing each purchase as a Want or a Need builds awareness that a budget spreadsheet never will, and Smart Rules auto-categorise the merchants you see every week.</p>
         </div>
 
-        <div class="review-card reveal" style="transition-delay:0.1s">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"The swipe mechanic makes it feel like a game. I actually look forward to reviewing my transactions now. Never thought I'd say that about budgeting."</p>
-          <div class="reviewer">
-            <div class="reviewer-avatar" style="background:#3b82f6;">N</div>
-            <div>
-              <div class="reviewer-name">Nathan B.</div>
-              <div class="reviewer-handle">Melbourne, VIC</div>
-            </div>
+        <div class="feature reveal" style="transition-delay:0.16s">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
           </div>
+          <h3>Insights that mean something</h3>
+          <p>Your Want/Need split, weekly breakdowns, busiest spending day, top merchants, savings rate and a month-end forecast. Set spending targets and see whether you're on pace before the month gets away from you.</p>
         </div>
 
-        <div class="review-card reveal" style="transition-delay:0.2s">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"Finally an app that doesn't require a finance degree. Connect your bank, swipe through your transactions, done. My partner uses it too now."</p>
-          <div class="reviewer">
-            <div class="reviewer-avatar" style="background:#f59e0b;">M</div>
-            <div>
-              <div class="reviewer-name">Mike H.</div>
-              <div class="reviewer-handle">Brisbane, QLD</div>
-            </div>
+        <div class="feature feature--dark reveal" style="transition-delay:0.24s">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
           </div>
+          <h3>Privacy-first, by design</h3>
+          <p>Your banking data is used for one thing: showing you your own spending. We never sell it, never use it for advertising, and never see your bank login. Delete your account and your data goes with it.</p>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- PRICING -->
-  <section class="section" id="pricing" style="text-align:center;">
-    <div class="reveal">
-      <p class="section-label">Pricing</p>
-      <h2 class="section-title">Simple, transparent<br><em>pricing</em></h2>
-      <p class="section-sub" style="margin:0 auto;">Start free. Upgrade when you're ready for the full picture.</p>
-    </div>
-
-    <div class="pricing-grid">
-      <div class="price-card reveal">
-        <p class="plan-name">Cleer Lite</p>
-        <div class="price-amount">Free</div>
-        <p class="price-period">forever</p>
-        <ul class="price-features">
-          <li><span class="check">✓</span> CSV import</li>
-          <li><span class="check">✓</span> Swipe to categorise</li>
-          <li><span class="check">✓</span> 1 Spending target</li>
-          <li><span class="check">✓</span> Streak tracking</li>
-          <li><span class="check" style="background:#f3f4f6;color:#9ca3af;">—</span> <span style="color:#9ca3af;">Bank connection</span></li>
-          <li><span class="check" style="background:#f3f4f6;color:#9ca3af;">—</span> <span style="color:#9ca3af;">Spending targets</span></li>
-          <li><span class="check" style="background:#f3f4f6;color:#9ca3af;">—</span> <span style="color:#9ca3af;">Full insights</span></li>
-        </ul>
-        <a href="#" class="btn-plan btn-plan-outline">Get started free</a>
+    <!-- PRICING -->
+    <section class="section" id="pricing" style="text-align:center;">
+      <div class="reveal">
+        <p class="kicker">Pricing</p>
+        <h2>Simple, transparent pricing</h2>
+        <p class="section__sub" style="margin:0 auto;">Start free. Upgrade when you're ready for the full picture.</p>
       </div>
 
-      <div class="price-card featured reveal" style="transition-delay:0.1s">
-        <span class="price-badge">Most popular</span>
-        <p class="plan-name">Cleer Pro</p>
-        <div class="price-amount" style="color:white;">$6.99</div>
-        <p class="price-period">per month · or $69.99/year</p>
-        <ul class="price-features">
-          <li><span class="check">✓</span> Everything in Lite</li>
-          <li><span class="check">✓</span> Bank connection (CDR)</li>
-          <li><span class="check">✓</span> Unlimited history</li>
-          <li><span class="check">✓</span> Unlimited Spending targets</li>
-          <li><span class="check">✓</span> Full insights & patterns</li>
-          <li><span class="check">✓</span> Smart Rules</li>
-          <li><span class="check">✓</span> Up to 2 banks</li>
-        </ul>
-        <a href="#" class="btn-plan btn-plan-green">Start free trial</a>
-      </div>
-    </div>
+      <div class="pricing">
+        <div class="plan reveal">
+          <p class="plan__name">Cleer Lite</p>
+          <p class="plan__price">Free</p>
+          <p class="plan__period">forever</p>
+          <ul>
+            <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>CSV import</li>
+            <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>Want/Need swipe</li>
+            <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>1 spending target</li>
+            <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>Streak tracking</li>
+            <li class="is-off"><span class="tick tick--off"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-width="2"><path d="M3 6h6"/></svg></span>Bank connection</li>
+            <li class="is-off"><span class="tick tick--off"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-width="2"><path d="M3 6h6"/></svg></span>Full insights &amp; Smart Rules</li>
+          </ul>
+          <!-- Replace href with the App Store URL once the listing is live -->
+          <a href="#" class="btn btn--ghost" style="width:100%;">Get started free</a>
+        </div>
 
-    <p class="reveal" style="margin-top:24px;font-size:13px;color:var(--muted);">
-      Add a 3rd bank connection for $2.99/month · Cancel anytime · No lock-in contracts
-    </p>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="cta-inner reveal">
-      <h2>Your spending is trying<br>to tell you something.<br><em>Are you listening?</em></h2>
-      <p>Join Australians building healthier money habits — one swipe at a time.</p>
-      <div class="cta-actions">
-        <a href="#" class="btn-cta-primary">Coming Soon on iOS — Free</a>
-        <a href="#how" class="btn-cta-ghost">Learn more →</a>
+        <div class="plan plan--pro reveal" style="transition-delay:0.08s">
+          <span class="plan__badge">Most popular</span>
+          <p class="plan__name">Cleer Pro</p>
+          <p class="plan__price">$6.99</p>
+          <p class="plan__period">per month · or $69.99/year (save ~17%)</p>
+          <div class="plan__trial">7-day free trial: you won't be charged until it ends</div>
+          <ul>
+            <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>Everything in Lite</li>
+            <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>Automatic bank connection (CDR)</li>
+            <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>Unlimited history &amp; spending targets</li>
+            <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>Full insights &amp; charts</li>
+            <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>Smart Rules &amp; custom categories</li>
+            <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>Weekly money summary</li>
+          </ul>
+          <!-- Replace href with the App Store URL once the listing is live -->
+          <a href="#" class="btn btn--green" style="width:100%;">Start free trial</a>
+        </div>
       </div>
-    </div>
-  </section>
+
+      <p class="pricing-note reveal">Cancel anytime in your Apple ID settings · No lock-in contracts · Prices in AUD</p>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="cta__inner reveal">
+        <h2>Your spending is trying to tell you something.<br /><span class="accent">Are you listening?</span></h2>
+        <p>Join Australians building healthier money habits, one swipe at a time.</p>
+        <!-- Replace href with the App Store URL once the listing is live -->
+        <a href="#pricing" class="btn btn--green">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Download Cleer Money for free
+        </a>
+      </div>
+    </section>
+
+  </main>
 
   <!-- FOOTER -->
-  <footer>
-    <a href="#" class="footer-logo">
-      <div class="logo-mark"><img src="icon.png" alt="Cleer Money" /></div>
-      <span class="logo-text">Cleer<span>Money</span></span>
-    </a>
-
-    <ul class="footer-links">
-      <li><a href="privacy">Privacy Policy</a></li>
-      <li><a href="terms">Terms and Conditions</a></li>
-      <li><a href="help">Support</a></li>
-      <li><a href="mailto:support@cleermoney.com.au">Contact</a></li>
-    </ul>
-
-    <p class="footer-copy">© 2026 Cleer Money. ABN registered. Made in Australia 🇦🇺</p>
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div>
+          <a href="index.html" class="brand">
+            <span class="brand__mark"><img src="icon.png" alt="" width="34" height="34" /></span>
+            <span class="brand__name">Cleer<span>Money</span></span>
+          </a>
+          <p class="footer__blurb">Personal finance made simple, not stressful. Built in Queensland for Australians, on the Consumer Data Right.</p>
+        </div>
+        <div class="footer__cols">
+          <div class="footer__col">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="index.html#how">How it works</a></li>
+              <li><a href="index.html#features">Features</a></li>
+              <li><a href="index.html#pricing">Pricing</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms of Service</a></li>
+              <li><a href="cdr.html">CDR Policy</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="help.html">Help &amp; FAQ</a></li>
+              <li><a href="mailto:support@cleermoney.com.au">support@cleermoney.com.au</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span data-year>2026</span> Cleer Money · Isaac Talbot, sole trader trading as Cleer Money · ABN 99 498 576 599</span>
+        <span>Made in Australia 🇦🇺</span>
+      </div>
+    </div>
   </footer>
 
-  <script>
-    // Mobile menu toggle
-    function toggleMenu() {
-      const menu = document.getElementById('mobileMenu');
-      const burger = document.querySelector('.nav-hamburger');
-      menu.classList.toggle('open');
-      burger.classList.toggle('active');
-      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-    }
-
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    reveals.forEach(el => observer.observe(el));
-
-    // Nav shrink on scroll
-    window.addEventListener('scroll', () => {
-      const nav = document.querySelector('nav');
-      if (window.scrollY > 40) {
-        nav.style.padding = window.innerWidth > 900 ? '12px 48px' : '12px 24px';
-      } else {
-        nav.style.padding = window.innerWidth > 900 ? '20px 48px' : '16px 24px';
-      }
-    });
-  </script>
-
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
