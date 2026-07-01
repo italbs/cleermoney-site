@@ -77,6 +77,35 @@
     });
   });
 
+  // ── Scroll spy: highlight the nav link for the section in view ─
+  var spyLinks = Array.prototype.slice.call(
+    document.querySelectorAll('.nav__links a[href^="#"]')
+  );
+  if (spyLinks.length && 'IntersectionObserver' in window) {
+    var byId = {};
+    var sections = [];
+    spyLinks.forEach(function (link) {
+      var id = link.getAttribute('href').slice(1);
+      var section = id && document.getElementById(id);
+      if (section) { byId[id] = link; sections.push(section); }
+    });
+    if (sections.length) {
+      var clearCurrent = function () {
+        spyLinks.forEach(function (l) { l.removeAttribute('aria-current'); });
+      };
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            clearCurrent();
+            var link = byId[entry.target.id];
+            if (link) link.setAttribute('aria-current', 'location');
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      sections.forEach(function (s) { spy.observe(s); });
+    }
+  }
+
   // ── Footer year ──────────────────────────────────────────────
   document.querySelectorAll('[data-year]').forEach(function (el) {
     el.textContent = String(new Date().getFullYear());

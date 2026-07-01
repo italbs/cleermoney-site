@@ -13,8 +13,8 @@
   --surface-soft: #fbfaf8;
   --ink: #1e1f1c;
   --ink-soft: #2e2e2e;
-  --secondary: #6f6f6a;
-  --muted: #75746f;
+  --secondary: #5f5f5a;
+  --muted: #6b6a64;
   --border: #e6e3dd;
   --pill-bg: #efede8;
   --pill-text: #5f5e59;
@@ -46,7 +46,12 @@
   --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  /* Offset in-page anchors so section headings clear the fixed nav */
+  scroll-padding-top: 88px;
+}
 
 body {
   font-family: var(--font);
@@ -55,13 +60,29 @@ body {
   line-height: 1.65;
   overflow-x: hidden;
   font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
+
+::selection { background: rgba(22,163,74,0.18); color: var(--ink); }
 
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; }
 strong { font-weight: 600; color: var(--ink); }
 
-h1, h2, h3 { color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1.12; }
+h1, h2, h3 { color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1.12; text-wrap: balance; }
+p { text-wrap: pretty; }
+
+/* ── Focus visibility (keyboard users) ── */
+:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.btn:focus-visible { outline-offset: 4px; }
+/* Remove the default outline only where :focus-visible is supported */
+:focus:not(:focus-visible) { outline: none; }
 
 .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
@@ -107,6 +128,11 @@ h1, h2, h3 { color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-
   font-size: 14px; font-weight: 500; transition: color 0.2s;
 }
 .nav__links a:hover { color: var(--ink); }
+.nav__links a[aria-current="location"] { color: var(--ink); }
+.nav__links a[aria-current="location"]:not(.nav__cta)::after {
+  content: ''; display: block; height: 2px; border-radius: 2px;
+  background: var(--green); margin-top: 3px;
+}
 
 .nav__cta {
   background: var(--ink); color: #fff !important;
@@ -160,6 +186,7 @@ h1, h2, h3 { color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-
 .btn--ghost:hover { border-color: var(--green); color: var(--green); transform: translateY(-1px); }
 .btn--green { background: var(--green); color: #fff; }
 .btn--green:hover { background: #15803d; transform: translateY(-1px); box-shadow: 0 10px 24px rgba(22,163,74,0.35); }
+.btn:active { transform: translateY(0) scale(0.985); }
 .btn svg { width: 19px; height: 19px; flex-shrink: 0; }
 
 /* ============================================================
@@ -709,9 +736,10 @@ td:first-child { font-weight: 600; color: var(--ink); white-space: nowrap; }
   transition: transform 0.3s ease, background 0.2s, color 0.2s;
 }
 .faq-item.is-open .faq-icon { transform: rotate(45deg); background: var(--green); color: #fff; }
-.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-.faq-item.is-open .faq-answer { max-height: 420px; }
-.faq-answer__inner { padding: 0 0 22px; font-size: 15px; color: var(--secondary); line-height: 1.8; }
+.faq-answer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s ease; }
+.faq-item.is-open .faq-answer { grid-template-rows: 1fr; }
+.faq-answer__inner { overflow: hidden; min-height: 0; padding: 0; font-size: 15px; color: var(--secondary); line-height: 1.8; }
+.faq-item.is-open .faq-answer__inner { padding: 0 0 22px; }
 .faq-answer__inner a { color: var(--green); text-decoration: none; font-weight: 500; }
 .faq-answer__inner a:hover { text-decoration: underline; }
 
@@ -769,6 +797,7 @@ td:first-child { font-weight: 600; color: var(--ink); white-space: nowrap; }
   html { scroll-behavior: auto; }
   .phone-wrap, .hero__badge::before { animation: none !important; }
   .reveal { opacity: 1; transform: none; transition: none; }
+  .faq-answer { transition: none; }
 
   /* Freeze the journey on the signature Want/Need swipe screen */
   .scene, .bank-row, .connect-progress span, .connect-done,

@@ -6,12 +6,56 @@
   <title>Help | Cleer Money</title>
   <meta name="description" content="Get help with Cleer Money. Find answers to common questions about connecting your bank, swiping transactions, and managing your subscription." />
   <link rel="canonical" href="https://cleermoney.com.au/help" />
+
+  <meta property="og:title" content="Help &amp; FAQ | Cleer Money" />
+  <meta property="og:description" content="Answers to common questions about connecting your bank, swiping transactions, and managing your Cleer Money subscription." />
+  <meta property="og:image" content="https://cleermoney.com.au/icon.png" />
+  <meta property="og:url" content="https://cleermoney.com.au/help" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Cleer Money" />
+  <meta property="og:locale" content="en_AU" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Help &amp; FAQ | Cleer Money" />
+  <meta name="twitter:description" content="Answers to common questions about connecting your bank, swiping transactions, and managing your Cleer Money subscription." />
+  <meta name="twitter:image" content="https://cleermoney.com.au/icon.png" />
+
+  <meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1e1f1c" media="(prefers-color-scheme: dark)" />
+  <meta name="apple-mobile-web-app-title" content="Cleer Money" />
+
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="apple-touch-icon" href="icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is Cleer Money?", "acceptedAnswer": { "@type": "Answer", "text": "Cleer Money is a personal finance app for Australians. It connects to your bank account through Open Banking (CDR) and lets you categorise every transaction as a Want or a Need with a simple swipe. Over time, you build a clear picture of where your money actually goes, without budgets or spreadsheets." } },
+      { "@type": "Question", "name": "Is Cleer Money available on Android?", "acceptedAnswer": { "@type": "Answer", "text": "Not yet. Cleer Money is currently iOS only. Android is something we'd love to explore in the future depending on demand." } },
+      { "@type": "Question", "name": "Is the app available outside Australia?", "acceptedAnswer": { "@type": "Answer", "text": "Cleer Money is built specifically for Australians using the Consumer Data Right (CDR) framework. The bank connection feature only works with Australian banks. The free tier's CSV import can be used from anywhere, but the full experience is designed for Australian users." } },
+      { "@type": "Question", "name": "How does the bank connection work?", "acceptedAnswer": { "@type": "Answer", "text": "Cleer Money uses Australia's Consumer Data Right (CDR), the same open banking framework regulated by the ACCC. When you connect your bank, you're authorising read-only access to your transaction data. We can never move, transfer, or modify your money in any way." } },
+      { "@type": "Question", "name": "Which banks are supported?", "acceptedAnswer": { "@type": "Answer", "text": "We support major Australian banks that participate in the CDR framework, including the Big Four (CommBank, ANZ, Westpac, NAB) and many others. The full list of available banks is shown when you connect within the app." } },
+      { "@type": "Question", "name": "Is my data safe?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All data is encrypted in transit and at rest using industry-standard encryption. Cleer Money only has read-only access to your transactions, so we can never initiate payments or transfers. You can disconnect your bank and delete your data at any time from within the app." } },
+      { "@type": "Question", "name": "Can I disconnect my bank?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. You can disconnect any bank connection at any time from the app's settings. Once disconnected, no new transaction data will be fetched. You can also choose to delete all previously imported transaction data." } },
+      { "@type": "Question", "name": "What does swiping a transaction do?", "acceptedAnswer": { "@type": "Answer", "text": "Each transaction appears as a card. You categorise it as a Want (discretionary spending like dining out, entertainment, or impulse buys) or a Need (essential spending like rent, groceries, or bills). Over time, this builds a personalised breakdown of your spending habits." } },
+      { "@type": "Question", "name": "What if I swipe the wrong way?", "acceptedAnswer": { "@type": "Answer", "text": "No worries. Just tap the undo button to reverse your last swipe. You can also go back and re-categorise any transaction from your history at any time." } },
+      { "@type": "Question", "name": "What are Smart Rules?", "acceptedAnswer": { "@type": "Answer", "text": "Smart Rules let you set an automatic categorisation for a specific merchant. For example, you can tell Cleer Money that Woolworths is always a Need, and future transactions from that merchant will be auto-categorised, saving you time." } },
+      { "@type": "Question", "name": "What are Spending Targets?", "acceptedAnswer": { "@type": "Answer", "text": "Spending Targets let you set a monthly dollar limit for your Wants. Cleer Money tracks your daily pace and projects whether you'll stay under your target by the end of the month, so you can adjust your spending before it's too late. This is a Pro feature." } },
+      { "@type": "Question", "name": "What's included in the free plan?", "acceptedAnswer": { "@type": "Answer", "text": "Cleer Lite (free) includes CSV import, swipe-to-categorise, 30 days of history, and streak tracking. It's a great way to try the core experience before upgrading." } },
+      { "@type": "Question", "name": "How much does Cleer Pro cost?", "acceptedAnswer": { "@type": "Answer", "text": "Cleer Pro is $6.99/month or $69.99/year (saving ~17% annually). It includes everything in the free plan plus bank connections via CDR, unlimited history, spending targets, full insights, Smart Rules, and support for up to 2 bank connections. A 3rd bank can be added for a small monthly add-on, priced in the app." } },
+      { "@type": "Question", "name": "How do I cancel my subscription?", "acceptedAnswer": { "@type": "Answer", "text": "Subscriptions are managed through the Apple App Store. To cancel, open your iPhone's Settings, tap your name, then Subscriptions, then Cleer Money, then Cancel. There are no lock-in contracts. You can cancel at any time and your Pro features will remain active until the end of your current billing period." } },
+      { "@type": "Question", "name": "Can I get a refund?", "acceptedAnswer": { "@type": "Answer", "text": "Since subscriptions are processed through Apple, refund requests need to go through Apple's support at reportaproblem.apple.com." } },
+      { "@type": "Question", "name": "How do I delete my account?", "acceptedAnswer": { "@type": "Answer", "text": "You can delete your account from within the app's settings. This will permanently remove all your data, including transaction history, categorisations, and bank connections. Make sure to cancel any active subscriptions through the App Store first." } },
+      { "@type": "Question", "name": "Can I export my data?", "acceptedAnswer": { "@type": "Answer", "text": "Data export functionality is on our roadmap. For now, the Insights screen gives you a comprehensive overview of your spending patterns over time." } }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -44,8 +88,8 @@
     <a href="index.html#how">How it works</a>
     <a href="index.html#features">Features</a>
     <a href="index.html#pricing">Pricing</a>
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="terms.html">Terms of Service</a>
+    <a href="help.html">Support</a>
+    <a href="index.html#pricing" class="btn btn--primary">Get the app</a>
   </div>
 
   <main id="main">

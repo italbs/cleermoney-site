@@ -1,0 +1,19 @@
+{
+  "name": "Cleer Money",
+  "short_name": "Cleer Money",
+  "description": "Know your wants from your needs. Connect your Australian bank via open banking (CDR) and swipe every transaction as Want or Need.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f6f5f2",
+  "theme_color": "#f6f5f2",
+  "lang": "en-AU",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
