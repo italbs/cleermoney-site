@@ -243,6 +243,56 @@
     positions();
   }
 
+  // ── Waitlist form (posts to a Google Apps Script → Sheet) ────
+  var wlForm = document.getElementById('waitlistForm');
+  if (wlForm) {
+    var wlInput = document.getElementById('waitlistEmail');
+    var wlStatus = document.getElementById('waitlistStatus');
+    var wlBtn = wlForm.querySelector('button[type="submit"]');
+    var emailRe = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+    var setWlStatus = function (msg, kind) {
+      wlStatus.textContent = msg;
+      wlStatus.className = 'waitlist__status is-' + kind;
+    };
+
+    wlForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = (wlInput.value || '').trim();
+      if (!emailRe.test(email)) {
+        setWlStatus('Please enter a valid email address.', 'error');
+        wlInput.focus();
+        return;
+      }
+      var endpoint = wlForm.getAttribute('data-endpoint');
+      if (!endpoint || endpoint.indexOf('PASTE_') === 0) {
+        setWlStatus('The waitlist isn’t connected yet — please check back soon.', 'error');
+        return;
+      }
+
+      wlBtn.disabled = true;
+      setWlStatus('Adding you…', 'pending');
+
+      var body = new URLSearchParams();
+      body.set('email', email);
+      body.set('source', 'website');
+      var hp = wlForm.querySelector('.waitlist__hp');
+      body.set('website', hp ? hp.value : '');
+
+      // Apps Script web apps don't return CORS headers, so we use no-cors:
+      // the write still happens; we just can't read the response.
+      fetch(endpoint, { method: 'POST', mode: 'no-cors', body: body })
+        .then(function () {
+          wlForm.reset();
+          setWlStatus('You’re on the list! We’ll email you the moment Cleer Money launches.', 'success');
+        })
+        .catch(function () {
+          setWlStatus('Something went wrong. Please try again, or email support@cleermoney.com.au.', 'error');
+        })
+        .finally(function () { wlBtn.disabled = false; });
+    });
+  }
+
   // ── Footer year ──────────────────────────────────────────────
   document.querySelectorAll('[data-year]').forEach(function (el) {
     el.textContent = String(new Date().getFullYear());

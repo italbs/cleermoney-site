@@ -67,8 +67,8 @@
           <li><a href="#features">Features</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="help.html">Support</a></li>
-          <!-- Replace href with the App Store URL once the listing is live -->
-          <li><a href="#pricing" class="nav__cta">Get the app</a></li>
+          <!-- Pre-launch: points to the waitlist. Swap to the App Store URL at launch. -->
+          <li><a href="#waitlist" class="nav__cta">Join waitlist</a></li>
         </ul>
       </nav>
       <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -83,7 +83,7 @@
     <a href="#features">Features</a>
     <a href="#pricing">Pricing</a>
     <a href="help.html">Support</a>
-    <a href="#pricing" class="btn btn--primary">Get the app</a>
+    <a href="#waitlist" class="btn btn--primary">Join waitlist</a>
   </div>
 
   <main id="main">
@@ -100,11 +100,8 @@
       </p>
 
       <div class="hero__actions">
-        <!-- Replace href with the App Store URL once the listing is live -->
-        <a href="#pricing" class="btn btn--primary">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          Download on the App Store
-        </a>
+        <!-- Pre-launch: points to the waitlist. Swap back to the App Store button at launch. -->
+        <a href="#waitlist" class="btn btn--primary">Join the waitlist</a>
         <a href="#how" class="btn btn--ghost">See how it works →</a>
       </div>
       <p class="hero__finePrint">Free to start · Pro from $6.99/month</p>
@@ -361,7 +358,7 @@
         </div>
         <p class="demo__result-msg" id="demoMsg"></p>
         <div class="demo__result-actions">
-          <a href="#pricing" class="btn btn--primary">Get the app free</a>
+          <a href="#waitlist" class="btn btn--primary">Join the waitlist</a>
           <button class="btn btn--ghost" id="demoReset" type="button">Try again</button>
         </div>
       </div>
@@ -430,8 +427,8 @@
             <li class="is-off"><span class="tick tick--off"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-width="2"><path d="M3 6h6"/></svg></span>Bank connection</li>
             <li class="is-off"><span class="tick tick--off"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-width="2"><path d="M3 6h6"/></svg></span>Full insights &amp; Smart Rules</li>
           </ul>
-          <!-- Replace href with the App Store URL once the listing is live -->
-          <a href="#" class="btn btn--ghost" style="width:100%;">Get started free</a>
+          <!-- Pre-launch: points to the waitlist. Swap to the App Store URL at launch. -->
+          <a href="#waitlist" class="btn btn--ghost" style="width:100%;">Get started free</a>
         </div>
 
         <div class="plan plan--pro reveal" style="transition-delay:0.08s">
@@ -447,24 +444,33 @@
             <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>Smart Rules &amp; custom categories</li>
             <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>Weekly money summary</li>
           </ul>
-          <!-- Replace href with the App Store URL once the listing is live -->
-          <a href="#" class="btn btn--green" style="width:100%;">Get Cleer Pro</a>
+          <!-- Pre-launch: points to the waitlist. Swap to the App Store URL at launch. -->
+          <a href="#waitlist" class="btn btn--green" style="width:100%;">Get Cleer Pro</a>
         </div>
       </div>
 
       <p class="pricing-note reveal">Cancel anytime in your Apple ID settings · No lock-in contracts · Prices in AUD</p>
     </section>
 
-    <!-- CTA -->
-    <section class="cta">
+    <!-- CTA / WAITLIST -->
+    <section class="cta" id="waitlist">
       <div class="cta__inner reveal">
         <h2>Your spending is trying to tell you something.<br /><span class="accent">Are you listening?</span></h2>
-        <p>Join Australians building healthier money habits, one swipe at a time.</p>
-        <!-- Replace href with the App Store URL once the listing is live -->
-        <a href="#pricing" class="btn btn--green">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          Download Cleer Money for free
-        </a>
+        <p>Cleer Money is launching on iOS soon. Join the waitlist and be the first to know the moment it's live.</p>
+
+        <!-- Waitlist submissions are stored in a Google Sheet via Apps Script -->
+        <form class="waitlist" id="waitlistForm" data-endpoint="https://script.google.com/macros/s/AKfycbz4xPvjJpKsdMXyEi0rYDJ8n_UkAz-TMmO9BPC23Tt7rAKkPFQh-IE_utmyx-X1_B9q/exec" novalidate>
+          <div class="waitlist__row">
+            <input class="waitlist__input" type="email" id="waitlistEmail" name="email"
+                   placeholder="you@example.com" autocomplete="email" inputmode="email"
+                   required aria-label="Email address" />
+            <button type="submit" class="btn btn--green">Join the waitlist</button>
+          </div>
+          <!-- Honeypot: hidden from humans, catches bots -->
+          <input class="waitlist__hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        </form>
+        <p class="waitlist__status" id="waitlistStatus" role="status" aria-live="polite"></p>
+        <p class="waitlist__fine">No spam — just one email when we launch. Unsubscribe anytime.</p>
       </div>
     </section>
 
