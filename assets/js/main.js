@@ -106,6 +106,143 @@
     }
   }
 
+  // ── Interactive Want/Need demo ───────────────────────────────
+  var demoDeck = document.getElementById('demoDeck');
+  if (demoDeck) {
+    var cards = Array.prototype.slice.call(demoDeck.querySelectorAll('.demo__card'));
+    var total = cards.length;
+    var idx = 0;
+    var counts = { need: 0, want: 0 };
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var stage = document.querySelector('.demo__stage');
+    var controls = document.querySelector('.demo__controls');
+    var countEl = document.getElementById('demoCount');
+    var totalEl = document.getElementById('demoTotal');
+    var result = document.getElementById('demoResult');
+    if (totalEl) totalEl.textContent = String(total);
+
+    function positions() {
+      cards.forEach(function (card, i) {
+        if (i < idx) { card.dataset.pos = 'gone'; return; }
+        var rel = i - idx;
+        card.dataset.pos = rel <= 2 ? String(rel) : 'hidden';
+      });
+    }
+
+    function clearStamps(card) {
+      card.querySelectorAll('.demo__stamp').forEach(function (s) { s.style.opacity = ''; });
+    }
+
+    function classify(choice) {
+      if (idx >= total) return;
+      var card = cards[idx];
+      counts[choice]++;
+      idx++;
+      if (countEl) countEl.textContent = String(idx);
+      var stamp = card.querySelector(choice === 'need' ? '.demo__stamp--need' : '.demo__stamp--want');
+      if (stamp) stamp.style.opacity = '1';
+      card.style.transition = reduce ? 'none' : 'transform 0.35s ease, opacity 0.35s ease';
+      card.style.transform = (choice === 'need' ? 'translateX(140%)' : 'translateX(-140%)') +
+        ' rotate(' + (choice === 'need' ? 16 : -16) + 'deg)';
+      card.style.opacity = '0';
+      var done = function () {
+        positions();
+        if (idx >= total) showResult();
+      };
+      if (reduce) done(); else setTimeout(done, 300);
+    }
+
+    function showResult() {
+      var t = counts.need + counts.want || 1;
+      var needPct = Math.round((counts.need / t) * 100);
+      var wantPct = 100 - needPct;
+      document.getElementById('demoNeedPct').textContent = String(needPct);
+      document.getElementById('demoWantPct').textContent = String(wantPct);
+      document.getElementById('demoMsg').textContent =
+        needPct >= 70 ? 'Mostly needs — you spend with intention. Cleer Money helps you keep it that way.'
+        : needPct >= 40 ? 'A balanced week. Seeing the split is the first step to shaping it.'
+        : 'Plenty of wants this week — no judgement. Awareness is where better habits start.';
+      if (stage) stage.hidden = true;
+      result.hidden = false;
+      var needBar = document.getElementById('demoNeedBar');
+      var wantBar = document.getElementById('demoWantBar');
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          needBar.style.width = needPct + '%';
+          wantBar.style.width = wantPct + '%';
+        });
+      });
+    }
+
+    function reset() {
+      idx = 0; counts = { need: 0, want: 0 };
+      if (countEl) countEl.textContent = '0';
+      cards.forEach(function (c) {
+        c.style.transition = 'none';
+        c.style.transform = ''; c.style.opacity = '';
+        clearStamps(c);
+      });
+      void demoDeck.offsetWidth; // reflow so restored transitions don't animate the reset
+      cards.forEach(function (c) { c.style.transition = ''; });
+      positions();
+      document.getElementById('demoNeedBar').style.width = '0';
+      document.getElementById('demoWantBar').style.width = '0';
+      result.hidden = true;
+      if (stage) stage.hidden = false;
+      demoDeck.focus();
+    }
+
+    if (controls) {
+      controls.addEventListener('click', function (e) {
+        var btn = e.target.closest('.demo__btn');
+        if (btn) classify(btn.dataset.choice);
+      });
+    }
+    var resetBtn = document.getElementById('demoReset');
+    if (resetBtn) resetBtn.addEventListener('click', reset);
+
+    demoDeck.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); classify('need'); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); classify('want'); }
+    });
+
+    // Pointer drag on the top card
+    var dragCard = null, startX = 0, dragging = false;
+    demoDeck.addEventListener('pointerdown', function (e) {
+      var card = e.target.closest('.demo__card');
+      if (!card || card.dataset.pos !== '0' || idx >= total) return;
+      dragCard = card; startX = e.clientX; dragging = true;
+      card.style.transition = 'none';
+      try { card.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    demoDeck.addEventListener('pointermove', function (e) {
+      if (!dragging || !dragCard) return;
+      var dx = e.clientX - startX;
+      dragCard.style.transform = 'translateX(' + dx + 'px) rotate(' + (dx / 22) + 'deg)';
+      var need = dragCard.querySelector('.demo__stamp--need');
+      var want = dragCard.querySelector('.demo__stamp--want');
+      if (need) need.style.opacity = dx > 16 ? String(Math.min(1, dx / 110)) : '0';
+      if (want) want.style.opacity = dx < -16 ? String(Math.min(1, -dx / 110)) : '0';
+    });
+    function endDrag(e) {
+      if (!dragging || !dragCard) return;
+      dragging = false;
+      var dx = e.clientX - startX;
+      var card = dragCard; dragCard = null;
+      card.style.transition = '';
+      if (Math.abs(dx) > 88) {
+        classify(dx > 0 ? 'need' : 'want');
+      } else {
+        card.style.transform = '';
+        clearStamps(card);
+      }
+    }
+    demoDeck.addEventListener('pointerup', endDrag);
+    demoDeck.addEventListener('pointercancel', endDrag);
+
+    positions();
+  }
+
   // ── Footer year ──────────────────────────────────────────────
   document.querySelectorAll('[data-year]').forEach(function (el) {
     el.textContent = String(new Date().getFullYear());
