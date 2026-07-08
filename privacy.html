@@ -30,6 +30,49 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- Organization + WebSite (site-wide entity facts) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://cleermoney.com.au/#org",
+        "name": "Cleer Money",
+        "legalName": "Cleer Co Pty Ltd",
+        "alternateName": "Cleer Money",
+        "url": "https://cleermoney.com.au",
+        "logo": "https://cleermoney.com.au/icon.png",
+        "identifier": [
+          { "@type": "PropertyValue", "propertyID": "ABN", "value": "67 699 655 948" },
+          { "@type": "PropertyValue", "propertyID": "ACN", "value": "699 655 948" }
+        ],
+        "address": { "@type": "PostalAddress", "addressLocality": "Maroochydore", "addressRegion": "QLD", "addressCountry": "AU" },
+        "email": "support@cleermoney.com.au"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://cleermoney.com.au/#website",
+        "url": "https://cleermoney.com.au",
+        "name": "Cleer Money",
+        "publisher": { "@id": "https://cleermoney.com.au/#org" }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Breadcrumb -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cleermoney.com.au/" },
+      { "@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": "https://cleermoney.com.au/privacy" }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -262,6 +305,15 @@
             </ul>
           </div>
           <div class="footer__col">
+            <h4>Learn</h4>
+            <ul>
+              <li><a href="/method/">The method</a></li>
+              <li><a href="/faq/">FAQ</a></li>
+              <li><a href="/budgeting-alternatives-australia/">Budgeting alternatives</a></li>
+              <li><a href="/about/">About</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
             <h4>Legal</h4>
             <ul>
               <li><a href="privacy.html">Privacy Policy</a></li>
@@ -279,7 +331,7 @@
         </div>
       </div>
       <div class="footer__bottom">
-        <span>© <span data-year>2026</span> Cleer Co Pty Ltd · ACN 699 655 948</span>
+        <span>© <span data-year>2026</span> Cleer Co Pty Ltd · ABN 67 699 655 948 · ACN 699 655 948</span>
         <span>Made in Australia 🇦🇺</span>
       </div>
     </div>
