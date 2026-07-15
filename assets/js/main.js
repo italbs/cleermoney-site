@@ -2,6 +2,64 @@
 (function () {
   'use strict';
 
+  // ── Cookie consent (gates Google Analytics) ─────────────────
+  // GA sets analytics cookies, so it must not load until the visitor
+  // explicitly accepts (OAIC guidance: no pre-ticked/implied consent).
+  // The waitlist form is functional and is not gated by this.
+  var GA_ID = 'G-7C6XX8W0JV';
+  var CONSENT_KEY = 'cm-cookie-consent'; // 'accepted' | 'declined'
+
+  function readConsent() {
+    try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; }
+  }
+
+  function storeConsent(value) {
+    try { localStorage.setItem(CONSENT_KEY, value); } catch (e) {}
+  }
+
+  function loadAnalytics() {
+    if (window.gtag) return;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID);
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+  }
+
+  function showCookieBanner() {
+    var banner = document.createElement('div');
+    banner.className = 'cookie-banner';
+    banner.setAttribute('role', 'region');
+    banner.setAttribute('aria-label', 'Cookie consent');
+    banner.innerHTML =
+      '<p class="cookie-banner__text">We’d like to use an analytics cookie (Google Analytics) to understand ' +
+      'how people use this site. Nothing is set unless you accept. ' +
+      '<a href="/privacy.html">Privacy Policy</a></p>' +
+      '<div class="cookie-banner__actions">' +
+      '<button type="button" class="btn btn--ghost" data-consent="declined">Decline</button>' +
+      '<button type="button" class="btn btn--green" data-consent="accepted">Accept</button>' +
+      '</div>';
+    banner.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-consent]');
+      if (!btn) return;
+      var choice = btn.getAttribute('data-consent');
+      storeConsent(choice);
+      if (choice === 'accepted') loadAnalytics();
+      banner.remove();
+    });
+    document.body.appendChild(banner);
+  }
+
+  var consent = readConsent();
+  if (consent === 'accepted') {
+    loadAnalytics();
+  } else if (consent !== 'declined') {
+    showCookieBanner();
+  }
+
   // ── Mobile menu ──────────────────────────────────────────────
   var toggle = document.querySelector('.nav__toggle');
   var menu = document.getElementById('mobileMenu');

@@ -949,3 +949,25 @@ td:first-child { font-weight: 600; color: var(--ink); white-space: nowrap; }
 @media (max-width: 760px) {
   .breadcrumb { padding: 92px 20px 0; }
 }
+
+/* ============================================================
+   COOKIE CONSENT BANNER (injected by main.js)
+   ============================================================ */
+.cookie-banner {
+  position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 300;
+  max-width: 720px; margin: 0 auto;
+  display: flex; align-items: center; gap: 20px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-md); box-shadow: var(--shadow-lift);
+  padding: 18px 22px;
+}
+.cookie-banner__text { font-size: 14px; color: var(--secondary); line-height: 1.55; margin: 0; }
+.cookie-banner__text a { color: var(--green); font-weight: 600; }
+.cookie-banner__actions { display: flex; gap: 10px; flex-shrink: 0; }
+.cookie-banner__actions .btn { font-size: 14px; padding: 10px 20px; }
+
+@media (max-width: 560px) {
+  .cookie-banner { flex-direction: column; align-items: stretch; gap: 14px; text-align: center; }
+  .cookie-banner__actions { justify-content: center; }
+  .cookie-banner__actions .btn { flex: 1; }
+}
