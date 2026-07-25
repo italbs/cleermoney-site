@@ -1,4 +1,4 @@
-/* Cleer Money — shared site behaviour (vanilla JS, no dependencies) */
+/* Cleer Money shared site behaviour (vanilla JS, no dependencies) */
 (function () {
   'use strict';
 
@@ -58,6 +58,44 @@
     loadAnalytics();
   } else if (consent !== 'declined') {
     showCookieBanner();
+  }
+
+  // ── Analytics shim (rides on the consented GA4; no-op until consent) ─
+  // One helper so every event goes through the same place. If we later swap
+  // GA for a cookieless tool (e.g. Plausible), only this function changes.
+  function track(name, params) {
+    try {
+      if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+    } catch (e) {}
+  }
+
+  var PAGE = (document.body && document.body.getAttribute('data-page')) || 'other';
+
+  // Named page-view events so the funnel reads cleanly: try_view → demo_completed → cta_click.
+  if (PAGE === 'home') track('homepage_view', { page: 'home' });
+  if (PAGE === 'try')  track('try_view', { page: 'try' });
+
+  // ── Launch config: point + label every CTA from one source ───
+  // Every primary CTA site-wide carries data-cta="<label key>". This reads the
+  // active launch state (config.js) and sets the destination + wording, and
+  // records a single cta_click event (same event in both launch modes, with the
+  // mode as a property) so the funnel stays comparable across launch.
+  var LAUNCH = window.CLEER_LAUNCH;
+  if (LAUNCH) {
+    document.querySelectorAll('[data-cta]').forEach(function (el) {
+      if (LAUNCH.href) el.setAttribute('href', LAUNCH.href);
+      var key = el.getAttribute('data-cta');
+      if (key && LAUNCH.labels && LAUNCH.labels[key]) el.textContent = LAUNCH.labels[key];
+      el.addEventListener('click', function () {
+        track('cta_click', { mode: LAUNCH.state, source: PAGE, cta: key || 'primary' });
+      });
+    });
+    document.querySelectorAll('[data-launch-badge]').forEach(function (el) {
+      if (LAUNCH.badge) el.textContent = LAUNCH.badge;
+    });
+    document.querySelectorAll('[data-launch-note]').forEach(function (el) {
+      if (LAUNCH.note) el.textContent = LAUNCH.note;
+    });
   }
 
   // ── Mobile menu ──────────────────────────────────────────────
@@ -171,6 +209,7 @@
     var total = cards.length;
     var idx = 0;
     var counts = { need: 0, want: 0 };
+    var completed = false; // guards showResult so demo_completed fires exactly once
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var stage = document.querySelector('.demo__stage');
     var controls = document.querySelector('.demo__controls');
@@ -211,15 +250,17 @@
     }
 
     function showResult() {
+      if (completed) return;
+      completed = true;
       var t = counts.need + counts.want || 1;
       var needPct = Math.round((counts.need / t) * 100);
       var wantPct = 100 - needPct;
       document.getElementById('demoNeedPct').textContent = String(needPct);
       document.getElementById('demoWantPct').textContent = String(wantPct);
       document.getElementById('demoMsg').textContent =
-        needPct >= 70 ? 'Mostly needs — you spend with intention. Cleer Money helps you keep it that way.'
+        needPct >= 70 ? 'Mostly needs. You spend with intention, and Cleer Money helps you keep it that way.'
         : needPct >= 40 ? 'A balanced week. Seeing the split is the first step to shaping it.'
-        : 'Plenty of wants this week — no judgement. Awareness is where better habits start.';
+        : 'Plenty of wants this week, no judgement. Awareness is where better habits start.';
       if (stage) stage.hidden = true;
       result.hidden = false;
       var needBar = document.getElementById('demoNeedBar');
@@ -230,10 +271,11 @@
           wantBar.style.width = wantPct + '%';
         });
       });
+      track('demo_completed', { page: PAGE, want_pct: wantPct, need_pct: needPct });
     }
 
     function reset() {
-      idx = 0; counts = { need: 0, want: 0 };
+      idx = 0; counts = { need: 0, want: 0 }; completed = false;
       if (countEl) countEl.textContent = '0';
       cards.forEach(function (c) {
         c.style.transition = 'none';
@@ -324,7 +366,7 @@
       }
       var endpoint = wlForm.getAttribute('data-endpoint');
       if (!endpoint || endpoint.indexOf('PASTE_') === 0) {
-        setWlStatus('The waitlist isn’t connected yet — please check back soon.', 'error');
+        setWlStatus('The waitlist isn’t connected yet. Please check back soon.', 'error');
         return;
       }
 

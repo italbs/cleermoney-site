@@ -10,15 +10,17 @@
   <!-- Open Graph -->
   <meta property="og:title" content="Cleer Money: Know Your Wants from Your Needs" />
   <meta property="og:description" content="Connect your Australian bank account, swipe transactions as Want or Need, and finally get clarity on your spending." />
-  <meta property="og:image" content="https://cleermoney.com.au/icon.png" />
+  <meta property="og:image" content="https://cleermoney.com.au/assets/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:url" content="https://cleermoney.com.au/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Cleer Money" />
   <meta property="og:locale" content="en_AU" />
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Cleer Money: Know Your Wants from Your Needs" />
   <meta name="twitter:description" content="Connect your Australian bank account, swipe transactions as Want or Need, and finally get clarity on your spending." />
-  <meta name="twitter:image" content="https://cleermoney.com.au/icon.png" />
+  <meta name="twitter:image" content="https://cleermoney.com.au/assets/og-cover.png" />
 
   <meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#1e1f1c" media="(prefers-color-scheme: dark)" />
@@ -84,7 +86,7 @@
   }
   </script>
 </head>
-<body>
+<body data-page="home">
 
   <a class="skip-link" href="#main">Skip to content</a>
 
@@ -101,8 +103,8 @@
           <li><a href="#features">Features</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="help.html">Support</a></li>
-          <!-- Pre-launch: points to the waitlist. Swap to the App Store URL at launch. -->
-          <li><a href="#waitlist" class="nav__cta">Join waitlist</a></li>
+          <!-- Destination + label come from assets/js/config.js (LAUNCH_STATE). -->
+          <li><a href="#waitlist" class="nav__cta" data-cta="nav">Join waitlist</a></li>
         </ul>
       </nav>
       <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -117,16 +119,17 @@
     <a href="#features">Features</a>
     <a href="#pricing">Pricing</a>
     <a href="help.html">Support</a>
-    <a href="#waitlist" class="btn btn--primary">Join waitlist</a>
+    <a href="#waitlist" class="btn btn--primary" data-cta="nav">Join waitlist</a>
   </div>
 
   <main id="main">
 
     <!-- HERO -->
     <section class="hero">
-      <p class="hero__badge">Built for Australians · Open Banking (CDR)</p>
+      <p class="hero__badge" data-launch-badge>Built for Australians · Open Banking (CDR)</p>
 
-      <h1>Finally know your <span class="accent">wants</span><br />from your needs</h1>
+      <h1>Your bank knows what you <span class="accent">bought</span>.<br />
+          It has no idea what any of it <span class="accent">meant</span> to you.</h1>
 
       <p class="hero__sub">
         Cleer Money connects to your Australian bank account and turns every transaction
@@ -134,11 +137,11 @@
       </p>
 
       <div class="hero__actions">
-        <!-- Pre-launch: points to the waitlist. Swap back to the App Store button at launch. -->
-        <a href="#waitlist" class="btn btn--primary">Join the waitlist</a>
-        <a href="#how" class="btn btn--ghost">See how it works →</a>
+        <!-- Destination + label come from assets/js/config.js (LAUNCH_STATE). -->
+        <a href="#waitlist" class="btn btn--primary" data-cta="hero">Join the waitlist</a>
+        <a href="/try/" class="btn btn--ghost">Try the swipe, no signup</a>
       </div>
-      <p class="hero__finePrint">Free to start · Pro from $7.99/month</p>
+      <p class="hero__finePrint" data-launch-note>Free to start · Pro from $7.99/month</p>
 
       <!-- ANIMATED PHONE: connect → categorise → swipe → understand -->
       <div class="hero__phone">
@@ -295,7 +298,7 @@
         <div class="step reveal" style="transition-delay:0.08s">
           <div class="step__num">2</div>
           <h3>Categorise</h3>
-          <p>Transactions sync and sort themselves into categories automatically: groceries, transport, streaming and more. No CSVs, no data entry.</p>
+          <p>On Pro, transactions sync and categorise themselves automatically through your bank connection: groceries, transport, streaming and more. No spreadsheets, no data entry. On Lite, import a CSV to get the same swipe experience.</p>
         </div>
         <div class="step reveal" style="transition-delay:0.16s">
           <div class="step__num">3</div>
@@ -315,7 +318,7 @@
       <div class="reveal">
         <p class="kicker">Try it yourself</p>
         <h2>Want or Need? You decide.</h2>
-        <p class="section__sub" style="margin:0 auto;">This is the whole app in one gesture. Swipe or tap each purchase the way you would in Cleer Money — no sign-up, right here in your browser.</p>
+        <p class="section__sub" style="margin:0 auto;">This is the whole app in one gesture. Swipe or tap each purchase the way you would in Cleer Money. No sign-up, right here in your browser.</p>
       </div>
 
       <div class="demo__stage reveal">
@@ -392,7 +395,7 @@
         </div>
         <p class="demo__result-msg" id="demoMsg"></p>
         <div class="demo__result-actions">
-          <a href="#waitlist" class="btn btn--primary">Join the waitlist</a>
+          <a href="#waitlist" class="btn btn--primary" data-cta="hero">Join the waitlist</a>
           <button class="btn btn--ghost" id="demoReset" type="button">Try again</button>
         </div>
       </div>
@@ -461,15 +464,15 @@
             <li class="is-off"><span class="tick tick--off"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-width="2"><path d="M3 6h6"/></svg></span>Bank connection</li>
             <li class="is-off"><span class="tick tick--off"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-width="2"><path d="M3 6h6"/></svg></span>Full insights &amp; Smart Rules</li>
           </ul>
-          <!-- Pre-launch: points to the waitlist. Swap to the App Store URL at launch. -->
-          <a href="#waitlist" class="btn btn--ghost" style="width:100%;">Get started free</a>
+          <!-- Destination + label come from assets/js/config.js (LAUNCH_STATE). -->
+          <a href="#waitlist" class="btn btn--ghost" style="width:100%;" data-cta="lite">Get started free</a>
         </div>
 
         <div class="plan plan--pro reveal" style="transition-delay:0.08s">
           <span class="plan__badge">Most popular</span>
           <p class="plan__name">Cleer Pro</p>
           <p class="plan__price">$7.99</p>
-          <p class="plan__period">per month · or $79.99/year (save ~17%)</p>
+          <p class="plan__period">per month · or $79.99/year</p>
           <ul>
             <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>Everything in Lite</li>
             <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>Automatic bank connection (CDR)</li>
@@ -478,8 +481,8 @@
             <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>Smart Rules &amp; custom categories</li>
             <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>Weekly money summary</li>
           </ul>
-          <!-- Pre-launch: points to the waitlist. Swap to the App Store URL at launch. -->
-          <a href="#waitlist" class="btn btn--green" style="width:100%;">Get Cleer Pro</a>
+          <!-- Destination + label come from assets/js/config.js (LAUNCH_STATE). -->
+          <a href="#waitlist" class="btn btn--green" style="width:100%;" data-cta="pro">Get Cleer Pro</a>
         </div>
       </div>
 
@@ -504,7 +507,7 @@
           <input class="waitlist__hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
         </form>
         <p class="waitlist__status" id="waitlistStatus" role="status" aria-live="polite"></p>
-        <p class="waitlist__fine">No spam — just one email when we launch. Unsubscribe anytime.</p>
+        <p class="waitlist__fine">No spam, just one email when we launch. Unsubscribe anytime.</p>
       </div>
     </section>
 
@@ -558,11 +561,12 @@
       </div>
       <div class="footer__bottom">
         <span>© <span data-year>2026</span> Cleer Co Pty Ltd · ABN 67 699 655 948 · ACN 699 655 948</span>
-        <span>Made in Australia 🇦🇺</span>
+        <span>Made in Australia</span>
       </div>
     </div>
   </footer>
 
+  <script src="assets/js/config.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>

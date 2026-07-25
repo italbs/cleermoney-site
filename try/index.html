@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Try the Want/Need swipe | Cleer Money</title>
+  <meta name="description" content="The whole Cleer Money idea in one gesture: swipe five real purchases as Want or Need and see your split. No sign-up, right in your browser." />
+  <link rel="canonical" href="https://cleermoney.com.au/try/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Want or Need? Try the swipe." />
+  <meta property="og:description" content="Swipe five purchases as Want or Need and see your split. No sign-up, try it right in your browser." />
+  <meta property="og:image" content="https://cleermoney.com.au/assets/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://cleermoney.com.au/try/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Cleer Money" />
+  <meta property="og:locale" content="en_AU" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Want or Need? Try the swipe." />
+  <meta name="twitter:description" content="Swipe five purchases as Want or Need and see your split. No sign-up, try it right in your browser." />
+  <meta name="twitter:image" content="https://cleermoney.com.au/assets/og-cover.png" />
+
+  <meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1e1f1c" media="(prefers-color-scheme: dark)" />
+  <meta name="apple-mobile-web-app-title" content="Cleer Money" />
+
+  <link rel="icon" type="image/png" href="/icon.png" />
+  <link rel="apple-touch-icon" href="/icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+
+  <style>
+    /* /try is intentionally chrome-free: no nav, no pricing, no waitlist above the fold.
+       These few rules centre the demo as a standalone, shareable page. */
+    .try-page { min-height: 100vh; display: flex; flex-direction: column; }
+    .try-top { display: flex; justify-content: center; padding: 28px 20px 4px; }
+    .try-top .brand__name { font-size: 20px; }
+    .try-main { flex: 1 0 auto; display: flex; align-items: center; justify-content: center; padding: 12px 20px 40px; }
+    .try-main .demo { width: 100%; max-width: 640px; }
+    .try-main .section { padding-top: 8px; padding-bottom: 8px; }
+    .try-foot { flex: none; text-align: center; padding: 24px 20px 34px; border-top: 1px solid var(--border); }
+    .try-foot a { color: var(--secondary); text-decoration: none; margin: 0 10px; font-size: 14px; }
+    .try-foot a:hover { text-decoration: underline; }
+    .demo__reset-link { background: none; border: 0; color: var(--secondary); font: inherit;
+                        font-size: 15px; text-decoration: underline; cursor: pointer; margin-top: 14px; }
+  </style>
+</head>
+<body data-page="try">
+
+  <a class="skip-link" href="#demoDeck">Skip to the demo</a>
+
+  <div class="try-page">
+
+    <!-- Minimal brand mark only (no nav links, by design) -->
+    <div class="try-top">
+      <a href="/" class="brand" aria-label="Cleer Money home">
+        <span class="brand__mark"><img src="/icon.png" alt="" width="30" height="30" /></span>
+        <span class="brand__name">Cleer<span>Money</span></span>
+      </a>
+    </div>
+
+    <main class="try-main" id="main">
+      <section class="section demo" id="try">
+        <div>
+          <p class="kicker">Try it yourself</p>
+          <h1 style="font-size:34px;line-height:1.1;text-align:center;margin:6px 0 10px;">Want or Need? You decide.</h1>
+          <p class="section__sub" style="margin:0 auto;">The whole app in one gesture. Swipe or tap each purchase the way you would in Cleer Money. No sign-up, right here in your browser.</p>
+        </div>
+
+        <div class="demo__stage">
+          <div class="demo__deck" id="demoDeck" tabindex="0" role="group" aria-label="Sample transactions: press the left arrow key for Want, the right arrow key for Need">
+            <div class="demo__card">
+              <span class="demo__stamp demo__stamp--want" aria-hidden="true">WANT</span>
+              <span class="demo__stamp demo__stamp--need" aria-hidden="true">NEED</span>
+              <span class="demo__card-icon" aria-hidden="true">🛒</span>
+              <span class="demo__card-merchant">Woolworths</span>
+              <span class="demo__card-cat">Groceries</span>
+              <span class="demo__card-amount">−$94.50</span>
+              <span class="demo__card-date">Today</span>
+            </div>
+            <div class="demo__card">
+              <span class="demo__stamp demo__stamp--want" aria-hidden="true">WANT</span>
+              <span class="demo__stamp demo__stamp--need" aria-hidden="true">NEED</span>
+              <span class="demo__card-icon" aria-hidden="true">🎬</span>
+              <span class="demo__card-merchant">Netflix</span>
+              <span class="demo__card-cat">Streaming</span>
+              <span class="demo__card-amount">−$15.99</span>
+              <span class="demo__card-date">Yesterday</span>
+            </div>
+            <div class="demo__card">
+              <span class="demo__stamp demo__stamp--want" aria-hidden="true">WANT</span>
+              <span class="demo__stamp demo__stamp--need" aria-hidden="true">NEED</span>
+              <span class="demo__card-icon" aria-hidden="true">⛽</span>
+              <span class="demo__card-merchant">BP Fuel</span>
+              <span class="demo__card-cat">Transport</span>
+              <span class="demo__card-amount">−$72.10</span>
+              <span class="demo__card-date">Sunday</span>
+            </div>
+            <div class="demo__card">
+              <span class="demo__stamp demo__stamp--want" aria-hidden="true">WANT</span>
+              <span class="demo__stamp demo__stamp--need" aria-hidden="true">NEED</span>
+              <span class="demo__card-icon" aria-hidden="true">🍔</span>
+              <span class="demo__card-merchant">Uber Eats</span>
+              <span class="demo__card-cat">Takeaway</span>
+              <span class="demo__card-amount">−$38.40</span>
+              <span class="demo__card-date">Saturday</span>
+            </div>
+            <div class="demo__card">
+              <span class="demo__stamp demo__stamp--want" aria-hidden="true">WANT</span>
+              <span class="demo__stamp demo__stamp--need" aria-hidden="true">NEED</span>
+              <span class="demo__card-icon" aria-hidden="true">☕</span>
+              <span class="demo__card-merchant">Campos Coffee</span>
+              <span class="demo__card-cat">Cafés</span>
+              <span class="demo__card-amount">−$6.20</span>
+              <span class="demo__card-date">Friday</span>
+            </div>
+          </div>
+
+          <div class="demo__controls">
+            <button class="demo__btn demo__btn--want" data-choice="want" type="button">
+              <span class="demo__btn-arrow" aria-hidden="true">←</span> Want
+            </button>
+            <div class="demo__progress"><span id="demoCount">0</span> / <span id="demoTotal">5</span></div>
+            <button class="demo__btn demo__btn--need" data-choice="need" type="button">
+              Need <span class="demo__btn-arrow" aria-hidden="true">→</span>
+            </button>
+          </div>
+          <p class="demo__hint">Swipe the card, tap a button, or use your ← → arrow keys.</p>
+        </div>
+
+        <div class="demo__result" id="demoResult" hidden>
+          <p class="kicker">Your week, sorted</p>
+          <h2 class="demo__result-title">Here's your Want / Need split</h2>
+          <div class="demo-split" aria-hidden="true">
+            <span class="demo-split__need" id="demoNeedBar"></span>
+            <span class="demo-split__want" id="demoWantBar"></span>
+          </div>
+          <div class="demo-split__legend">
+            <span class="needs">Needs <span id="demoNeedPct">0</span>%</span>
+            <span class="wants">Wants <span id="demoWantPct">0</span>%</span>
+          </div>
+          <p class="demo__result-msg" id="demoMsg"></p>
+          <div class="demo__result-actions" style="flex-direction:column;align-items:center;gap:6px;">
+            <!-- Single conversion CTA. Destination + label come from /assets/js/config.js (LAUNCH_STATE). -->
+            <a href="/#waitlist" class="btn btn--primary" data-cta="hero">Join the waitlist</a>
+            <button class="demo__reset-link" id="demoReset" type="button">↺ Try again</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="try-foot">
+      <a href="/">Home</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/cdr">CDR Policy</a>
+      <p style="margin-top:14px;color:var(--muted);font-size:13px;">© <span data-year>2026</span> Cleer Co Pty Ltd · Made in Australia</p>
+    </footer>
+
+  </div>
+
+  <script src="/assets/js/config.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>

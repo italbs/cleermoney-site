@@ -10,15 +10,17 @@
   <!-- Open Graph -->
   <meta property="og:title" content="Money awareness: see your spending without budgeting" />
   <meta property="og:description" content="A budget-free way to understand your spending. The want or need method, and why it works when budgets do not." />
-  <meta property="og:image" content="https://cleermoney.com.au/icon.png" />
+  <meta property="og:image" content="https://cleermoney.com.au/assets/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:url" content="https://cleermoney.com.au/method/" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Cleer Money" />
   <meta property="og:locale" content="en_AU" />
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Money awareness: see your spending without budgeting" />
   <meta name="twitter:description" content="A budget-free way to understand your spending. The want or need method, and why it works when budgets do not." />
-  <meta name="twitter:image" content="https://cleermoney.com.au/icon.png" />
+  <meta name="twitter:image" content="https://cleermoney.com.au/assets/og-cover.png" />
 
   <meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#1e1f1c" media="(prefers-color-scheme: dark)" />
@@ -113,7 +115,7 @@
           <li><a href="/budgeting-alternatives-australia/">Compare</a></li>
           <li><a href="/faq/">FAQ</a></li>
           <li><a href="/help">Support</a></li>
-          <li><a href="/#waitlist" class="nav__cta">Join waitlist</a></li>
+          <li><a href="/#waitlist" class="nav__cta" data-cta="nav">Join waitlist</a></li>
         </ul>
       </nav>
       <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -128,7 +130,7 @@
     <a href="/budgeting-alternatives-australia/">Compare</a>
     <a href="/faq/">FAQ</a>
     <a href="/help">Support</a>
-    <a href="/#waitlist" class="btn btn--primary">Join waitlist</a>
+    <a href="/#waitlist" class="btn btn--primary" data-cta="nav">Join waitlist</a>
   </div>
 
   <main id="main">
@@ -172,7 +174,6 @@
         <p>A need is spending you could not reasonably avoid: rent, groceries, power, transport to work. A want is discretionary: a second coffee, a streaming service you forgot you had, a spur-of-the-moment order. The line is personal, and that is the point. You decide where it sits for your life.</p>
         <p>In Cleer Money the process is deliberately small. Your transactions import automatically, then each one becomes a card you swipe: left for want, right for need. It takes seconds. The app learns your recurring merchants with Smart Rules, so the coffee shop you visit every morning does not need a decision every time.</p>
         <div class="callout">
-          <span aria-hidden="true">💡</span>
           <p>An honest example. In one week you might swipe a $94 grocery shop as a need, a $16 streaming charge as a want, a $72 fuel top up as a need and a $38 late-night takeaway as a want. Nothing is judged. By Sunday you can see the split, and the takeaway you barely remember ordering is suddenly hard to miss.</p>
         </div>
       </div>
@@ -253,11 +254,12 @@
       </div>
       <div class="footer__bottom">
         <span>© <span data-year>2026</span> Cleer Co Pty Ltd · ABN 67 699 655 948 · ACN 699 655 948</span>
-        <span>Made in Australia 🇦🇺</span>
+        <span>Made in Australia</span>
       </div>
     </div>
   </footer>
 
+  <script src="/assets/js/config.js" defer></script>
   <script src="/assets/js/main.js" defer></script>
 </body>
 </html>

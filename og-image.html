@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cleer Money social share image (1200×630)</title>
+  <!--
+    HOW TO USE THIS FILE (one-off, ~30 seconds):
+    1. Open this file in a browser at 100% zoom.
+    2. Screenshot ONLY the 1200×630 card below (it has a subtle outline while
+       editing; the outline is not part of the capture area colour).
+       - Easiest: DevTools → device toolbar → set 1200×630 → capture screenshot.
+       - Or any screenshot tool, cropped to the card edges.
+    3. Save it as  assets/og-cover.png  (overwrite the placeholder already there).
+    That's it. Every page's og:image / twitter:image already points at that file.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f6f5f2; --surface: #ffffff; --ink: #1e1f1c; --secondary: #5f5f5a;
+      --border: #e6e3dd; --green: #16a34a; --green-soft: #dcfce7; --green-deep: #14532d;
+      --want: #c55a3f; --want-bg: #f8d7da; --need: #2d7a4e;
+      --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #d9d7d1; display: flex; align-items: center; justify-content: center;
+           min-height: 100vh; font-family: var(--font); padding: 40px; }
+
+    /* THE CAPTURE AREA: exactly 1200×630 */
+    .og {
+      width: 1200px; height: 630px; flex: none;
+      background: radial-gradient(1200px 700px at 78% -10%, #eef7f0 0%, var(--bg) 55%);
+      display: grid; grid-template-columns: 1.15fr 1fr; align-items: center;
+      padding: 72px 80px; position: relative; overflow: hidden;
+      outline: 1px dashed rgba(30,31,28,0.15); /* editing guide only */
+    }
+
+    .brand { display: flex; align-items: center; gap: 14px; margin-bottom: 30px; }
+    .brand__mark { width: 52px; height: 52px; border-radius: 14px; }
+    .brand__name { font-size: 26px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
+    .brand__name span { color: var(--green); }
+
+    .headline { font-size: 62px; line-height: 1.04; font-weight: 800; color: var(--ink);
+                letter-spacing: -0.03em; margin-bottom: 26px; }
+    .headline .accent { color: var(--green); }
+    .sub { font-size: 24px; line-height: 1.4; color: var(--secondary); font-weight: 500; max-width: 30ch; }
+
+    .badge { display: inline-flex; align-items: center; gap: 9px; margin-top: 34px;
+             background: var(--green-soft); color: var(--green-deep); font-weight: 700;
+             font-size: 18px; padding: 11px 18px; border-radius: 999px; }
+    .badge__dot { width: 9px; height: 9px; border-radius: 50%; background: var(--green); }
+
+    /* Swipe card with the dollar figure */
+    .stage { display: flex; justify-content: center; align-items: center; position: relative; }
+    .card {
+      width: 340px; background: var(--surface); border: 1px solid var(--border);
+      border-radius: 30px; padding: 40px 34px 34px; text-align: center; position: relative;
+      box-shadow: 0 2px 4px rgba(30,31,28,0.05), 0 30px 60px rgba(30,31,28,0.14);
+      transform: rotate(4deg);
+    }
+    .card__behind {
+      position: absolute; inset: 0; background: var(--surface); border: 1px solid var(--border);
+      border-radius: 30px; transform: rotate(-6deg) translateY(10px); z-index: -1;
+      box-shadow: 0 20px 40px rgba(30,31,28,0.10);
+    }
+    .stamp { position: absolute; top: 26px; left: 26px; font-size: 20px; font-weight: 800;
+             letter-spacing: 0.08em; color: var(--want); border: 3px solid var(--want);
+             border-radius: 10px; padding: 4px 12px; transform: rotate(-14deg); opacity: 0.92; }
+    .card__icon { font-size: 60px; line-height: 1; display: block; margin-bottom: 18px; }
+    .card__merchant { font-size: 30px; font-weight: 700; color: var(--ink); }
+    .card__cat { font-size: 15px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--secondary); margin-top: 6px; }
+    .card__amount { font-size: 46px; font-weight: 800; color: var(--ink); margin-top: 22px; letter-spacing: -0.02em; }
+    .card__hint { font-size: 16px; color: var(--secondary); margin-top: 10px; font-weight: 500; }
+    .chips { display: flex; gap: 12px; justify-content: center; margin-top: 22px; }
+    .chip { font-size: 15px; font-weight: 700; padding: 8px 16px; border-radius: 999px; }
+    .chip--want { color: var(--want); background: var(--want-bg); }
+    .chip--need { color: var(--need); background: #d4edda; }
+  </style>
+</head>
+<body>
+  <div class="og">
+    <div class="og__left">
+      <div class="brand">
+        <img class="brand__mark" src="icon.png" alt="" />
+        <span class="brand__name">Cleer<span>Money</span></span>
+      </div>
+      <h1 class="headline">Know your <span class="accent">wants</span><br />from your needs.</h1>
+      <p class="sub">Connect your bank, swipe each purchase Want or Need. No budgets, no spreadsheets.</p>
+      <span class="badge"><span class="badge__dot"></span>Open Banking (CDR) · Made in Australia</span>
+    </div>
+
+    <div class="stage">
+      <div class="card">
+        <span class="card__behind"></span>
+        <span class="stamp">WANT</span>
+        <span class="card__icon">🍔</span>
+        <span class="card__merchant">Uber Eats</span>
+        <span class="card__cat">Takeaway</span>
+        <span class="card__amount">−$38.40</span>
+        <span class="card__hint">Need or Want?</span>
+        <div class="chips">
+          <span class="chip chip--want">← Want</span>
+          <span class="chip chip--need">Need →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
