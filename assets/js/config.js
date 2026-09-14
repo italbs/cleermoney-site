@@ -1,8 +1,9 @@
 /* Cleer Money launch configuration (single source of truth for every primary CTA).
  *
- * LAUNCH DAY: change LAUNCH_STATE from 'waitlist' to 'live' and paste the real
- * App Store URL into states.live.href below. That one edit re-points and
- * re-labels every primary CTA across the whole site. Nothing else to touch.
+ * LAUNCHED 2026-09-14: LAUNCH_STATE is 'live' and states.live.href holds the real
+ * App Store URL. That one value re-points and re-labels every primary CTA across
+ * the whole site. The static HTML now carries the same live wording as its no-JS
+ * fallback, so move the two together if the destination ever changes.
  *
  * Loaded before main.js on every page. main.js reads window.CLEER_LAUNCH and
  * applies it to any element tagged [data-cta], [data-launch-badge] or
@@ -12,8 +13,8 @@
   'use strict';
 
   // ─────────────────────────────────────────────────────────────
-  // Flip THIS one value on launch day: 'waitlist' | 'live'
-  var LAUNCH_STATE = 'waitlist';
+  // 'waitlist' | 'live' — flipped to 'live' on launch day, 2026-09-14.
+  var LAUNCH_STATE = 'live';
   // ─────────────────────────────────────────────────────────────
 
   var STATES = {
@@ -31,10 +32,8 @@
       note:  'Free to start · Pro from $7.99/month'
     },
     live: {
-      // TODO(launch): replace with the real App Store listing URL before flipping
-      // LAUNCH_STATE to 'live'. Leaving the placeholder here is harmless while the
-      // site stays in 'waitlist' mode; nothing reads it until the flip.
-      href: 'https://apps.apple.com/au/app/id0000000000',
+      // Canonical listing URL (slug form, so it resolves without a redirect hop).
+      href: 'https://apps.apple.com/au/app/cleer-money-spending-tracker/id6761325697',
       labels: {
         hero: 'Download now',
         nav:  'Download',

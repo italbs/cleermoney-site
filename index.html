@@ -79,6 +79,8 @@
     "operatingSystem": "iOS",
     "applicationCategory": "FinanceApplication",
     "url": "https://cleermoney.com.au",
+    "installUrl": "https://apps.apple.com/au/app/cleer-money-spending-tracker/id6761325697",
+    "downloadUrl": "https://apps.apple.com/au/app/cleer-money-spending-tracker/id6761325697",
     "description": "Cleer Money is an Australian money awareness app that helps you see where your money goes by sorting each transaction into a want or a need. It is a budget-free alternative to budgeting apps.",
     "publisher": { "@id": "https://cleermoney.com.au/#org" },
     "offers": [
@@ -107,7 +109,7 @@
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="help.html">Support</a></li>
           <!-- Destination + label come from assets/js/config.js (LAUNCH_STATE). -->
-          <li><a href="#waitlist" class="nav__cta" data-cta="nav">Join waitlist</a></li>
+          <li><a href="https://apps.apple.com/au/app/cleer-money-spending-tracker/id6761325697" class="nav__cta" data-cta="nav">Download</a></li>
         </ul>
       </nav>
       <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -122,14 +124,14 @@
     <a href="#features">Features</a>
     <a href="#pricing">Pricing</a>
     <a href="help.html">Support</a>
-    <a href="#waitlist" class="btn btn--primary" data-cta="nav">Join waitlist</a>
+    <a href="https://apps.apple.com/au/app/cleer-money-spending-tracker/id6761325697" class="btn btn--primary" data-cta="nav">Download</a>
   </div>
 
   <main id="main">
 
     <!-- HERO -->
     <section class="hero">
-      <p class="hero__badge" data-launch-badge>Built for Australians · Open Banking (CDR)</p>
+      <p class="hero__badge" data-launch-badge>Available now on iOS · Open Banking (CDR)</p>
 
       <h1>Your bank knows what you <span class="accent">bought</span>.<br />
           It has no idea what any of it <span class="accent">meant</span> to you.</h1>
@@ -141,7 +143,7 @@
 
       <div class="hero__actions">
         <!-- Destination + label come from assets/js/config.js (LAUNCH_STATE). -->
-        <a href="#waitlist" class="btn btn--primary" data-cta="hero">Join the waitlist</a>
+        <a href="https://apps.apple.com/au/app/cleer-money-spending-tracker/id6761325697" class="btn btn--primary" data-cta="hero">Download now</a>
         <a href="/try/" class="btn btn--ghost">Try the swipe, no signup</a>
       </div>
       <p class="hero__finePrint" data-launch-note>Free to start · Pro from $7.99/month</p>
@@ -398,7 +400,7 @@
         </div>
         <p class="demo__result-msg" id="demoMsg"></p>
         <div class="demo__result-actions">
-          <a href="#waitlist" class="btn btn--primary" data-cta="hero">Join the waitlist</a>
+          <a href="https://apps.apple.com/au/app/cleer-money-spending-tracker/id6761325697" class="btn btn--primary" data-cta="hero">Download now</a>
           <button class="btn btn--ghost" id="demoReset" type="button">Try again</button>
         </div>
       </div>
@@ -468,7 +470,7 @@
             <li class="is-off"><span class="tick tick--off"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-width="2"><path d="M3 6h6"/></svg></span>Full insights &amp; Smart Rules</li>
           </ul>
           <!-- Destination + label come from assets/js/config.js (LAUNCH_STATE). -->
-          <a href="#waitlist" class="btn btn--ghost" style="width:100%;" data-cta="lite">Get started free</a>
+          <a href="https://apps.apple.com/au/app/cleer-money-spending-tracker/id6761325697" class="btn btn--ghost" style="width:100%;" data-cta="lite">Download free</a>
         </div>
 
         <div class="plan plan--pro reveal" style="transition-delay:0.08s">
@@ -485,32 +487,24 @@
             <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>Weekly money summary</li>
           </ul>
           <!-- Destination + label come from assets/js/config.js (LAUNCH_STATE). -->
-          <a href="#waitlist" class="btn btn--green" style="width:100%;" data-cta="pro">Get Cleer Pro</a>
+          <a href="https://apps.apple.com/au/app/cleer-money-spending-tracker/id6761325697" class="btn btn--green" style="width:100%;" data-cta="pro">Get Cleer Pro</a>
         </div>
       </div>
 
       <p class="pricing-note reveal">Cancel anytime in your Apple ID settings · No lock-in contracts · Prices in AUD</p>
     </section>
 
-    <!-- CTA / WAITLIST -->
+    <!-- CTA / DOWNLOAD -->
+    <!-- Kept id="waitlist" so existing inbound links and anchors still resolve. -->
     <section class="cta" id="waitlist">
       <div class="cta__inner reveal">
         <h2>Your spending is trying to tell you something.<br /><span class="accent">Are you listening?</span></h2>
-        <p>Cleer Money is launching on iOS soon. Join the waitlist and be the first to know the moment it's live.</p>
+        <p>Cleer Money is live on the App Store. Download it free and start seeing where your money actually goes.</p>
 
-        <!-- Waitlist submissions are stored in a Google Sheet via Apps Script -->
-        <form class="waitlist" id="waitlistForm" data-endpoint="https://script.google.com/macros/s/AKfycbz4xPvjJpKsdMXyEi0rYDJ8n_UkAz-TMmO9BPC23Tt7rAKkPFQh-IE_utmyx-X1_B9q/exec" novalidate>
-          <div class="waitlist__row">
-            <input class="waitlist__input" type="email" id="waitlistEmail" name="email"
-                   placeholder="you@example.com" autocomplete="email" inputmode="email"
-                   required aria-label="Email address" />
-            <button type="submit" class="btn btn--green">Join the waitlist</button>
-          </div>
-          <!-- Honeypot: hidden from humans, catches bots -->
-          <input class="waitlist__hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        </form>
-        <p class="waitlist__status" id="waitlistStatus" role="status" aria-live="polite"></p>
-        <p class="waitlist__fine">No spam, just one email when we launch. Unsubscribe anytime.</p>
+        <div class="hero__actions">
+          <a href="https://apps.apple.com/au/app/cleer-money-spending-tracker/id6761325697" class="btn btn--green" data-cta="hero">Download now</a>
+        </div>
+        <p class="waitlist__fine">Free to start · Pro from $7.99/month · Requires iOS</p>
       </div>
     </section>
 
