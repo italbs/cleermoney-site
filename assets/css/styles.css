@@ -231,265 +231,20 @@ p { text-wrap: pretty; }
 .hero__finePrint { margin-top: 18px; font-size: 13px; color: var(--muted); }
 
 /* ============================================================
-   PHONE MOCKUP + ANIMATED APP JOURNEY
-   The screen cycles through 4 scenes on an 18s loop:
-   connect (0–25%) → transactions (25–50%) → swipe (50–75%) → insights (75–100%)
+   APP SCREENSHOTS
+   Real App Store captures, cropped to the device frame
+   (assets/img/app-*.webp, 700x1444, transparent corners).
    ============================================================ */
 .hero__phone { margin-top: 64px; position: relative; }
 .phone-wrap { position: relative; display: inline-block; animation: floaty 5s ease-in-out infinite; }
+.app-shot { display: block; width: 100%; height: auto; filter: drop-shadow(0 36px 48px rgba(30,31,28,0.22)); }
+.hero .app-shot { width: 320px; }
 
-.phone {
-  width: 292px; background: #161714; border-radius: 48px; padding: 11px;
-  box-shadow: 0 50px 100px rgba(30,31,28,0.28), 0 0 0 1px rgba(255,255,255,0.08) inset;
-  position: relative;
-}
-.phone__screen {
-  background: var(--bg); border-radius: 38px; overflow: hidden;
-  aspect-ratio: 9 / 19.5; position: relative;
-  display: flex; flex-direction: column;
-}
-.phone__notch {
-  position: absolute; top: 11px; left: 50%; transform: translateX(-50%);
-  width: 96px; height: 26px; background: #161714; border-radius: 100px; z-index: 6;
-}
-.phone__status {
-  display: flex; justify-content: space-between; padding: 16px 24px 4px;
-  font-size: 11px; font-weight: 600; color: var(--ink); position: relative; z-index: 5;
-}
-.phone__header {
-  display: flex; align-items: center; gap: 7px; padding: 6px 18px 8px; position: relative; z-index: 5;
-}
-.phone__logo { width: 22px; height: 22px; border-radius: 6px; overflow: hidden; }
-.phone__logo img { width: 100%; height: 100%; object-fit: cover; }
-.phone__app-name { font-size: 13px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
-.phone__app-name span { font-weight: 400; }
-
-.phone__stage { flex: 1; position: relative; min-height: 0; }
-
-.phone__tabbar {
-  display: flex; justify-content: space-around; align-items: center;
-  padding: 10px 12px 18px; border-top: 1px solid var(--border);
-  background: var(--bg); position: relative; z-index: 5;
-}
-.phone__tab { font-size: 8px; font-weight: 600; color: #9a9994; display: flex; flex-direction: column; align-items: center; gap: 3px; }
-.phone__tab::before { content: ''; width: 14px; height: 14px; border-radius: 4px; background: currentColor; opacity: 0.55; }
-.phone__tab.is-active { color: var(--green); }
-
-/* Scenes */
-.scene {
-  position: absolute; inset: 0; padding: 4px 16px 10px;
-  display: flex; flex-direction: column; opacity: 0;
-}
-.scene__title { font-size: 15px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 2px; }
-.scene__sub { font-size: 10px; color: var(--muted); margin-bottom: 10px; }
-
-.scene--connect  { animation: scene-slot-1 18s ease-in-out infinite; }
-.scene--txns     { animation: scene-slot-2 18s ease-in-out infinite; }
-.scene--swipe    { animation: scene-slot-3 18s ease-in-out infinite; }
-.scene--insights { animation: scene-slot-4 18s ease-in-out infinite; }
-
-@keyframes scene-slot-1 {
-  0%, 22% { opacity: 1; transform: none; }
-  25%, 96% { opacity: 0; transform: translateY(6px); }
-  100% { opacity: 1; transform: none; }
-}
-@keyframes scene-slot-2 {
-  0%, 23% { opacity: 0; transform: translateY(6px); }
-  27%, 47% { opacity: 1; transform: none; }
-  50%, 100% { opacity: 0; transform: translateY(6px); }
-}
-@keyframes scene-slot-3 {
-  0%, 48% { opacity: 0; transform: translateY(6px); }
-  52%, 72% { opacity: 1; transform: none; }
-  75%, 100% { opacity: 0; transform: translateY(6px); }
-}
-@keyframes scene-slot-4 {
-  0%, 73% { opacity: 0; transform: translateY(6px); }
-  77%, 95% { opacity: 1; transform: none; }
-  98%, 100% { opacity: 0; transform: translateY(6px); }
-}
-
-/* Scene 1 — connect bank */
-.bank-row {
-  display: flex; align-items: center; gap: 9px;
-  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
-  padding: 10px 12px; margin-bottom: 8px;
-  font-size: 11px; font-weight: 600; color: var(--ink); opacity: 0;
-}
-.bank-row__dot { width: 22px; height: 22px; border-radius: 7px; flex-shrink: 0; }
-.bank-row__cta { margin-left: auto; font-size: 9px; font-weight: 700; color: var(--green); }
-.bank-row--1 { animation: rise-1 18s ease infinite; }
-.bank-row--2 { animation: rise-2 18s ease infinite; }
-.bank-row--3 { animation: rise-3 18s ease infinite; }
-@keyframes rise-1 { 0% { opacity: 0; transform: translateY(8px); } 2.5%, 60% { opacity: 1; transform: none; } 70%, 100% { opacity: 0; } }
-@keyframes rise-2 { 0%, 1.5% { opacity: 0; transform: translateY(8px); } 4%, 60% { opacity: 1; transform: none; } 70%, 100% { opacity: 0; } }
-@keyframes rise-3 { 0%, 3% { opacity: 0; transform: translateY(8px); } 5.5%, 60% { opacity: 1; transform: none; } 70%, 100% { opacity: 0; } }
-
-.connect-progress {
-  height: 5px; border-radius: 100px; background: var(--pill-bg);
-  margin: 12px 2px 10px; overflow: hidden;
-}
-.connect-progress span {
-  display: block; height: 100%; width: 100%; border-radius: 100px;
-  background: linear-gradient(90deg, var(--green), var(--green-bright));
-  transform-origin: left; transform: scaleX(0);
-  animation: progress-fill 18s ease-in-out infinite;
-}
-@keyframes progress-fill { 0%, 7% { transform: scaleX(0); } 15%, 60% { transform: scaleX(1); } 70%, 100% { transform: scaleX(0); } }
-
-.connect-done {
-  display: flex; align-items: center; justify-content: center; gap: 6px;
-  font-size: 11px; font-weight: 700; color: var(--need);
-  background: var(--need-bg); border-radius: 12px; padding: 9px;
-  opacity: 0; animation: done-pop 18s ease infinite;
-}
-@keyframes done-pop {
-  0%, 15% { opacity: 0; transform: scale(0.92); }
-  17%, 60% { opacity: 1; transform: scale(1); }
-  70%, 100% { opacity: 0; }
-}
-
-/* Scene 2 — categorised transactions */
-.txn {
-  display: flex; align-items: center; gap: 8px;
-  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
-  padding: 8px 10px; margin-bottom: 7px; opacity: 0;
-}
-.txn__icon {
-  width: 26px; height: 26px; border-radius: 8px; background: var(--pill-bg);
-  display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;
-}
-.txn__meta { min-width: 0; }
-.txn__name { font-size: 10px; font-weight: 700; color: var(--ink); white-space: nowrap; }
-.txn__cat {
-  display: inline-block; font-size: 7.5px; font-weight: 700; letter-spacing: 0.04em;
-  background: var(--pill-bg); color: var(--pill-text); border-radius: 100px; padding: 1px 7px; margin-top: 2px;
-}
-.txn__amount { margin-left: auto; font-size: 10px; font-weight: 800; color: var(--ink); }
-.txn__tag {
-  font-size: 7.5px; font-weight: 800; border-radius: 100px; padding: 2px 7px; letter-spacing: 0.04em;
-}
-.txn__tag--need { background: var(--need-bg); color: var(--need); }
-.txn__tag--want { background: var(--want-bg); color: var(--want); }
-.txn--1 { animation: txn-1 18s ease infinite; }
-.txn--2 { animation: txn-2 18s ease infinite; }
-.txn--3 { animation: txn-3 18s ease infinite; }
-.txn--4 { animation: txn-4 18s ease infinite; }
-@keyframes txn-1 { 0%, 27% { opacity: 0; transform: translateY(8px); } 29.5%, 46% { opacity: 1; transform: none; } 50%, 100% { opacity: 0; } }
-@keyframes txn-2 { 0%, 28.5% { opacity: 0; transform: translateY(8px); } 31%, 46% { opacity: 1; transform: none; } 50%, 100% { opacity: 0; } }
-@keyframes txn-3 { 0%, 30% { opacity: 0; transform: translateY(8px); } 32.5%, 46% { opacity: 1; transform: none; } 50%, 100% { opacity: 0; } }
-@keyframes txn-4 { 0%, 31.5% { opacity: 0; transform: translateY(8px); } 34%, 46% { opacity: 1; transform: none; } 50%, 100% { opacity: 0; } }
-
-/* Scene 3 — Want/Need swipe */
-.swipe-stack { flex: 1; position: relative; margin: 4px 2px 8px; min-height: 0; }
-.swipe-card {
-  position: absolute; inset: 0;
-  background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
-  box-shadow: 0 6px 20px rgba(30,31,28,0.07);
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
-  padding: 14px;
-}
-.swipe-card__icon {
-  width: 44px; height: 44px; border-radius: 13px; background: var(--pill-bg);
-  display: flex; align-items: center; justify-content: center; font-size: 21px;
-}
-.swipe-card__merchant { font-size: 13px; font-weight: 800; color: var(--ink); }
-.swipe-card__date { font-size: 8px; font-weight: 700; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; }
-.swipe-card__amount { font-size: 26px; font-weight: 800; color: var(--ink); letter-spacing: -0.04em; }
-.swipe-card__hint { font-size: 9px; font-weight: 600; color: var(--muted); }
-
-.swipe-card--front { z-index: 2; animation: card-front 18s ease-in-out infinite; }
-.swipe-card--back  { z-index: 1; transform: scale(0.94) translateY(8px); animation: card-back 18s ease-in-out infinite; }
-@keyframes card-front {
-  0%, 56% { transform: none; opacity: 1; }
-  63%, 100% { transform: translateX(135%) rotate(14deg); opacity: 0; }
-}
-@keyframes card-back {
-  0%, 57% { transform: scale(0.94) translateY(8px); opacity: 1; }
-  62%, 64.5% { transform: scale(1) translateY(0); opacity: 1; }
-  71%, 100% { transform: translateX(-135%) rotate(-14deg) ; opacity: 0; }
-}
-
-.stamp {
-  position: absolute; top: 12px; font-size: 12px; font-weight: 800; letter-spacing: 0.1em;
-  border: 2px solid; border-radius: 8px; padding: 3px 10px; opacity: 0; background: var(--surface);
-}
-.stamp--need { left: 12px; color: var(--need); border-color: var(--need); transform: rotate(-12deg); animation: stamp-need 18s ease infinite; }
-.stamp--want { right: 12px; color: var(--want); border-color: var(--want); transform: rotate(12deg); animation: stamp-want 18s ease infinite; }
-@keyframes stamp-need { 0%, 55% { opacity: 0; } 56.5%, 62% { opacity: 1; } 63%, 100% { opacity: 0; } }
-@keyframes stamp-want { 0%, 64% { opacity: 0; } 65.5%, 70% { opacity: 1; } 71%, 100% { opacity: 0; } }
-
-.swipe-chips { display: flex; gap: 8px; }
-.swipe-chip {
-  flex: 1; text-align: center; border-radius: 13px; padding: 9px;
-  font-size: 10px; font-weight: 800;
-}
-.swipe-chip--want { background: var(--want-bg); color: var(--want); animation: chip-want 18s ease infinite; }
-.swipe-chip--need { background: var(--need-bg); color: var(--need); animation: chip-need 18s ease infinite; }
-@keyframes chip-need { 0%, 56% { transform: none; } 58% { transform: scale(1.07); } 60%, 100% { transform: none; } }
-@keyframes chip-want { 0%, 65% { transform: none; } 67% { transform: scale(1.07); } 69%, 100% { transform: none; } }
-
-/* Scene 4 — insights */
-.split-bar {
-  display: flex; height: 14px; border-radius: 100px; overflow: hidden;
-  background: var(--pill-bg); margin: 4px 0 4px;
-}
-.split-bar__need {
-  background: var(--green); width: 64%;
-  transform-origin: left; transform: scaleX(0); border-radius: 100px 0 0 100px;
-  animation: split-need 18s ease-in-out infinite;
-}
-.split-bar__want {
-  background: var(--want); width: 36%;
-  transform-origin: right; transform: scaleX(0); border-radius: 0 100px 100px 0;
-  animation: split-want 18s ease-in-out infinite;
-}
-@keyframes split-need { 0%, 78% { transform: scaleX(0); } 84%, 95% { transform: scaleX(1); } 98%, 100% { transform: scaleX(0); } }
-@keyframes split-want { 0%, 79% { transform: scaleX(0); } 85%, 95% { transform: scaleX(1); } 98%, 100% { transform: scaleX(0); } }
-
-.split-legend { display: flex; justify-content: space-between; font-size: 8.5px; font-weight: 700; margin-bottom: 10px; }
-.split-legend .needs { color: var(--need); }
-.split-legend .wants { color: var(--want); }
-
-.insight-card {
-  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
-  padding: 12px; margin-bottom: 8px;
-}
-.insight-card__label { font-size: 7.5px; font-weight: 800; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
-.bars { display: flex; align-items: flex-end; gap: 7px; height: 56px; }
-.bars span {
-  flex: 1; border-radius: 5px 5px 0 0; background: var(--green-soft);
-  transform-origin: bottom; transform: scaleY(0);
-}
-.bars span:nth-child(1) { height: 38%; animation: bar-grow 18s ease infinite; }
-.bars span:nth-child(2) { height: 62%; animation: bar-grow-2 18s ease infinite; }
-.bars span:nth-child(3) { height: 46%; animation: bar-grow-3 18s ease infinite; }
-.bars span:nth-child(4) { height: 84%; background: var(--green); animation: bar-grow-4 18s ease infinite; }
-@keyframes bar-grow   { 0%, 78%   { transform: scaleY(0); } 82%, 95% { transform: scaleY(1); } 98%, 100% { transform: scaleY(0); } }
-@keyframes bar-grow-2 { 0%, 79%   { transform: scaleY(0); } 83%, 95% { transform: scaleY(1); } 98%, 100% { transform: scaleY(0); } }
-@keyframes bar-grow-3 { 0%, 80%   { transform: scaleY(0); } 84%, 95% { transform: scaleY(1); } 98%, 100% { transform: scaleY(0); } }
-@keyframes bar-grow-4 { 0%, 81%   { transform: scaleY(0); } 85%, 95% { transform: scaleY(1); } 98%, 100% { transform: scaleY(0); } }
-.bars-labels { display: flex; gap: 7px; margin-top: 5px; }
-.bars-labels span { flex: 1; text-align: center; font-size: 7.5px; font-weight: 600; color: var(--muted); }
-
-.insight-stat {
-  display: flex; align-items: center; gap: 7px;
-  font-size: 10px; font-weight: 700; color: var(--need);
-  background: var(--need-bg); border-radius: 12px; padding: 8px 10px;
-  opacity: 0; animation: stat-in 18s ease infinite;
-}
-@keyframes stat-in { 0%, 84% { opacity: 0; transform: translateY(6px); } 87%, 95% { opacity: 1; transform: none; } 98%, 100% { opacity: 0; } }
-
-/* Floating chips beside phone */
-.float-chip {
-  position: absolute; background: var(--surface); border: 1px solid var(--border);
-  border-radius: 14px; padding: 9px 14px; box-shadow: var(--shadow-card);
-  font-size: 12px; font-weight: 600; color: var(--ink); white-space: nowrap;
-  display: flex; align-items: center; gap: 7px;
-}
-.float-chip--streak { top: 18%; right: -128px; }
-.float-chip--saved { bottom: 24%; left: -138px; color: var(--green); }
-.float-chip i { font-style: normal; }
+.screens { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 56px; }
+.screen { text-align: center; }
+.screen .app-shot { max-width: 250px; margin: 0 auto 26px; }
+.screen h3 { font-size: 19px; margin-bottom: 8px; }
+.screen p { font-size: 15px; color: var(--secondary); line-height: 1.7; max-width: 290px; margin: 0 auto; }
 
 /* ============================================================
    TRUST BAR
@@ -580,7 +335,12 @@ p { text-wrap: pretty; }
 .plan ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; }
 .plan li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--ink-soft); }
 .plan--pro li { color: var(--dark-text); }
-.plan li.is-off { color: var(--muted); }
+.plan li.is-off { color: var(--muted); text-decoration: line-through; text-decoration-color: currentColor; }
+.plan__trial { font-size: 13px; color: var(--dark-secondary); text-align: center; margin-top: 12px; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
 .tick {
   width: 19px; height: 19px; border-radius: 50%; background: var(--green-soft);
   display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
@@ -815,6 +575,10 @@ td:first-child { font-weight: 600; color: var(--ink); white-space: nowrap; }
 .demo-split__legend { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; margin-bottom: 20px; }
 .demo-split__legend .needs { color: var(--need); }
 .demo-split__legend .wants { color: var(--want); }
+.demo__pace { margin: 0 0 26px; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.demo__pace-label { font-size: 14px; font-weight: 600; color: var(--secondary); }
+.demo__pace-num { font-size: clamp(44px, 7vw, 60px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; color: var(--want); }
+.demo__pace-note { font-size: 12px; color: var(--muted); margin-top: 6px; }
 .demo__result-msg { font-size: 16px; color: var(--secondary); line-height: 1.7; margin-bottom: 26px; }
 .demo__result-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
@@ -873,9 +637,9 @@ td:first-child { font-weight: 600; color: var(--ink); white-space: nowrap; }
   .steps, .features, .pricing { grid-template-columns: 1fr; }
   .pricing { max-width: 420px; }
   .trust__items { gap: 18px 28px; }
-  .float-chip { display: none; }
   .hero__phone { margin-top: 44px; }
-  .phone { width: 256px; }
+  .hero .app-shot { width: 260px; }
+  .screens { grid-template-columns: 1fr; gap: 56px; }
   .cta__inner { padding: 56px 26px; border-radius: 28px; }
   .footer__top { flex-direction: column; gap: 32px; }
   .footer__cols { gap: 36px 48px; }
@@ -885,11 +649,11 @@ td:first-child { font-weight: 600; color: var(--ink); white-space: nowrap; }
 }
 
 @media (max-width: 380px) {
-  .phone { width: 234px; }
+  .hero .app-shot { width: 236px; }
 }
 
 /* ============================================================
-   REDUCED MOTION — static mockup fallback
+   REDUCED MOTION
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -897,18 +661,6 @@ td:first-child { font-weight: 600; color: var(--ink); white-space: nowrap; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .faq-answer { transition: none; }
   .demo__card, .demo-split__need, .demo-split__want { transition: none !important; }
-
-  /* Freeze the journey on the signature Want/Need swipe screen */
-  .scene, .bank-row, .connect-progress span, .connect-done,
-  .txn, .swipe-card, .stamp, .swipe-chip,
-  .split-bar__need, .split-bar__want, .bars span, .insight-stat {
-    animation: none !important;
-  }
-  .scene { opacity: 0; }
-  .scene--swipe { opacity: 1; transform: none; }
-  .swipe-card--front { transform: none; opacity: 1; }
-  .swipe-card--back { transform: scale(0.94) translateY(8px); opacity: 1; }
-  .stamp { opacity: 0; }
 }
 
 /* ============================================================

@@ -77,7 +77,7 @@
 
         <div class="demo__stage">
           <div class="demo__deck" id="demoDeck" tabindex="0" role="group" aria-label="Sample transactions: press the left arrow key for Want, the right arrow key for Need">
-            <div class="demo__card">
+            <div class="demo__card" data-amount="94.50">
               <span class="demo__stamp demo__stamp--want" aria-hidden="true">WANT</span>
               <span class="demo__stamp demo__stamp--need" aria-hidden="true">NEED</span>
               <span class="demo__card-icon" aria-hidden="true">🛒</span>
@@ -86,7 +86,7 @@
               <span class="demo__card-amount">−$94.50</span>
               <span class="demo__card-date">Today</span>
             </div>
-            <div class="demo__card">
+            <div class="demo__card" data-amount="15.99">
               <span class="demo__stamp demo__stamp--want" aria-hidden="true">WANT</span>
               <span class="demo__stamp demo__stamp--need" aria-hidden="true">NEED</span>
               <span class="demo__card-icon" aria-hidden="true">🎬</span>
@@ -95,7 +95,7 @@
               <span class="demo__card-amount">−$15.99</span>
               <span class="demo__card-date">Yesterday</span>
             </div>
-            <div class="demo__card">
+            <div class="demo__card" data-amount="72.10">
               <span class="demo__stamp demo__stamp--want" aria-hidden="true">WANT</span>
               <span class="demo__stamp demo__stamp--need" aria-hidden="true">NEED</span>
               <span class="demo__card-icon" aria-hidden="true">⛽</span>
@@ -104,7 +104,7 @@
               <span class="demo__card-amount">−$72.10</span>
               <span class="demo__card-date">Sunday</span>
             </div>
-            <div class="demo__card">
+            <div class="demo__card" data-amount="38.40">
               <span class="demo__stamp demo__stamp--want" aria-hidden="true">WANT</span>
               <span class="demo__stamp demo__stamp--need" aria-hidden="true">NEED</span>
               <span class="demo__card-icon" aria-hidden="true">🍔</span>
@@ -113,7 +113,7 @@
               <span class="demo__card-amount">−$38.40</span>
               <span class="demo__card-date">Saturday</span>
             </div>
-            <div class="demo__card">
+            <div class="demo__card" data-amount="6.20">
               <span class="demo__stamp demo__stamp--want" aria-hidden="true">WANT</span>
               <span class="demo__stamp demo__stamp--need" aria-hidden="true">NEED</span>
               <span class="demo__card-icon" aria-hidden="true">☕</span>
@@ -139,6 +139,11 @@
         <div class="demo__result" id="demoResult" hidden>
           <p class="kicker">Your week, sorted</p>
           <h2 class="demo__result-title">Here's your Want / Need split</h2>
+          <p class="demo__pace" id="demoPace">
+            <span class="demo__pace-label">If every week looked like this</span>
+            <span class="demo__pace-num" id="demoPaceNum">$0</span>
+            <span class="demo__pace-label">a year on wants</span>
+          </p>
           <div class="demo-split" aria-hidden="true">
             <span class="demo-split__need" id="demoNeedBar"></span>
             <span class="demo-split__want" id="demoWantBar"></span>

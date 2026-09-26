@@ -209,6 +209,7 @@
     var total = cards.length;
     var idx = 0;
     var counts = { need: 0, want: 0 };
+    var wantSpend = 0; // dollars swiped Want; the deck is one week, so x52 is the yearly pace
     var completed = false; // guards showResult so demo_completed fires exactly once
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var stage = document.querySelector('.demo__stage');
@@ -234,6 +235,7 @@
       if (idx >= total) return;
       var card = cards[idx];
       counts[choice]++;
+      if (choice === 'want') wantSpend += parseFloat(card.dataset.amount) || 0;
       idx++;
       if (countEl) countEl.textContent = String(idx);
       var stamp = card.querySelector(choice === 'need' ? '.demo__stamp--need' : '.demo__stamp--want');
@@ -257,9 +259,13 @@
       var wantPct = 100 - needPct;
       document.getElementById('demoNeedPct').textContent = String(needPct);
       document.getElementById('demoWantPct').textContent = String(wantPct);
+      var yearlyWants = Math.round(wantSpend * 52);
+      var paceNum = document.getElementById('demoPaceNum');
+      if (paceNum) paceNum.textContent = '$' + yearlyWants.toLocaleString('en-AU');
       document.getElementById('demoMsg').textContent =
-        needPct >= 70 ? 'Mostly needs. You spend with intention, and Cleer Money helps you keep it that way.'
-        : needPct >= 40 ? 'A balanced week. Seeing the split is the first step to shaping it.'
+        yearlyWants === 0 ? 'Not a single want. Most real weeks look different, and Cleer Money shows you exactly how.'
+        : needPct >= 70 ? 'Mostly needs. You spend with intention, and Cleer Money helps you keep it that way.'
+        : needPct >= 40 ? 'Small purchases add up. Cleer Money shows you your real number from your own spending.'
         : 'Plenty of wants this week, no judgement. Awareness is where better habits start.';
       if (stage) stage.hidden = true;
       result.hidden = false;
@@ -271,11 +277,11 @@
           wantBar.style.width = wantPct + '%';
         });
       });
-      track('demo_completed', { page: PAGE, want_pct: wantPct, need_pct: needPct });
+      track('demo_completed', { page: PAGE, want_pct: wantPct, need_pct: needPct, yearly_wants: yearlyWants });
     }
 
     function reset() {
-      idx = 0; counts = { need: 0, want: 0 }; completed = false;
+      idx = 0; counts = { need: 0, want: 0 }; wantSpend = 0; completed = false;
       if (countEl) countEl.textContent = '0';
       cards.forEach(function (c) {
         c.style.transition = 'none';

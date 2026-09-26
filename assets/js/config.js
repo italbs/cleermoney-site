@@ -38,10 +38,10 @@
         hero: 'Download now',
         nav:  'Download',
         lite: 'Download free',
-        pro:  'Get Cleer Pro'
+        pro:  'Start 7-day free trial'
       },
-      badge: 'Available now on iOS · Open Banking (CDR)',
-      note:  'Free to start · Pro from $7.99/month'
+      badge: 'Available now on iPhone · Open Banking (CDR)',
+      note:  'iPhone only · Free to start · Try Pro free for 7 days'
     }
   };
 
