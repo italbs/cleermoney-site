@@ -739,13 +739,14 @@ td:first-child { font-weight: 600; color: var(--ink); white-space: nowrap; }
 .card .btn--ghost:hover { color: var(--green); border-color: var(--green); }
 .btn--sm { font-size: 14px; padding: 10px 20px; }
 
-.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; margin-top: 6px; }
-.facts div { padding: 14px 0; border-top: 1px solid var(--border); }
-.facts dt {
-  font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 4px;
+.facts { margin-top: 6px; }
+.facts div {
+  display: grid; grid-template-columns: 170px 1fr; gap: 24px;
+  padding: 15px 0; border-top: 1px solid var(--border);
 }
-.facts dd { font-size: 15px; color: var(--ink); line-height: 1.6; }
+.facts div:last-child { padding-bottom: 0; }
+.facts dt { font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.6; }
+.facts dd { font-size: 15px; color: #44443f; line-height: 1.6; }
 
 .founder { display: grid; grid-template-columns: 220px 1fr; gap: 32px; align-items: start; }
 .founder figure { margin: 0; }
@@ -791,7 +792,7 @@ td:first-child { font-weight: 600; color: var(--ink); white-space: nowrap; }
 .contact-card address strong { color: #fff; }
 
 @media (max-width: 760px) {
-  .facts { grid-template-columns: 1fr; }
+  .facts div { grid-template-columns: 1fr; gap: 2px; padding: 13px 0; }
   .founder { grid-template-columns: 1fr; gap: 20px; }
   .asset-list li { flex-direction: column; align-items: flex-start; gap: 10px; }
   .boilerplate { flex-direction: column; }
