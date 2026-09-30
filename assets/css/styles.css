@@ -723,3 +723,77 @@ td:first-child { font-weight: 600; color: var(--ink); white-space: nowrap; }
   .cookie-banner__actions { justify-content: center; }
   .cookie-banner__actions .btn { flex: 1; }
 }
+
+/* ============================================================
+   PRESS / MEDIA KIT (/press/)
+   Reuses the legal-page shell (.legal-hero / .card) with a few
+   additions: facts grid, founder split, asset list, screenshot grid.
+   ============================================================ */
+.press-hero { padding-bottom: 40px; }
+.press-hero .hero__actions { justify-content: flex-start; margin-top: 28px; }
+.press-body { gap: 18px; }
+.press-body .card .btn { margin-top: 10px; }
+.card .btn--primary, .card .btn--ghost { border-bottom: none; }
+.card .btn--primary { color: #fff; }
+.card .btn--ghost { color: var(--ink); font-weight: 500; }
+.card .btn--ghost:hover { color: var(--green); border-color: var(--green); }
+.btn--sm { font-size: 14px; padding: 10px 20px; }
+
+.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; margin-top: 6px; }
+.facts div { padding: 14px 0; border-top: 1px solid var(--border); }
+.facts dt {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 4px;
+}
+.facts dd { font-size: 15px; color: var(--ink); line-height: 1.6; }
+
+.founder { display: grid; grid-template-columns: 220px 1fr; gap: 32px; align-items: start; }
+.founder figure { margin: 0; }
+.founder img { display: block; width: 200px; height: 200px; border-radius: var(--radius-md); background: var(--pill-bg); }
+.founder figcaption { font-size: 12.5px; color: var(--muted); line-height: 1.5; margin-top: 10px; max-width: 200px; }
+.founder .fine { font-size: 14px; color: var(--muted); margin-top: 6px; }
+
+.news-item { border-top: 1px solid var(--border); padding-top: 16px; }
+.news-item h3 { font-size: 17px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; text-transform: none; margin: 0 0 4px; }
+.news-item time { font-size: 13px; color: var(--muted); }
+
+.asset-list { list-style: none; display: flex; flex-direction: column; gap: 0 !important; margin: 6px 0 0 !important; }
+.asset-list li {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 16px 0; border-top: 1px solid var(--border);
+}
+.asset-list strong { display: block; font-size: 15px; color: var(--ink); font-weight: 600; }
+.asset-list span { display: block; font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+.asset-list .btn { margin-top: 0; flex-shrink: 0; }
+
+.shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px; margin-top: 22px; }
+.shots figure { margin: 0; }
+.card .shots a { border-bottom: none; display: block; }
+.shots img {
+  display: block; width: 100%; height: auto; border-radius: 12px;
+  border: 1px solid var(--border); background: var(--surface-soft);
+}
+.shots a:hover img { border-color: var(--green); }
+.card .shots figcaption a { display: inline; font-size: 13px; margin-top: 6px; border-bottom: 1px solid rgba(22,163,74,0.3); }
+.shots figcaption { margin-top: 8px; }
+
+.boilerplate {
+  background: var(--surface-soft); border: 1px solid var(--border); border-radius: 14px;
+  padding: 18px 20px; display: flex; gap: 16px; align-items: flex-start;
+}
+.boilerplate p { margin: 0 !important; flex: 1; color: var(--ink-soft) !important; }
+.boilerplate .btn { margin-top: 0 !important; flex-shrink: 0; }
+
+.contact-card .btn--green { color: #fff; margin-top: 24px; }
+.contact-card .btn--green:hover { color: #fff; }
+.contact-card address { font-style: normal; color: var(--dark-text); font-size: 15px; line-height: 1.8; }
+.contact-card address a { display: inline; }
+.contact-card address strong { color: #fff; }
+
+@media (max-width: 760px) {
+  .facts { grid-template-columns: 1fr; }
+  .founder { grid-template-columns: 1fr; gap: 20px; }
+  .asset-list li { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .boilerplate { flex-direction: column; }
+  .shots { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
