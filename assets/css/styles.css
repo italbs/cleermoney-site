@@ -798,3 +798,42 @@ td:first-child { font-weight: 600; color: var(--ink); white-space: nowrap; }
   .boilerplate { flex-direction: column; }
   .shots { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 }
+
+/* Press: readability pass. Larger, darker body text and more air between
+   sections than the dense legal-page cards it borrows from. */
+.press-hero .lede { font-size: 19px; }
+.press-body { gap: 28px; }
+.press-body .card { padding: 44px 48px; }
+.press-body .card h2 { font-size: clamp(24px, 3vw, 30px); margin-bottom: 18px; letter-spacing: -0.02em; }
+.press-body .card p { font-size: 17px; line-height: 1.75; color: var(--ink-soft); margin-bottom: 16px; }
+.press-body .card .btn { margin-top: 14px; }
+.press-body .facts dt,
+.press-body .facts dd { font-size: 16px; }
+.press-body .facts dd { color: var(--ink-soft); }
+.press-body .facts div { padding: 16px 0; }
+.press-body .founder { grid-template-columns: 200px 1fr; gap: 40px; }
+.press-body .founder figcaption { font-size: 13.5px; max-width: 200px; color: var(--secondary); }
+.press-body .founder .fine { font-size: 15px; color: var(--secondary); }
+.press-body .news-item { padding-top: 18px; }
+.press-body .news-item h3 { font-size: 19px; line-height: 1.45; margin-bottom: 6px; }
+.press-body .news-item time { font-size: 14px; color: var(--secondary); }
+.press-body .asset-list li { padding: 20px 0; }
+.press-body .asset-list strong { font-size: 17px; }
+.press-body .asset-list span { font-size: 15px; color: var(--secondary); margin-top: 2px; }
+.press-body .shots { grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 28px; }
+.press-body .card .shots figcaption a { font-size: 14px; }
+.press-body .boilerplate { padding: 22px 24px; }
+.press-body .boilerplate p { font-size: 17px; }
+.press-body .contact-card { padding: 44px 48px; }
+.press-body .contact-card p,
+.press-body .contact-card address { font-size: 17px !important; }
+
+@media (max-width: 760px) {
+  .press-hero .lede { font-size: 17px; }
+  .press-body { gap: 20px; }
+  .press-body .card, .press-body .contact-card { padding: 30px 22px; }
+  .press-body .card p { font-size: 16px; }
+  .press-body .founder { grid-template-columns: 1fr; gap: 20px; }
+  .press-body .shots { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .press-body .asset-list li { padding: 18px 0; }
+}
