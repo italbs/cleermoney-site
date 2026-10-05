@@ -41,7 +41,7 @@
         pro:  'Start 7-day free trial'
       },
       badge: 'Available now on iPhone · Open Banking (CDR)',
-      note:  'iPhone only · Free to start · Try Pro free for 7 days'
+      note:  'Free forever plan · Try Pro free for 7 days'
     }
   };
 
