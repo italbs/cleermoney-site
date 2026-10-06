@@ -871,3 +871,20 @@ td:first-child { font-weight: 600; color: var(--ink); white-space: nowrap; }
   .press-body .shots { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .press-body .asset-list li { padding: 18px 0; }
 }
+
+/* Compare links (home) */
+.compare-links {
+  list-style: none; padding: 0; margin: 40px 0 0;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+}
+.compare-links a {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  padding: 18px 22px; font-weight: 600; color: var(--ink); text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.compare-links a:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); border-color: var(--green); }
+.compare-links a:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+.compare-links__arrow { color: var(--green); }
+.compare-links__all { margin-top: 18px; font-size: 15px; }
+@media (max-width: 760px) { .compare-links { grid-template-columns: 1fr; } }

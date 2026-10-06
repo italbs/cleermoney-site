@@ -26,9 +26,15 @@
   </url>
   <url>
     <loc>https://cleermoney.com.au/budgeting-alternatives-australia/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cleermoney.com.au/compare/the-budgeting-app/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cleermoney.com.au/compare/ynab/</loc>
