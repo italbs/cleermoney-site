@@ -61,6 +61,30 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://cleermoney.com.au/resources/christmas-savings/</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://cleermoney.com.au/resources/emergency-fund/</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://cleermoney.com.au/resources/irregular-income/</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://cleermoney.com.au/resources/open-banking/</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://cleermoney.com.au/faq/</loc>
     <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
