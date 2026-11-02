@@ -35,7 +35,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/styles.css?v=20261102" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=20261102b" />
 
   <!-- Organization + WebSite (site-wide entity facts) -->
   <script type="application/ld+json">
@@ -197,6 +197,34 @@
         <p class="table-note">Example figures only. A month here is 52 weeks divided by 12, which is why it is more than four weeks of pay.</p>
       </div>
 
+      <div class="card" id="calculator" hidden>
+        <h2>Work out your own split</h2>
+        <p>Enter your take-home pay and how often you are paid. Nothing you type leaves your browser.</p>
+        <div class="split-calc" id="splitCalc">
+          <div class="split-calc__row">
+            <label class="split-calc__label" for="splitPay">Take-home pay</label>
+            <div class="split-calc__money"><span>$</span><input id="splitPay" type="text" inputmode="decimal" autocomplete="off" value="2,400" /></div>
+            <fieldset class="split-calc__seg">
+              <legend>How often you are paid</legend>
+              <input type="radio" name="splitPeriod" id="splitWeek" value="week" /><label for="splitWeek">Week</label>
+              <input type="radio" name="splitPeriod" id="splitFortnight" value="fortnight" checked /><label for="splitFortnight">Fortnight</label>
+              <input type="radio" name="splitPeriod" id="splitMonth" value="month" /><label for="splitMonth">Month</label>
+            </fieldset>
+          </div>
+          <div class="split-calc__bar" aria-hidden="true">
+            <span style="width:50%;background:var(--need)"></span>
+            <span style="width:30%;background:var(--want)"></span>
+            <span style="width:20%;background:var(--green-bright)"></span>
+          </div>
+          <dl class="split-calc__legend" aria-live="polite">
+            <div><dt><span class="split-calc__sw" style="background:var(--need)"></span>Needs (50%)</dt><dd><span data-split="needs"></span> <small data-split-period></small></dd></div>
+            <div><dt><span class="split-calc__sw" style="background:var(--want)"></span>Wants (30%)</dt><dd><span data-split="wants"></span> <small data-split-period></small></dd></div>
+            <div><dt><span class="split-calc__sw" style="background:var(--green-bright)"></span>Savings (20%)</dt><dd><span data-split="savings"></span> <small data-split-period></small></dd></div>
+          </dl>
+          <p class="split-calc__note">That is <strong data-split="year"></strong> saved over a year.</p>
+        </div>
+      </div>
+
       <div class="card">
         <h2>When should you bend it?</h2>
         <p>The rule was never meant to fit everyone. Some common reasons to adjust it:</p>
@@ -318,5 +346,6 @@
 
   <script src="/assets/js/config.js" defer></script>
   <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/split-calc.js" defer></script>
 </body>
 </html>

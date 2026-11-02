@@ -973,3 +973,33 @@ a.res-card:focus-visible { outline: 2px solid var(--green); outline-offset: 2px;
   .app-card { grid-template-columns: 1fr; padding: 24px; }
   .app-card img { max-width: 200px; }
 }
+
+/* 50/30/20 pay split calculator (guide section + hub card) */
+.res-calc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; box-shadow: var(--shadow-card); }
+.res-calc h3 { font-size: 24px; font-weight: 800; color: var(--ink); margin-bottom: 10px; }
+.res-calc > div > p { font-size: 15.5px; color: var(--secondary); line-height: 1.65; margin-bottom: 18px; }
+.split-calc { background: var(--surface-soft); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 20px; }
+.split-calc__row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.split-calc__label { display: block; width: 100%; font-size: 13px; font-weight: 600; color: var(--secondary); margin-bottom: -2px; }
+.split-calc__money { flex: 1 1 140px; min-width: 0; display: flex; align-items: center; border: 1px solid var(--border); border-radius: 10px; background: #fff; padding: 0 12px; }
+.split-calc__money span { font-weight: 600; color: var(--muted); }
+.split-calc__money input { width: 100%; min-width: 0; border: 0; background: transparent; padding: 10px 4px; font: inherit; font-size: 16px; font-weight: 600; color: var(--ink); }
+.split-calc__money input:focus { outline: none; }
+.split-calc__money:focus-within { border-color: var(--green); box-shadow: 0 0 0 3px rgba(22,163,74,0.15); }
+.split-calc__seg { display: flex; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: #fff; margin: 0; padding: 0; }
+.split-calc__seg legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.split-calc__seg input { position: absolute; opacity: 0; }
+.split-calc__seg label, .split-calc__seg span { padding: 10px 12px; font-size: 13px; color: var(--secondary); cursor: pointer; }
+.split-calc__seg input:checked + label, .split-calc__seg span.on { background: var(--ink); color: #fff; }
+.split-calc__seg input:focus-visible + label { outline: 2px solid var(--green); outline-offset: -2px; }
+.split-calc__bar { display: flex; height: 14px; border-radius: 7px; overflow: hidden; margin-bottom: 12px; }
+.split-calc__legend { display: flex; flex-direction: column; gap: 8px; font-size: 14px; margin: 0; }
+.split-calc__legend div { display: flex; justify-content: space-between; gap: 12px; color: var(--ink-soft); }
+.split-calc__legend dd { font-weight: 700; color: var(--ink); margin: 0; }
+.split-calc__legend small { font-weight: 500; color: var(--muted); }
+.split-calc__sw { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 8px; }
+.split-calc .split-calc__note { font-size: 13.5px; color: var(--green-deep); background: var(--green-soft); border-radius: 10px; padding: 10px 12px; margin-top: 14px; }
+.card .split-calc { margin-top: 6px; }
+@media (max-width: 900px) { .res-calc { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .res-calc { padding: 22px; grid-template-columns: minmax(0, 1fr); } }
+.split-calc__legend b { color: var(--ink); }

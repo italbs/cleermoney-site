@@ -35,7 +35,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/styles.css?v=20261102" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=20261102b" />
 
   <!-- Organization + WebSite (site-wide entity facts) -->
   <script type="application/ld+json">
@@ -221,6 +221,34 @@
             <p>Why sorting each purchase into a want or a need builds a habit that lasts.</p>
             <span class="res-card__meta">Guide<span class="dot"></span>7 min read</span>
           </a>
+        </div>
+      </section>
+
+      <!-- CALCULATOR -->
+      <section aria-labelledby="calc-title">
+        <div class="res-head"><h2 id="calc-title">Calculators</h2><span>Nothing you type leaves your browser</span></div>
+        <div class="res-calc">
+          <div>
+            <h3>Pay split calculator</h3>
+            <p>Pop in your take-home pay, pick how often you are paid and see your 50/30/20 split for needs, wants and savings.</p>
+            <a class="btn btn--primary" href="/resources/50-30-20-rule/#calculator">Open the calculator</a>
+          </div>
+          <div class="split-calc" aria-hidden="true">
+            <div class="split-calc__row">
+              <div class="split-calc__money"><span>$</span><input type="text" value="2,400" tabindex="-1" readonly /></div>
+              <div class="split-calc__seg"><span>Week</span><span class="on">Fortnight</span><span>Month</span></div>
+            </div>
+            <div class="split-calc__bar">
+              <span style="width:50%;background:var(--need)"></span>
+              <span style="width:30%;background:var(--want)"></span>
+              <span style="width:20%;background:var(--green-bright)"></span>
+            </div>
+            <div class="split-calc__legend">
+              <div><span><span class="split-calc__sw" style="background:var(--need)"></span>Needs</span><b>$1,200</b></div>
+              <div><span><span class="split-calc__sw" style="background:var(--want)"></span>Wants</span><b>$720</b></div>
+              <div><span><span class="split-calc__sw" style="background:var(--green-bright)"></span>Savings</span><b>$480</b></div>
+            </div>
+          </div>
         </div>
       </section>
 
