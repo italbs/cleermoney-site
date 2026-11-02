@@ -172,7 +172,8 @@ p { text-wrap: pretty; }
   letter-spacing: -0.02em;
 }
 .mobile-menu a:hover { color: var(--green); }
-.mobile-menu .btn--primary { font-size: 16px; margin-top: 8px; }
+.mobile-menu .btn--primary { font-size: 16px; margin-top: 8px; color: #fff; }
+.mobile-menu .btn--primary:hover { color: #fff; }
 
 /* ============================================================
    BUTTONS
