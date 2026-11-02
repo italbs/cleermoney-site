@@ -2,6 +2,8 @@
    Cleer Money — cleermoney.com.au
    Palette derived from the app's "Warm Paper" (light) and
    "Evening Desk" (dark) themes in constants/theme.ts.
+   When you change this file, bump ?v= on every page's stylesheet link
+   (grep "styles.css?v=") or returning visitors keep the cached copy.
    ============================================================ */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
